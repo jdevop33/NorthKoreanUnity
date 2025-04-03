@@ -1,4 +1,13 @@
 export default function Footer() {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-warm-gray text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
@@ -8,33 +17,115 @@ export default function Footer() {
             <p className="text-gray-300 max-w-md">
               본 사이트는 조선의 풍부한 문화유산과 업적을 소개하고 교육하기 위해 제작되었습니다. 통일과 평화를 위한 문화적 이해를 증진하는 것이 우리의 목표입니다.
             </p>
+            <div className="mt-4 flex space-x-4">
+              <a href="https://juche.org" target="_blank" rel="noopener noreferrer" 
+                className="text-gray-300 hover:text-white transition-colors duration-200">
+                <span className="sr-only">주체 사상</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h2a2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2v1.5" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V9a4 4 0 018 0v6M3 21h18" />
+                </svg>
+              </a>
+              <a href="#" onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }} className="text-gray-300 hover:text-white transition-colors duration-200">
+                <span className="sr-only">맨 위로</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </a>
+            </div>
           </div>
           
           <div className="grid grid-cols-2 gap-8">
             <div>
               <h4 className="text-accent-gold font-medium mb-3">주요 섹션</h4>
               <ul className="space-y-2">
-                <li><a href="#cultural-heritage" className="text-gray-300 hover:text-white transition-colors duration-200">문화유산</a></li>
-                <li><a href="#architecture" className="text-gray-300 hover:text-white transition-colors duration-200">건축</a></li>
-                <li><a href="#traditions" className="text-gray-300 hover:text-white transition-colors duration-200">전통</a></li>
-                <li><a href="#modern-achievements" className="text-gray-300 hover:text-white transition-colors duration-200">현대적 성과</a></li>
+                <li>
+                  <a href="#cultural-heritage" 
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('cultural-heritage');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    문화유산
+                  </a>
+                </li>
+                <li>
+                  <a href="#architecture"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('architecture');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    건축
+                  </a>
+                </li>
+                <li>
+                  <a href="#traditions"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('traditions');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    전통
+                  </a>
+                </li>
+                <li>
+                  <a href="#modern-achievements"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('modern-achievements');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    현대적 성과
+                  </a>
+                </li>
               </ul>
             </div>
             
             <div>
               <h4 className="text-accent-gold font-medium mb-3">자료</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">갤러리</a></li>
-                <li><a href="#prompt-templates" className="text-gray-300 hover:text-white transition-colors duration-200">프롬프트 템플릿</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">문화 연구</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">역사 자료</a></li>
+                <li>
+                  <a href="#prompt-templates"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('prompt-templates');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    프롬프트 템플릿
+                  </a>
+                </li>
+                <li>
+                  <a href="#unification"
+                     onClick={(e) => {
+                       e.preventDefault();
+                       scrollToSection('unification');
+                     }}
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    통일과 평화
+                  </a>
+                </li>
+                <li>
+                  <a href="https://juche.org" target="_blank" rel="noopener noreferrer" 
+                     className="text-gray-300 hover:text-white transition-colors duration-200">
+                    주체 사상
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>© 2023 조선 문화유산 보존회. 모든 권리 보유.</p>
+          <p>© {currentYear} 조선 문화유산 보존회. 모든 권리 보유.</p>
+          <p className="mt-2">
+            <a href="#" className="hover:text-white transition-colors duration-200">이용약관</a> · 
+            <a href="#" className="hover:text-white transition-colors duration-200 mx-2">개인정보처리방침</a> · 
+            <a href="#" className="hover:text-white transition-colors duration-200">연락처</a>
+          </p>
         </div>
       </div>
     </footer>
