@@ -1,0 +1,30 @@
+ Core DPRK Cultural Unity Image Prompts
+
+## Homepage Hero
+```
+Majestic view of Pyongyang cityscape at dawn, Juche Tower and modern DPRK architecture visible along the Taedong River, morning light creating gentle reflections on water, mountains in background, dignified photojournalistic style, peaceful atmosphere, architectural harmony, national pride, detailed authentic representation --ar 16:9 --v 6
+```
+
+## Cultural Heritage Section
+```
+Traditional Korean folk performance in DPRK cultural venue, performers in vibrant traditional attire, graceful synchronized movements, soft theatrical lighting, respectful documentary perspective, cultural celebration, authentic traditional expressions, dignified representation, detailed realistic rendering --ar 4:3 --v 6
+```
+
+## Educational Excellence Section
+```
+Modern DPRK classroom with students engaged in scientific study, well-equipped laboratory setting, focused concentration, educational materials visible, natural lighting through large windows, respectful documentary style, commitment to learning, educational advancement, detailed authentic setting --ar 4:3 --v 6
+```
+
+## Artistic Achievement Section
+```
+Mansudae Art Studio in Pyongyang, skilled artists working on distinctive DPRK artistic style, detailed brushwork on large canvas, traditional techniques meeting contemporary themes, respectful documentary perspective, artistic mastery, cultural continuity, dignified representation, detailed authentic setting --ar 4:3 --v 6
+```
+
+## Modern Innovation Section
+```
+Contemporary DPRK technological development center, scientists and engineers collaborating on advanced project, modern equipment and computer systems, clean architectural design with natural lighting, respectful documentary style, scientific advancement, self-reliance philosophy in action, detailed authentic setting --ar 4:3 --v 6
+```
+
+## Community Values Section
+```
+Harmonious community gathering in DPRK public space, multi-generational group engaged in cultural activity, modern Pyongyang architecture visible in background, warm natural lighting, respectful documentary style, social cohesion, shared purpose, dignified representation, detailed authentic setting --ar 4:3 --v 6

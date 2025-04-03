@@ -1,0 +1,137 @@
+Refactoring UI
+You should end up with a pretty balanced set of colors that provide just enough options to accommodate your design ideas without feeling limiting. What about greys? With greys the base color isn’t as important, but otherwise the process is the same. Start at the edges and fill in the gaps until you have what you need. Pick your darkest grey by choosing a color for the darkest text in your project, and your lightest grey by choosing something that works well for a subtle off-white background. It’s not a science As tempting as it is, you can’t rely purely on math to craft the perfect color palette. A systematic approach like the one described above is great to get you started, but don’t be afraid to make little tweaks if you need to. Once you actually start using your colors in your designs, it’s almost inevitable that you’ll want to tweak the saturation on a shade, or make a couple of shades lighter or darker. Trust your eyes, not the numbers. Just try to avoid adding new shades too often if you can avoid it. If you’re not diligent about limiting your palette, you might as well have no color system at all. 151 Define your shades up front
+
+
+Don’t let lightness kill your saturation In the HSL color space, as a color gets closer to 0% or 100% lightness, the impact of saturation is weakened — the same saturation value at 50% lightness looks more colorful than it does at 90% lightness. That means that if you don’t want the lighter and darker shades of a given color to look washed out, you need to increase the saturation as the lightness gets further away from 50%.
+
+
+It’s subtle but little details like this add up, especially when a color is being applied to a large section of a UI. But what if your base color is already heavily saturated? How do you increase the saturation if it’s already at 100%? Use perceived brightness to your advantage Which of these two colors do you think is lighter? The yellow, right? Well it turns out both colors actually have the exact same “lightness” in terms of HSL: So why do we see the yellow as lighter? Well it turns out that every hue has an inherent perceived brightness due to how the human eye perceives color. You can calculate the perceived brightness of a color by plugging its RGB components into this formula: 153 Don’t let lightness kill your saturation
+
+
+Taking samples of different hues with 100% saturation and 50% lightness, we can get a good sense of the perceived brightness of different colors around the color wheel: As expected, yellow has a higher perceived brightness than blue. But what’s interesting here is that perceived brightness doesn’t simply change linearly from the darkest hue to the lightest hue — instead, there are three separate local minimums (red, green, and blue) and three local maximums (yellow, cyan, and magenta). Changing brightness by rotating hue On the surface, this is certainly an interesting thing to understand about color. But things get really interesting when you realize how you can use this knowledge in your designs. Don’t let lightness kill your saturation 154
+
+
+Normally when you want to change how light a color looks, you adjust the lightness component: While this does work to lighten or darken a color, you often lose some of the color’s intensity — the color also looks closer to white or to black, not just lighter or darker. Since different hues have a different perceived brightness, another way you can change the brightness of a color is by rotating its hue. To make a color lighter, rotate the hue towards the nearest bright hue — 60°, 180°, or 300°. 155 Don’t let lightness kill your saturation
+
+
+To make a color darker, rotate the hue towards the nearest dark hue — 0°, 120°, or 240°. This can be really useful when trying to create a palette for a light color like yellow. By gradually rotating the hue towards more of an orange as you decrease the lightness, the darker shades will feel warm and rich instead of dull and brown: You can of course combine these approaches too, getting some of the brightness by adjusting the hue and some from adjusting the lightness. Don’t let lightness kill your saturation 156
+
+
+While this is a great way to change a color’s brightness without affecting its intensity, it works best in small doses. Don’t rotate the hue more than 20-30° or it will look like a totally different color instead of just lighter or darker. 157 Don’t let lightness kill your saturation
+
+
+Greys don’t have to be grey By definition, true grey has a saturation of 0% — it doesn’t have any actual color in it at all. But in practice, a lot of the colors that we think of as grey are actually saturated quite heavily: This saturation is what makes some greys feel cool and other greys feel warm.
+
+
+Color temperature If you’ve ever purchased light bulbs before, you’ve had to make the decision between “warm white” bulbs that give off a yellow-ish light, and “cool white” bulbs that give off a blue-ish light. Saturating greys in a user interface works in a similar same way. If you want your greys to feel cool, saturate them with a bit of blue: To give your greys a warmer feel, saturate them with a bit of yellow or orange: 159 Greys don’t have to be grey
+
+
+To maintain a consistent temperature, don’t forget to increase the saturation for the lighter and darker shades. If you don’t, those shades will look a bit washed out compared to the greys that are closer to 50% lightness. How much you want to saturate your greys is completely up to you — add just a little if you only want to tip the temperature slightly, or crank it up if you want the interface to lean strongly in one direction or the other. Greys don’t have to be grey 160
+
+
+161 Greys don’t have to be grey
+
+
+Accessible doesn’t have to mean ugly To make sure your designs are accessible, the Web Content Accessibility Guidelines (WCAG) recommend that normal text (under ~18px) has a contrast ratio of at least 4.5:1, and that larger text has a contrast ratio of at least 3:1. For typical dark-text-on-a-light-background situations, meeting this recommendation is pretty easy, but it gets a lot trickier when you start working with color.
+
+
+Flipping the contrast When using white text on a colored background, you’d be surprised how dark the color often needs to be to meet that 4.5:1 contrast ratio. This can create hierarchy issues when those elements aren’t supposed to be the focus of the page — dark colored backgrounds will really grab the user’s attention. 163 Accessible doesn’t have to mean ugly
+
+
+You can solve this problem by flipping the contrast. Instead of using light text on a dark colored background, use dark colored text on a light colored background: The color is still there to help support the text, but it’s way less in-your-face and doesn’t interfere as much with other actions on the page. Rotating the hue Even harder than white text on a colored background is colored text on a colored background. You’ll run into this situation if you’re ever trying to pick a color for some secondary text inside a dark-colored panel. If you start by taking the background color and simply adjusting the lightness and saturation, you’ll find that it’s hard to meet the recommended contrast ratio without getting very close to pure white. Accessible doesn’t have to mean ugly 164
+
+
+You don’t want the primary text and the secondary text to look the same, so what else can you do? Well since some colors are brighter than others, one way to increase the contrast without getting closer to white is to rotate the hue towards a brighter color, like cyan, magenta, or yellow. This can make it a lot easier to make the text accessible while still keeping it colorful. 165 Accessible doesn’t have to mean ugly
+
+
+Don’t rely on color alone Color can be a fantastic way to enhance information and make it easier to understand, but be careful not to rely on it, or users with color blindness will have a hard time interpreting your UI. Take these metric cards for example. With this design, someone who is redgreen colorblind can’t easily tell if a metric has gotten better or worse: An easy fix for this is to also communicate that information in some other way, like by adding icons to indicate if the change is positive or negative.
+
+
+What about something like a graph, where each trend line has a different color? In situations like this, try relying on contrast instead of using completely different colors. It’s much easier for someone who’s colorblind to tell the 167 Don’t rely on color alone
+
+
+difference between light and dark than it is for them to tell the difference between two distinct colors. Always use color to support something that your design is already saying; never use it as the only means of communication. Don’t rely on color alone 168
+
+
+Creating Depth
+
+
+Emulate a light source Have you ever noticed how some elements in an interface feel like they’re raised off of the page, while others feel like they are inset into the background? Creating this effect might look complicated at first, but it actually only requires you to understand one fundamental rule.
+
+
+Light comes from above Take a look at the panelling on this door: Even though you’re just looking at a flat image, it’s still pretty obvious that the panels on the door are raised. Why is that? Notice how the top edge of the panel is lighter? That’s because it’s angled towards the sky and receives more light. Similarly, the bottom edge is darker because it’s angled away from the sky, receiving less light. The only way those edges could possibly be oriented that way is if the panel itself is raised, so that’s how our brains perceive it. 173 Emulate a light source
+
+
+Now take a look at the panelling on this cabinet: In this case it’s clear that the panels are inset because there’s a shadow at the top indicating that the lip above is blocking the light, and the bottom edge is lighter, indicating that it’s angled upward. To create this same sense of depth in your designs, all you need to do is mimic the way light affects things in the real world. Emulate a light source 174
+
+
+Simulating light in a user interface If you want an element to appear raised or inset, first figure out what profile you want that element to have, then mimic how a light source would interact with that shape. Raised elements For example, say you had a button and you wanted it to feel raised off of the page, with perfectly flat edges on the top and bottom: Because the top and bottom edges are both flat, it would be impossible to see both of them at the same time. People generally look slightly downward towards their screens, so for the most natural look, reveal a little bit of the top edge and hide the bottom edge. Since the top edge is facing upward, make it slightly lighter than the face of 175 Emulate a light source
+
+
+the button, usually using a top border or an inset box shadow with a slight vertical offset: Choose the lighter color by hand instead of using a semi-transparent white for best results — simply overlaying white can suck the saturation out of the underlying color. Next, you need to account for the fact that a raised element will block some of the light from reaching the area below the element. Do this by adding a small dark box shadow with a slight vertical offset (you only want the shadow to appear below the element): Don’t get carried away with the blur radius, a couple of pixels is plenty. These Emulate a light source 176
+
+
+sorts of shadows should have pretty sharp edges — take a look at the shadow cast by the bottom of a wall outlet or window frame for a real-world example. Inset elements Say you’re designing a “well” component that should feel like it’s recessed into the page. Looking slightly downward, only the bottom lip would be visible. Since it’s facing towards the sky, give that edge a slightly lighter color using a bottom border or inset shadow with a negative vertical offset: 177 Emulate a light source
+
+
+The area above the well should block some of the light from reaching the very top of the well, so add a small dark inset box shadow with a slight positive vertical offset to make sure it doesn’t poke through at the bottom: This same treatment works for any element that may need to appear inset, for example text inputs and checkboxes: Emulate a light source 178
+
+
+Don’t get carried away Once you understand how to simulate light in an interface, it can be tempting to tinker away for hours, tweaking and tweaking to see how closely you can mimic the real world. While this can be a fun exercise, in practice it can lead to interfaces that are busy and unclear. Borrowing some visual cues from the real world is a great way to add a bit of depth, but there’s no need to try and make things look photo-realistic. 179 Emulate a light source
+
+
+Use shadows to convey elevation Shadows can be more than just a flashy effect — used thoughtfully, they let you position elements on a virtual z-axis to create a meaningful sense of depth. Small shadows with a tight blur radius make an element feel only slightly raised off of the background, while larger shadows with a higher blur radius make an element feel much closer to the user: The closer something feels to the user, the more it will attract their focus.
+
+
+You might use a smaller shadow for something like a button, where you want the user to notice it but don’t want it to dominate the page: Medium shadows are useful for things like dropdowns; elements that need to sit a bit further above the rest of the UI: 181 Use shadows to convey elevation
+
+
+Large shadows are great for modal dialogs, where you really want to capture the user’s attention: Establishing an elevation system Just like with color, typography, spacing, and sizing, defining a fixed set of shadows will speed up your workflow and help maintain consistency in your designs. You don’t need a ton of different shadows — five options is usually plenty. Use shadows to convey elevation 182
+
+
+Start by defining your smallest shadow and your largest shadow, then fill in the middle with shadows that increase in size pretty linearly: Combining shadows with interaction Shadows aren’t only useful for positioning elements on the z-axis statically; they’re a great way to provide visual cues to the user as they interact with elements, too. For example, say you had a list of items where the user could click and drag each item to sort them. Adding a shadow to an item when a user clicks it makes it feel like it pops forward above the other items in the list, and makes it clear to the user that they can drag it: 183 Use shadows to convey elevation
+
+
+Similarly, you can make a button feel like it’s being pressed into the page when a user clicks it by switching to a smaller shadow, or perhaps removing the shadow altogether: Using shadows in a meaningful way like this is a great way to hack the process of choosing what sort of shadow an element should have. Don’t think about the shadow itself, think about where you want the element to sit on the z-axis and assign it a shadow accordingly. Use shadows to convey elevation 184
+
+
+185 Use shadows to convey elevation
+
+
+Shadows can have two parts Ever inspected a really nice shadow on a site and noticed they were actually using two shadows? There’s a method to this madness, and it’s actually pretty simple and makes a lot of sense. When you see someone combining two shadows, they’re not just experimenting randomly until things look nice, they’re using each shadow to do a specific job. The first shadow is larger and softer, with a considerable vertical offset and large blur radius. It simulates the shadow cast behind an object by a direct light source.
+
+
+The second shadow is tighter and darker, with less of a vertical offset and a smaller blur radius. It simulates the shadowed area underneath an object where even ambient light has a hard time reaching. Using two shadows like this gives you a lot more control than you’d get with a single shadow — you can keep the larger shadow nice and subtle while still 187 Shadows can have two parts
+
+
+making the shadow closer the element’s edges nice and defined. Accounting for elevation As an object gets further away from a surface, the small, dark shadow created by a lack of ambient light slowly disappears (go ahead, try it out with something on your desk). Shadows can have two parts 188
+
+
+So if you’re going to use this two-shadow technique in your own projects, make sure you make that shadow more subtle for shadows that represent a higher elevation. It should be quite distinct for your lowest elevation, and almost (or completely) invisible at your highest elevation. 189 Shadows can have two parts
+
+
+Even flat designs can have depth When most people talk about “flat design”, they mean designing without shadows, gradients, or any other effects that try to mimic how light interacts with things in the real-world. But the most effective flat designs still convey depth, they just do it in a different way.
+
+
+Creating depth with color In general (especially with shades of the same color), lighter objects feel closer to us and darker objects feel further away. Make an element lighter than the background color to make it feel like it’s raised off of the page, or darker than the background color if you want it to feel inset like a well: This is just as applicable to non-flat designs, too — color is just another tool in your toolbelt for conveying distance. 191 Even flat designs can have depth
+
+
+Using solid shadows Another way to communicate depth in a flat design is to use short, vertically offset shadows with no blur radius at all. It’s a great way to make a card or button stand off the page a little bit without sacrificing that flat aesthetic. Even flat designs can have depth 192
+
+
+193 Even flat designs can have depth
+
+
+Overlap elements to create layers One of the most effective ways to create depth is to overlap different elements to make it feel like a design has multiple layers. For example, instead of containing a card entirely within another element, offset it so it crosses the transition between two different backgrounds:
+
+
+You could also make an element taller than its parent, so it overlaps on both sides: Overlapping elements can add depth to smaller components too, for example the controls on this carousel: Overlapping images This technique can work great with images as well, but without special 195 Overlap elements to create layers
+
+
+consideration it’s easy for overlapping images to clash. A simple trick for avoiding this is to give the images an “invisible border” — one that matches the background color — so there’s always a bit of a gap between images: You’ll still create the appearance of layers but with none of the ugly clashing. Overlap elements to create layers 196
+
+
+Working with Images
+
+
+Use good photos Bad photos will ruin a design, even if everything else about it looks great. If your design needs photography and you’re not a talented photographer, you’ve got two options: 1. Hire a professional photographer. If you need very specific photos for your project, entrust a professional. Taking great photos isn’t just about using an expensive camera, it’s about lighting, composition, color — skills that take years to develop.

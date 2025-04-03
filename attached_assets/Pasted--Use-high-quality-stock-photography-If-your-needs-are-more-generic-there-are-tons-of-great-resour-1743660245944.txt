@@ -1,0 +1,139 @@
+. Use high quality stock photography. If your needs are more generic, there are tons of great resources out there where you can purchase great stock photos. There are even sites like Unsplash that offer beautiful photography for free. Whatever you do, don’t design using placeholder images and expect to be able to take some photos with your smartphone and swap them in later. It never works. 201 Use good photos
+
+
+Text needs consistent contrast Ever tried to slap a headline on a big hero image, only to find that no matter what color you tried for the text, it was still hard to read? That’s because the problem isn’t the text, it’s the image. The problem with background images Photos can be very dynamic, with a lot of really light areas, and a lot of really dark areas. White text might look great in the dark areas, but it gets lost in the light areas. Dark text looks great in the light areas, but gets lost in the dark areas.
+
+
+To solve this problem, you need to reduce the dynamics in the image to make the contrast between the text and the background more consistent. Add an overlay One way to increase the overall text contrast is to add a semi-transparent overlay to the background image. 203 Text needs consistent contrast
+
+
+A black overlay will tone down the light areas and help light text stand out, while a white overlay will brighten up the dark areas and help dark text stand out. Lower the image contrast One of the compromises you make when using an overlay is that you’re lightening or darkening the whole image, not just the problem areas. If you want more control, another solution is to lower the contrast of the image itself: Lowering the contrast will change how light or dark the image feels overall, so make sure to adjust the brightness to compensate. Text needs consistent contrast 204
+
+
+Colorize the image Another way to help text stand out against an image is to colorize the image with a single color. Some photo editing software includes this as a first-class feature, but if yours doesn’t, you can create this effect in three steps: 1. Lower the image contrast, to balance things out a bit. 2. Desaturate the image, to remove any existing color. 3. Add a solid fill, using the “multiply” blend mode. This can also be a great way to make a background image pair more nicely with your existing brand colors. 205 Text needs consistent contrast
+
+
+Add a text shadow If you want to preserve a bit more of the dynamics in a background image, a text shadow can be a great way to increase contrast only where you need it most. You want it to look more like a subtle glow than an actual shadow, so use a large blur radius and don’t add any kind of offset. It’s still a good idea to reduce the overall image contrast, but combining that with a text shadow means you can reduce it a little less. Text needs consistent contrast 206
+
+
+207 Text needs consistent contrast
+
+
+Everything has an intended size Everyone knows that scaling bitmap images to larger than their original size is a bad idea — they immediately feel “fuzzy” and lose their definition. But that’s not the only way you can go wrong with scaling, even when you think you’re playing it safe. Don’t scale up icons If you’re designing something that could use some large icons (like maybe the “features” section of a landing page), you might instinctively grab your favorite SVG icon set and bump up the size until they fit your needs. They’re vector images after all, so the quality isn’t going to suffer if you increase the size, right?
+
+
+While it’s true that vector images won’t degrade in quality when you increase their size, icons that were drawn at 16–24px are never going to look very professional when you blow them up to 3x or 4x their intended size. They lack detail, and always feel disproportionately “chunky”. If small icons are all you’ve got, try enclosing them inside another shape and giving the shape a background color: This lets you keep the actual icon closer to its intended size, while still filling the larger space. 209 Everything has an intended size
+
+
+Don’t scale down screenshots Say you want to include a screenshot of your app on that same features page. If you take a full-size screenshot and shrink it by 70% to make it fit, you’ll end up with an image that’s trying to cram way too much detail into far too little space. The 16px font in your app becomes a 4px font in your screenshot, and visitors will be squinting with their eyeballs two inches from the screen, struggling to make out what all that text says. If you want to include a detailed screenshot in your design, take the screenshot at a smaller screen size (like maybe your tablet layout) and save a Everything has an intended size 210
+
+
+lot of space for it so you don’t have to shrink it as much: Or consider taking just a partial screenshot, so you can display it in less space without needing to scale it down: 211 Everything has an intended size
+
+
+If you really need to fit a whole-app screenshot in a tight space, try drawing a simplified version of the UI with details removed and small text replaced with simple lines: It’ll still communicate the big-picture design without tempting visitors to try and make out all of the details. Don’t scale down icons, either Just as icons drawn to be used at 16px look chunky when you scale them up, icons intended to be used at larger sizes look choppy and fuzzy when you scale them down. The most extreme example of this are favicons, those little icons you see next to the page title in a browser tab. If you try to shrink a logo drawn at 128px down to favicon size, it all turns to Everything has an intended size 212
+
+
+mush as the browser tries its best to render all of that detail in a tiny 16px square: A better approach is to redraw a super simplified version of the logo at the target size, so you control the compromises instead of leaving it up to the browser: 213 Everything has an intended size
+
+
+Beware user-uploaded content When you’re depending on user-uploaded images, you don’t have the luxury of fine-tuning contrast, carefully adjusting colors, or cropping the perfect frame. While you’ll always be at your users’ mercy to some extent, there are a few things you can do to make sure their content doesn’t completely undermine your design. Control the shape and size Displaying user-uploaded images at their intrinsic aspect ratio can really throw off a layout, especially if there are a lot of images on the screen at once.
+
+
+Instead of letting users wreak havoc on your page structure, center their images inside fixed containers, cropping out anything that doesn’t fit. This is really easy to do with CSS these days by making the image a background image, and setting the background-size property to cover. 215 Beware user-uploaded content
+
+
+Prevent background bleed When a user provides an image with a background color that’s similar to the background in your UI, the image and the background can bleed together, causing the image to lose its shape. Instead of trying to solve this with a border, try using a subtle inner box shadow: Beware user-uploaded content 216
+
+
+Borders will often clash with the colors in the image, while most people will barely even realize the shadow is there. If you don’t like the slight “inset” look you get from using a box shadow, a semi-transparent inner border works great, too. 217 Beware user-uploaded content
+
+
+Finishing Touches
+
+
+Supercharge the defaults You don’t always have to add new elements to a design to add flare — there are a lot of ways to liven up a page by “supercharging” what’s already there. For example, if your design includes a bulleted list, try replacing the bullets with icons: Checkmarks and arrows are great generic choices for a lot of situations, but you can also use something more specific to your content, like a padlock icon for a list of security-related features:
+
+
+Similarly, if you’re working on a testimonial try “promoting” the quotes into visual elements by increasing the size and changing the color: Links are another great candidate for special styling. You can do something as simple as changing the color and font weight, or something as fancy as a thick and colorful custom underline that partially overlaps the text: 221 Supercharge the defaults
+
+
+If you’re working on a form, using custom checkboxes and radio buttons is an easy way to add some color to the design: Just using one of your brand colors for the selected states instead of the browser defaults is often enough to take something from feeling boring to feeling polished and well-designed. Supercharge the defaults 222
+
+
+223 Supercharge the defaults
+
+
+Add color with accent borders If you’re not a graphic designer, how do you add that dash of visual flair to your UI that other designs get from beautiful photography or colorful illustrations? One simple trick that can make a big difference is to add colorful accent borders to parts of your interface that would otherwise feel a bit bland. For example, across the top of a card:
+
+
+…or to highlight active navigation items: …or along the side of an alert message: …or as a short accent underneath a headline: 225 Add color with accent borders
+
+
+…or even across the top of your entire layout: It doesn’t take any graphic design talent to add a colored rectangle to your UI, and it can go a long way towards making something feel more “designed.” Add color with accent borders 226
+
+
+227 Add color with accent borders
+
+
+Decorate your backgrounds Even if you do a great job with hierarchy, spacing, and typography, sometimes a design will still feel a little bit plain. A great way to break up some of the monotony without drastically altering the design is to add some excitement to a few of your backgrounds. Change the background color One way to add some excitement to a background is to simply change the color.
+
+
+This works great for emphasizing an individual panel, as well as for adding some distinction between entire page sections. For a more energetic look, you could even use a slight gradient: For best results, use two hues that are no more than about 30° apart. 229 Decorate your backgrounds
+
+
+Use a repeating pattern Another approach is to add a subtle repeatable pattern, like this one from Hero Patterns: You don’t have to necessarily repeat it across the entire background, either — a pattern designed to repeat along a single edge can look great, too. Keep the contrast between the background and the pattern pretty low to ensure readability. Decorate your backgrounds 230
+
+
+Add a simple shape or illustration Instead of decorating an entire background, you can also try including an individual graphic or two in specific positions. Simple geometric shapes work well for this: …as do small chunks of a repeatable pattern: 231 Decorate your backgrounds
+
+
+You can even do something more complex, like a simplified world map: Just like with a full background pattern, it’s best to keep the contrast low so nothing interferes with the content. Decorate your backgrounds 232
+
+
+233 Decorate your backgrounds
+
+
+Don’t overlook empty states Imagine you’re designing a new feature for an app you’re working on. You’ve spent a ton of time crafting the perfect realistic sample data, picking out usernames and avatars, and putting together a beautiful and electrifying screen.
+
+
+You code it all up and deploy it to production. But when an excited user clicks the new item in the nav, they see this: If you’re designing something that depends on user-generated content, the empty state should be a priority, not an afterthought. Try incorporating an image or illustration to grab the user’s attention, and emphasizing the call-to-action to encourage them to take the next step: 235 Don’t overlook empty states
+
+
+If you’re working on something that has a bunch of supporting UI like tabs or filters, consider hiding that stuff entirely. There’s no point in presenting a bunch of actions that don’t do anything until the user has created some content. Empty states are a user’s first interaction with a new product or feature. Use them as an opportunity to be interesting and exciting — don’t settle for plain and boring. Don’t overlook empty states 236
+
+
+237 Don’t overlook empty states
+
+
+Use fewer borders When you need to create separation between two elements, try to resist immediately reaching for a border. While borders are a great way to distinguish two elements from one another, they aren’t the only way, and using too many of them can make your design feel busy and cluttered.
+
+
+Use a box shadow Box shadows do a great job of outlining an element like a border would, but can be more subtle and accomplish the same goal without being as distracting. This approach works best when the element you are applying the box shadow to is not the same color as the background. 239 Use fewer borders
+
+
+Use two different background colors Giving adjacent elements slightly different background colors is usually all you need to create distinction between them. If you’re already using different background colors in addition to a border, try removing the border; you might not need it. Use fewer borders 240
+
+
+Add extra spacing What better way to create separation between elements than to simply increase the separation? Spacing things further apart is a great way to create distinction between groups of elements without introducing any new UI at all. 241 Use fewer borders
+
+
+Think outside the box Most people have a lot of preconceived notions about how certain components are supposed to look. But just because we’ve been conditioned to believe that there’s only one way to design a particular component, doesn’t mean it’s true. For example, picture a dropdown menu. You’re probably picturing a white box with a bit of a drop shadow and a list of links stacked inside of it:
+
+
+But who says a dropdown needs to be a boring list of links? It’s just a floating box on the screen, you can do anything you want with it. Break it into sections, use multiple columns, add supporting text or colorful icons — do something fun with it! And don’t just stop at dropdowns; what about something like a table? 243 Think outside the box
+
+
+When you imagine a table, you probably think of columns that each contain one specific piece of data: Tables don’t have to work this way, though — if a column doesn’t need to be sortable, there’s no reason you can’t combine it with a related column and introduce some interesting hierarchy: Think outside the box 244
+
+
+Table content doesn’t have to be plain text, either. Add images if it makes sense, or introduce some color to enrich the existing data: How about radio buttons? There’s nothing more boring than a stack of labels with little circles next to them. 245 Think outside the box
+
+
+If a set of radio buttons are an important part of the UI you’re designing, try something like selectable cards instead: Don’t let your existing beliefs hold back your designs — constraints are powerful but sometimes a bit of freedom is just what you need to take an interface to the next level. Think outside the box 246
+
+
+Leveling Up
+
+
+Leveling up Hopefully after reading this book you feel much more confident in your ability to make something look awesome, without relying on a designer. But even though we’ve tried our best to cram in every good idea we could possibly think of, there will always be more out there to learn. Here are two of the best ways you can continue to hone your skills, and add new tools to your toolbelt. Look for decisions you wouldn’t have made Whenever you stumble across a design you really like, ask yourself: “Did the designer do anything here that I never would have thought to do?” Maybe it’s the way they inverted the background color on a datepicker:
