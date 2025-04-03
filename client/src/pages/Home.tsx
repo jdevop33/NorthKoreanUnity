@@ -7,6 +7,7 @@ import TraditionsSection from "@/components/TraditionsSection";
 import ModernAchievementsSection from "@/components/ModernAchievementsSection";
 import PromptTemplatesSection from "@/components/PromptTemplatesSection";
 import UnificationSection from "@/components/UnificationSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,14 +16,18 @@ export default function Home() {
       <Header />
       <NavigationBar />
       
-      <main className="max-w-6xl mx-auto px-4 py-12">
-        <IntroductionSection />
-        <CulturalHeritageSection />
-        <ArchitectureSection />
-        <TraditionsSection />
-        <ModernAchievementsSection />
-        <PromptTemplatesSection />
+      <main>
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <IntroductionSection />
+          <CulturalHeritageSection />
+          <ArchitectureSection />
+          <TraditionsSection />
+          <ModernAchievementsSection />
+          <PromptTemplatesSection />
+        </div>
+        
         <UnificationSection />
+        <ContactSection />
       </main>
       
       <Footer />

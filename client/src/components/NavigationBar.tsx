@@ -32,7 +32,7 @@ export default function NavigationBar() {
             <span className="text-white font-serif-kr font-medium text-lg ml-2 group-hover:text-accent-gold transition-colors duration-200">조선 문화</span>
           </a>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <a href="#cultural-heritage" 
               onClick={(e) => {
                 e.preventDefault();
@@ -77,6 +77,15 @@ export default function NavigationBar() {
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               프롬프트 템플릿
+            </a>
+            <a href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('contact');
+              }}
+              className="bg-primary-red text-white px-4 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
+            >
+              연락하기
             </a>
           </div>
           
@@ -140,6 +149,15 @@ export default function NavigationBar() {
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               프롬프트 템플릿
+            </a>
+            <a href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('contact');
+              }}
+              className="block px-4 py-2 bg-primary-red text-white hover:bg-primary-red/90 font-medium"
+            >
+              연락하기
             </a>
           </div>
         )}
