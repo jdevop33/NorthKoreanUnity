@@ -1,7 +1,10 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { PgStorage } from "./pgStorage";
 import { insertCulturalHeritageItemSchema, insertPromptTemplateSchema } from "@shared/schema";
+
+// Use PostgreSQL storage
+const storage = new PgStorage();
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Cultural Heritage Item Routes
