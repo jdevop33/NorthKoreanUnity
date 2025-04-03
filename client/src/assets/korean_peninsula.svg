@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F5F5F5"/>
+  
+  <!-- Ocean -->
+  <rect width="400" height="300" fill="#E6EEF9"/>
+  
+  <!-- Korean Peninsula Shape (simplified) -->
+  <path d="M200 50C200 50 180 60 170 80C160 100 150 120 160 140C170 160 180 170 170 190C160 210 150 230 160 250C170 270 200 280 200 280C200 280 230 270 240 250C250 230 240 210 230 190C220 170 230 160 240 140C250 120 240 100 230 80C220 60 200 50 200 50Z" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+  
+  <!-- North-South Division Line (simplified) -->
+  <path d="M170 190C170 190 200 180 230 190" stroke="#333333" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- North Color -->
+  <path d="M200 50C200 50 180 60 170 80C160 100 150 120 160 140C170 160 180 170 170 190C170 190 200 180 230 190C220 170 230 160 240 140C250 120 240 100 230 80C220 60 200 50 200 50Z" fill="#4169E1" fill-opacity="0.3"/>
+  
+  <!-- South Color -->
+  <path d="M170 190C170 190 200 180 230 190C220 170 230 160 240 140C250 120 240 100 230 80C220 60 200 50 200 50Z" fill="#D94141" fill-opacity="0.3"/>
+  
+  <!-- Unity Symbol -->
+  <path d="M200 140C213.807 140 225 128.807 225 115C225 101.193 213.807 90 200 90C186.193 90 175 101.193 175 115C175 128.807 186.193 140 200 140Z" fill="#FFFFFF" stroke="#333333" stroke-width="2"/>
+  <path d="M200 115C200 115 190 105 200 95C210 105 200 115 200 115Z" fill="#4169E1"/>
+  <path d="M200 115C200 115 210 125 200 135C190 125 200 115 200 115Z" fill="#D94141"/>
+  
+  <!-- Cities -->
+  <circle cx="190" cy="110" r="3" fill="#333333"/>
+  <text x="180" y="100" font-family="sans-serif" font-size="8" fill="#333333">평양</text>
+  
+  <circle cx="210" cy="210" r="3" fill="#333333"/>
+  <text x="215" y="215" font-family="sans-serif" font-size="8" fill="#333333">서울</text>
+  
+  <!-- Decorative elements -->
+  <path d="M140 160C140 160 120 140 120 120" stroke="#333333" stroke-width="1"/>
+  <path d="M260 160C260 160 280 140 280 120" stroke="#333333" stroke-width="1"/>
+  
+  <path d="M140 240C140 240 120 260 120 280" stroke="#333333" stroke-width="1"/>
+  <path d="M260 240C260 240 280 260 280 280" stroke="#333333" stroke-width="1"/>
+  
+  <!-- Labels -->
+  <text x="160" y="140" font-family="sans-serif" font-size="10" fill="#333333">북조선</text>
+  <text x="220" y="240" font-family="sans-serif" font-size="10" fill="#333333">남조선</text>
+</svg>

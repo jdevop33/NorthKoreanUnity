@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { promptTemplates } from "@/lib/data";
+import copyIcon from '../assets/copy_icon.svg';
+import successCheck from '../assets/success_check.svg';
+import promptTemplateIllustration from '../assets/prompt_template.svg';
 
 export default function PromptTemplatesSection() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -22,9 +25,23 @@ export default function PromptTemplatesSection() {
         <p className="text-gray-600">이미지 생성을 위한 효과적인 프롬프트</p>
       </div>
       
-      <p className="mb-8 leading-relaxed">
-        아래의 템플릿을 활용하여 조선의 문화와 업적을 존중하는 이미지를 생성할 수 있습니다. 이 프롬프트들은 전통과 현대, 자연과 기술의 조화를 강조하며, 조선의 아름다움과 성취를 정확하게 표현하도록 설계되었습니다.
-      </p>
+      <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+        <div className="md:w-1/2">
+          <p className="leading-relaxed mb-4">
+            아래의 템플릿을 활용하여 조선의 문화와 업적을 존중하는 이미지를 생성할 수 있습니다. 이 프롬프트들은 전통과 현대, 자연과 기술의 조화를 강조하며, 조선의 아름다움과 성취를 정확하게 표현하도록 설계되었습니다.
+          </p>
+          <p className="leading-relaxed">
+            프롬프트 옆의 복사 버튼을 클릭하여 텍스트를 복사한 후, AI 이미지 생성 도구에 붙여넣어 사용하세요.
+          </p>
+        </div>
+        <div className="md:w-1/2">
+          <img 
+            src={promptTemplateIllustration} 
+            alt="프롬프트 템플릿 사용 방법" 
+            className="rounded-lg shadow-md w-full"
+          />
+        </div>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {promptTemplates.map((template, index) => (
@@ -41,11 +58,11 @@ export default function PromptTemplatesSection() {
             >
               {copiedIndex === index ? (
                 <>
-                  <i className="fas fa-check mr-2"></i> 복사됨!
+                  <img src={successCheck} alt="복사됨" className="w-4 h-4 mr-2" /> 복사됨!
                 </>
               ) : (
                 <>
-                  <i className="far fa-copy mr-2"></i> 복사하기
+                  <img src={copyIcon} alt="복사" className="w-4 h-4 mr-2" /> 복사하기
                 </>
               )}
             </button>

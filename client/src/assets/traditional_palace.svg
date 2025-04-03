@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F8F8F8"/>
+  
+  <!-- Sky -->
+  <rect width="600" height="250" fill="#E6EEF9"/>
+  
+  <!-- Mountains -->
+  <path d="M0 150L50 120L100 140L150 110L200 130L250 90L300 120L350 100L400 130L450 110L500 140L550 120L600 150V250H0V150Z" fill="#E6E6E6"/>
+  
+  <!-- Ground -->
+  <rect y="250" width="600" height="150" fill="#E9EFD8"/>
+  
+  <!-- Palace main building -->
+  <rect x="200" y="200" width="200" height="100" fill="#D94141"/>
+  
+  <!-- Roof -->
+  <path d="M180 200L300 150L420 200H180Z" fill="#333"/>
+  
+  <!-- Pillars -->
+  <rect x="210" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="240" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="270" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="300" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="330" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="360" y="250" width="10" height="50" fill="#8B4513"/>
+  <rect x="390" y="250" width="10" height="50" fill="#8B4513"/>
+  
+  <!-- Windows -->
+  <rect x="220" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  <rect x="250" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  <rect x="280" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  <rect x="310" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  <rect x="340" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  <rect x="370" y="220" width="20" height="20" fill="#4169E1" opacity="0.8"/>
+  
+  <!-- Roof details -->
+  <path d="M190 200L300 155L410 200" stroke="#D94141" stroke-width="5"/>
+  
+  <!-- Gate -->
+  <rect x="290" y="280" width="20" height="20" fill="#333"/>
+  
+  <!-- Surrounding walls -->
+  <rect x="150" y="300" width="300" height="10" fill="#A9A9A9"/>
+  <rect x="150" y="300" width="10" height="50" fill="#A9A9A9"/>
+  <rect x="440" y="300" width="10" height="50" fill="#A9A9A9"/>
+  
+  <!-- Decorative trees -->
+  <circle cx="130" cy="320" r="15" fill="#5BAE4A"/>
+  <rect x="127" y="335" width="6" height="15" fill="#8B4513"/>
+  
+  <circle cx="470" cy="320" r="15" fill="#5BAE4A"/>
+  <rect x="467" y="335" width="6" height="15" fill="#8B4513"/>
+  
+  <!-- People -->
+  <circle cx="270" cy="330" r="5" fill="#333"/>
+  <rect x="268" y="335" width="4" height="10" fill="#D94141"/>
+  
+  <circle cx="330" cy="330" r="5" fill="#333"/>
+  <rect x="328" y="335" width="4" height="10" fill="#4169E1"/>
+</svg>

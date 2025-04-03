@@ -1,3 +1,5 @@
+import traditionalCeremony from '../assets/traditional_ceremony.svg';
+
 export default function IntroductionSection() {
   return (
     <section className="mb-16">
@@ -21,8 +23,8 @@ export default function IntroductionSection() {
         <div className="md:w-1/2">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="https://images.unsplash.com/photo-1555921015-5532091f6026?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-              alt="Traditional Korean Ceremony"
+              src={traditionalCeremony} 
+              alt="전통 의례"
               className="w-full h-80 object-cover"
             />
           </div>

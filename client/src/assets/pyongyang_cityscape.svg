@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="500" fill="#F0F5FF"/>
+  <rect y="400" width="800" height="100" fill="#91B247"/>
+  
+  <!-- Sky -->
+  <rect width="800" height="400" fill="url(#sky_gradient)"/>
+  <circle cx="100" cy="100" r="40" fill="#FFF9C4" opacity="0.8"/>
+  
+  <!-- Mountains in background -->
+  <path d="M0 200L100 150L200 180L300 140L400 160L500 120L600 170L700 130L800 150L800 400L0 400L0 200Z" fill="#BDC9DB"/>
+  
+  <!-- Monument -->
+  <rect x="370" y="200" width="60" height="200" fill="#E6E6E6"/>
+  <polygon points="400,100 350,200 450,200" fill="#E6E6E6"/>
+  <rect x="395" y="80" width="10" height="20" fill="#D94141"/>
+  
+  <!-- Modern buildings -->
+  <rect x="100" y="250" width="80" height="150" fill="#A5D6E7"/>
+  <rect x="200" y="220" width="60" height="180" fill="#D1F1FA"/>
+  <rect x="280" y="280" width="70" height="120" fill="#A5D6E7"/>
+  <rect x="450" y="250" width="90" height="150" fill="#D1F1FA"/>
+  <rect x="560" y="270" width="70" height="130" fill="#A5D6E7"/>
+  <rect x="650" y="230" width="60" height="170" fill="#D1F1FA"/>
+  
+  <!-- Windows -->
+  <rect x="110" y="260" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="130" y="260" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="150" y="260" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="110" y="280" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="130" y="280" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="150" y="280" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="210" y="230" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="230" y="230" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="210" y="250" width="10" height="10" fill="#FFF9C4"/>
+  <rect x="230" y="250" width="10" height="10" fill="#FFF9C4"/>
+  
+  <!-- River -->
+  <path d="M0 350C100 330 200 350 300 340C400 330 500 345 600 335C700 325 800 340 800 340L800 400L0 400L0 350Z" fill="#4B9CD3" opacity="0.7"/>
+  
+  <defs>
+    <linearGradient id="sky_gradient" x1="400" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B0C4DE"/>
+      <stop offset="1" stop-color="#E6F0FF"/>
+    </linearGradient>
+  </defs>
+</svg>

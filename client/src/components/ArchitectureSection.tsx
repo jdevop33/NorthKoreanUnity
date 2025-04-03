@@ -1,3 +1,7 @@
+import modernArchitecture from '../assets/modern_architecture.svg';
+import traditionalPalace from '../assets/traditional_palace.svg';
+import pyongyangMonument from '../assets/pyongyang_monument.svg';
+
 export default function ArchitectureSection() {
   return (
     <section id="architecture" className="mb-16 pt-8 bg-white p-8 rounded-lg shadow-md">
@@ -14,8 +18,8 @@ export default function ArchitectureSection() {
       
       <div className="relative h-96 mb-8 rounded-lg overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1578645635737-6a88e706e0f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-          alt="Modern Korean Architecture"
+          src={modernArchitecture} 
+          alt="현대적 조선 건축"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-end">
@@ -31,15 +35,15 @@ export default function ArchitectureSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1531931477284-7e16215c9540?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80" 
-            alt="Traditional Korean Palace"
+            src={traditionalPalace} 
+            alt="전통 궁전"
             className="w-full h-64 object-cover"
           />
         </div>
         <div className="rounded-lg overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1549208368-bde54dcea55c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80" 
-            alt="Modern Korean Monument"
+            src={pyongyangMonument} 
+            alt="현대 기념물"
             className="w-full h-64 object-cover"
           />
         </div>

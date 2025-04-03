@@ -1,3 +1,7 @@
+import calendarIcon from '../assets/calendar_icon.svg';
+import foodIcon from '../assets/food_icon.svg';
+import traditionalClothing from '../assets/traditional_clothing.svg';
+
 export default function TraditionsSection() {
   return (
     <section id="traditions" className="mb-16 pt-8">
@@ -10,7 +14,7 @@ export default function TraditionsSection() {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <div className="flex items-center mb-4">
             <div className="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center text-white">
-              <i className="fas fa-calendar-alt text-xl"></i>
+              <img src={calendarIcon} alt="Calendar" className="w-6 h-6" />
             </div>
             <h3 className="font-serif-kr text-xl font-medium ml-4">명절과 절기</h3>
           </div>
@@ -22,7 +26,7 @@ export default function TraditionsSection() {
         <div className="bg-white p-6 rounded-lg shadow-md">
           <div className="flex items-center mb-4">
             <div className="w-12 h-12 bg-primary-red rounded-full flex items-center justify-center text-white">
-              <i className="fas fa-utensils text-xl"></i>
+              <img src={foodIcon} alt="Food" className="w-6 h-6" />
             </div>
             <h3 className="font-serif-kr text-xl font-medium ml-4">전통 음식</h3>
           </div>
@@ -45,8 +49,8 @@ export default function TraditionsSection() {
           </div>
           <div className="md:w-1/3">
             <img 
-              src="https://images.unsplash.com/photo-1585029692078-4af3ed796329?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" 
-              alt="Traditional Korean Clothing"
+              src={traditionalClothing} 
+              alt="전통 의상"
               className="w-full h-48 object-cover rounded-lg"
             />
           </div>

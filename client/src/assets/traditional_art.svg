@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F8F5F0"/>
+  <path d="M150 100C150 100 180 150 250 150C320 150 350 100 350 100" stroke="#D94141" stroke-width="8"/>
+  <path d="M400 150C400 150 430 200 500 200C570 200 600 150 600 150" stroke="#4169E1" stroke-width="8"/>
+  <path d="M0 250C0 250 30 300 100 300C170 300 200 250 200 250" stroke="#4B9CD3" stroke-width="8"/>
+  <path d="M250 300C250 300 280 350 350 350C420 350 450 300 450 300" stroke="#5BAE4A" stroke-width="8"/>
+  <circle cx="300" cy="200" r="50" fill="#D94141" opacity="0.7"/>
+  <path d="M275 180L290 210L325 175" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="80" font-family="sans-serif" font-size="24" fill="#333">전통 미술</text>
+</svg>

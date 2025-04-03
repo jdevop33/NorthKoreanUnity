@@ -1,3 +1,6 @@
+import koreanPeninsula from '../assets/korean_peninsula.svg';
+import checkIcon from '../assets/check_icon.svg';
+
 export default function UnificationSection() {
   return (
     <section className="mb-16 pt-8 bg-gradient-to-r from-primary-blue to-primary-red p-1 rounded-lg">
@@ -12,8 +15,8 @@ export default function UnificationSection() {
         
         <div className="flex flex-col md:flex-row justify-center items-center gap-8">
           <img 
-            src="https://images.unsplash.com/photo-1540998994153-3991e69f35d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
-            alt="Korean Peninsula"
+            src={koreanPeninsula} 
+            alt="한반도"
             className="rounded-lg shadow-md w-full md:w-1/3 h-48 object-cover"
           />
           
@@ -21,25 +24,25 @@ export default function UnificationSection() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <div className="bg-primary-blue text-white p-1 rounded-full mr-3 mt-1">
-                  <i className="fas fa-check text-xs"></i>
+                  <img src={checkIcon} alt="체크" className="w-3 h-3" />
                 </div>
                 <p className="text-gray-700">문화적 교류를 통한 상호 이해 증진</p>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary-blue text-white p-1 rounded-full mr-3 mt-1">
-                  <i className="fas fa-check text-xs"></i>
+                  <img src={checkIcon} alt="체크" className="w-3 h-3" />
                 </div>
                 <p className="text-gray-700">평화와 협력의 정신 함양</p>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary-blue text-white p-1 rounded-full mr-3 mt-1">
-                  <i className="fas fa-check text-xs"></i>
+                  <img src={checkIcon} alt="체크" className="w-3 h-3" />
                 </div>
                 <p className="text-gray-700">전통 문화의 보존과 계승</p>
               </li>
               <li className="flex items-start">
                 <div className="bg-primary-blue text-white p-1 rounded-full mr-3 mt-1">
-                  <i className="fas fa-check text-xs"></i>
+                  <img src={checkIcon} alt="체크" className="w-3 h-3" />
                 </div>
                 <p className="text-gray-700">공동 번영을 위한 경제적, 사회적 협력</p>
               </li>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F8F5F0"/>
+  
+  <!-- Background design element -->
+  <path d="M0 0L400 0L400 100C400 100 350 150 200 150C50 150 0 100 0 100L0 0Z" fill="#F0EBE2"/>
+  
+  <!-- Traditional female hanbok dress -->
+  <path d="M150 80V200H250V80C250 80 230 60 200 60C170 60 150 80 150 80Z" fill="#D94141"/>
+  <path d="M160 85V190H240V85C240 85 225 70 200 70C175 70 160 85 160 85Z" fill="#F8F5F0"/>
+  <path d="M170 90V180H230V90C230 90 220 80 200 80C180 80 170 90 170 90Z" fill="#4169E1"/>
+  
+  <!-- Dress sash/belt -->
+  <rect x="180" y="120" width="40" height="10" fill="#D94141"/>
+  
+  <!-- Sleeves -->
+  <path d="M150 80C150 80 120 100 120 120V150H150V80Z" fill="#D94141"/>
+  <path d="M250 80C250 80 280 100 280 120V150H250V80Z" fill="#D94141"/>
+  
+  <!-- Inner sleeve details -->
+  <path d="M130 85C130 85 125 100 125 120V145H145V85C145 85 138 82 130 85Z" fill="#F8F5F0"/>
+  <path d="M270 85C270 85 275 100 275 120V145H255V85C255 85 262 82 270 85Z" fill="#F8F5F0"/>
+  
+  <!-- Traditional male hanbok -->
+  <path d="M320 100V220H380V100C380 100 365 85 350 85C335 85 320 100 320 100Z" fill="#333"/>
+  <path d="M325 105V215H375V105C375 105 365 90 350 90C335 90 325 105 325 105Z" fill="#F8F5F0"/>
+  
+  <!-- Male hanbok belt -->
+  <rect x="335" y="140" width="30" height="8" fill="#D94141"/>
+  
+  <!-- Traditional hat -->
+  <circle cx="350" cy="60" r="15" fill="#333"/>
+  <rect x="335" y="60" width="30" height="15" fill="#333"/>
+  
+  <!-- Face (simplified) -->
+  <circle cx="350" cy="90" r="5" fill="#FFDAB9"/>
+  
+  <!-- Female hanbok hat/hair -->
+  <circle cx="200" cy="50" r="15" fill="#333"/>
+  <path d="M190 50C190 50 185 60 185 65C185 70 190 75 200 75C210 75 215 70 215 65C215 60 210 50 210 50C210 50 203 55 200 55C197 55 190 50 190 50Z" fill="#333"/>
+  
+  <!-- Face (simplified) -->
+  <circle cx="200" cy="65" r="5" fill="#FFDAB9"/>
+  
+  <!-- Traditional patterns/decorations -->
+  <circle cx="200" cy="100" r="3" fill="#FFD700"/>
+  <circle cx="200" cy="120" r="3" fill="#FFD700"/>
+  <circle cx="200" cy="140" r="3" fill="#FFD700"/>
+  
+  <circle cx="350" cy="120" r="3" fill="#D94141"/>
+  <circle cx="350" cy="140" r="3" fill="#D94141"/>
+  <circle cx="350" cy="160" r="3" fill="#D94141"/>
+  
+  <!-- Traditional shoes -->
+  <path d="M190 200C190 200 185 205 190 210C195 215 205 215 210 210C215 205 210 200 210 200H190Z" fill="#333"/>
+  <path d="M340 220C340 220 335 225 340 230C345 235 355 235 360 230C365 225 360 220 360 220H340Z" fill="#333"/>
+  
+  <!-- Decorative elements -->
+  <path d="M50 200C50 200 60 170 100 170C140 170 150 200 150 200" stroke="#5BAE4A" stroke-width="2"/>
+  <path d="M50 210C50 210 60 180 100 180C140 180 150 210 150 210" stroke="#5BAE4A" stroke-width="2"/>
+  
+  <path d="M250 200C250 200 260 170 280 170C300 170 310 200 310 200" stroke="#5BAE4A" stroke-width="2"/>
+  <path d="M250 210C250 210 260 180 280 180C300 180 310 210 310 210" stroke="#5BAE4A" stroke-width="2"/>
+</svg>

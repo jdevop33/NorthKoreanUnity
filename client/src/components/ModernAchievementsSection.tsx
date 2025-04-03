@@ -1,4 +1,5 @@
 import { achievements } from "@/lib/data";
+import pyongyangCityscape from '../assets/pyongyang_cityscape.svg';
 
 export default function ModernAchievementsSection() {
   return (
@@ -16,8 +17,12 @@ export default function ModernAchievementsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {achievements.map((achievement, index) => (
             <div key={index} className="border border-gray-200 rounded-lg p-4 hover:border-primary-red transition-colors duration-200">
-              <div className="text-primary-red text-2xl mb-2">
-                <i className={achievement.icon}></i>
+              <div className="h-48 overflow-hidden mb-3 rounded">
+                <img 
+                  src={achievement.image} 
+                  alt={achievement.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="font-serif-kr text-lg font-medium mb-2">{achievement.title}</h3>
               <p className="text-sm text-gray-700">
@@ -30,8 +35,8 @@ export default function ModernAchievementsSection() {
       
       <div className="relative rounded-lg overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1595611554092-f88fd028a622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-          alt="Modern Development"
+          src={pyongyangCityscape} 
+          alt="현대 발전"
           className="w-full h-80 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">

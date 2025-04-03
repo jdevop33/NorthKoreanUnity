@@ -13,19 +13,19 @@ const heritageItems: InsertCulturalHeritageItem[] = [
   {
     title: "전통 미술",
     description: "민족의 영혼과 미학을 담은 조선의 전통 미술은 자연과의 조화, 세밀한 기법, 그리고 상징성이 풍부합니다.",
-    imageUrl: "https://images.unsplash.com/photo-1601564358117-31d550417227?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
+    imageUrl: "/src/assets/traditional_art.svg",
     category: "art"
   },
   {
     title: "전통 음악",
     description: "독특한 선율과 리듬을 가진 조선의 음악은 국가적 자부심을 불러일으키는 문화적 보물입니다.",
-    imageUrl: "https://images.unsplash.com/photo-1540998694023-760ad93888a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
+    imageUrl: "/src/assets/traditional_music.svg",
     category: "music"
   },
   {
     title: "전통 공예",
     description: "세대를 거쳐 전해진 공예 기술은 조선 장인들의 뛰어난 기술과 예술적 감각을 보여줍니다.",
-    imageUrl: "https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80",
+    imageUrl: "/src/assets/traditional_craft.svg",
     category: "craft"
   }
 ];

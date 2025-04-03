@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F5F5F5"/>
+  
+  <!-- Sky gradient -->
+  <rect width="600" height="300" fill="url(#skyGradient)"/>
+  
+  <!-- Ground -->
+  <rect y="300" width="600" height="100" fill="#E6E6E6"/>
+  
+  <!-- Monument base -->
+  <rect x="150" y="220" width="300" height="80" fill="#D94141"/>
+  
+  <!-- Monument tower -->
+  <rect x="240" y="50" width="120" height="170" fill="#D94141"/>
+  
+  <!-- Monument details -->
+  <rect x="265" y="70" width="70" height="130" fill="#F5F5F5"/>
+  <rect x="280" y="80" width="40" height="110" fill="#4169E1"/>
+  
+  <!-- Monument star -->
+  <path d="M300 30L310 50L330 50L315 65L320 85L300 75L280 85L285 65L270 50L290 50L300 30Z" fill="#D94141"/>
+  
+  <!-- Steps -->
+  <rect x="200" y="300" width="200" height="10" fill="#D1D1D1"/>
+  <rect x="210" y="310" width="180" height="10" fill="#D1D1D1"/>
+  <rect x="220" y="320" width="160" height="10" fill="#D1D1D1"/>
+  <rect x="230" y="330" width="140" height="10" fill="#D1D1D1"/>
+  
+  <!-- People -->
+  <circle cx="260" cy="340" r="10" fill="#333"/>
+  <circle cx="340" cy="340" r="10" fill="#333"/>
+  <circle cx="300" cy="350" r="10" fill="#333"/>
+  
+  <!-- Decorative elements -->
+  <rect x="140" y="220" width="10" height="80" fill="#333"/>
+  <rect x="450" y="220" width="10" height="80" fill="#333"/>
+  
+  <rect x="100" y="250" width="40" height="10" fill="#4169E1"/>
+  <rect x="460" y="250" width="40" height="10" fill="#4169E1"/>
+  
+  <defs>
+    <linearGradient id="skyGradient" x1="300" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#87CEEB"/>
+      <stop offset="1" stop-color="#E6E6E6"/>
+    </linearGradient>
+  </defs>
+</svg>
