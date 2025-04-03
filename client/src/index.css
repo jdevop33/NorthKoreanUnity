@@ -1,3 +1,6 @@
+/* Import Korean fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,6 +11,70 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-content-bg-light text-text-primary;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif-kr font-semibold text-text-primary;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Improve contrast for all text */
+  p, li, span {
+    @apply text-text-primary;
+  }
+
+  /* Make sure text on dark backgrounds has enough contrast */
+  .bg-warm-gray *, .bg-primary * {
+    @apply text-text-light;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply border-l-4 border-primary-red pl-4 mb-8 py-1;
+  }
+
+  .section-title h2 {
+    @apply font-serif-kr text-3xl font-semibold text-text-primary;
+  }
+
+  .section-title p {
+    @apply text-text-secondary;
+  }
+
+  .card {
+    @apply bg-content-bg-light rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .card-content {
+    @apply p-6;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-red text-white hover:bg-red-700;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-blue text-white hover:bg-blue-700;
   }
 }

@@ -24,6 +24,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          blue: "#3b5ddf", // A vibrant, accessible blue
+          red: "#d5384d",  // A vibrant, accessible red
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -36,6 +38,8 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          gold: "#d4af37", // Accessible gold color
+          light: "#f9f7f0", // Light accent color
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -61,6 +65,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom colors for our app
+        'warm-gray': {
+          DEFAULT: '#2e3440', // Dark gray with slight blue undertone
+          light: '#4c566a',
+          dark: '#1e2127',
+        },
+        'text': {
+          primary: '#2e3440',
+          secondary: '#4c566a',
+          light: '#eceff4',
+          accent: '#d94141',
+        },
+        'content-bg': {
+          light: '#ffffff',
+          off: '#f9f7f0',
+          accent: '#fbf3f3',
+        },
+      },
+      fontFamily: {
+        'serif-kr': ['NanumMyeongjo', 'serif'],
+        'sans-kr': ['NanumGothic', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

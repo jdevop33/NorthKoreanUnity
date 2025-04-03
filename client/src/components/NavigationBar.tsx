@@ -29,7 +29,7 @@ export default function NavigationBar() {
               alt="주체 휘장" 
               className="h-10 w-10 rounded-full transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-white font-serif-kr font-medium text-lg ml-2 group-hover:text-accent-gold transition-colors duration-200">조선 문화</span>
+            <span className="text-text-light font-serif-kr font-medium text-lg ml-2 group-hover:text-accent-gold transition-colors duration-200">조선 문화</span>
           </a>
           
           <div className="hidden md:flex items-center space-x-8">
@@ -38,7 +38,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200"
+              className="text-text-light hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               문화유산
             </a>
@@ -47,7 +47,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200"
+              className="text-text-light hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               건축
             </a>
@@ -56,7 +56,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200"
+              className="text-text-light hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               전통
             </a>
@@ -65,7 +65,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200"
+              className="text-text-light hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               현대적 성과
             </a>
@@ -74,7 +74,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('prompt-templates');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200"
+              className="text-text-light hover:text-accent-gold transition-colors duration-200 font-medium"
             >
               프롬프트 템플릿
             </a>
@@ -82,7 +82,7 @@ export default function NavigationBar() {
           
           <div className="md:hidden">
             <button 
-              className="text-white focus:outline-none p-2 rounded hover:bg-gray-700 transition-colors duration-200"
+              className="text-text-light focus:outline-none p-2 rounded hover:bg-warm-gray-light transition-colors duration-200"
               onClick={toggleMobileMenu}
               aria-label="메뉴 열기"
             >
@@ -95,13 +95,13 @@ export default function NavigationBar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="mt-4 bg-warm-gray rounded-md shadow-lg py-2 md:hidden">
+          <div className="mt-4 bg-warm-gray-light rounded-md shadow-lg py-2 md:hidden">
             <a href="#cultural-heritage" 
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="block px-4 py-2 text-white hover:bg-gray-700 hover:text-accent-gold"
+              className="block px-4 py-2 text-text-light hover:bg-warm-gray hover:text-accent-gold font-medium"
             >
               문화유산
             </a>
@@ -110,7 +110,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="block px-4 py-2 text-white hover:bg-gray-700 hover:text-accent-gold"
+              className="block px-4 py-2 text-text-light hover:bg-warm-gray hover:text-accent-gold font-medium"
             >
               건축
             </a>
@@ -119,7 +119,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="block px-4 py-2 text-white hover:bg-gray-700 hover:text-accent-gold"
+              className="block px-4 py-2 text-text-light hover:bg-warm-gray hover:text-accent-gold font-medium"
             >
               전통
             </a>
@@ -128,7 +128,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="block px-4 py-2 text-white hover:bg-gray-700 hover:text-accent-gold"
+              className="block px-4 py-2 text-text-light hover:bg-warm-gray hover:text-accent-gold font-medium"
             >
               현대적 성과
             </a>
@@ -137,7 +137,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('prompt-templates');
               }}
-              className="block px-4 py-2 text-white hover:bg-gray-700 hover:text-accent-gold"
+              className="block px-4 py-2 text-text-light hover:bg-warm-gray hover:text-accent-gold font-medium"
             >
               프롬프트 템플릿
             </a>
