@@ -29,15 +29,18 @@ export default function IntroductionSection() {
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 pt-16 pb-20">
           <div className="text-center mb-8">
-            {/* Text shadow for better readability */}
-            <h1 className="font-serif-kr text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
-              <span className="text-accent-gold font-bold">조선</span>의 <br className="md:hidden" />
-              풍부한 문화유산
+            {/* Enhanced text for better readability */}
+            <h1 className="font-serif-kr text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-accent-gold to-accent-gold-light inline-block text-transparent bg-clip-text">조선</span>
+              <span className="text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">의</span> <br className="md:hidden" />
+              <span className="text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">풍부한 문화유산</span>
             </h1>
-            {/* Increased contrast for readable text */}
-            <p className="text-lg md:text-xl font-medium text-white max-w-3xl mx-auto leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-              자주, 평화, 번영의 이념으로 단결된 한민족의 영광스러운 역사와 업적을 탐험하세요
-            </p>
+            {/* Background highlight for improved contrast */}
+            <div className="bg-black bg-opacity-40 inline-block px-6 py-3 rounded-xl">
+              <p className="text-lg md:text-xl font-medium text-white max-w-3xl mx-auto leading-relaxed">
+                자주, 평화, 번영의 이념으로 단결된 한민족의 영광스러운 역사와 업적을 탐험하세요
+              </p>
+            </div>
           </div>
           
           <div className="flex justify-center space-x-4 mt-8">
