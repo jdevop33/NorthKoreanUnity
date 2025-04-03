@@ -51,7 +51,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-warm-gray-light p-8 rounded-lg shadow-lg">
+    <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
       {formSubmitted ? (
         <div className="text-center py-8">
           <div className="mb-6 text-primary-red">
@@ -63,64 +63,66 @@ export default function ContactForm() {
           <p className="text-text-primary mb-6">귀하의 메시지가 성공적으로 전송되었습니다. 곧 연락드리겠습니다.</p>
           <button 
             onClick={() => setFormSubmitted(false)}
-            className="btn btn-primary"
+            className="btn btn-primary py-3 px-8 font-medium"
           >
             다른 메시지 보내기
           </button>
         </div>
       ) : (
         <>
-          <h3 className="font-serif-kr text-2xl font-semibold mb-6 text-warm-gray-dark text-center">연락하기</h3>
-          <p className="text-text-primary mb-8 text-center">
-            질문이나 제안이 있으신가요? 아래 양식을 작성하시면 빠른 시일내에 답변 드리겠습니다.
-          </p>
+          <div className="mb-8 text-center">
+            <h3 className="font-serif-kr text-3xl font-bold mb-3 text-primary-red">연락하기</h3>
+            <p className="text-text-primary text-lg font-medium">
+              질문이나 제안이 있으신가요? 아래 양식을 작성하시면 빠른 시일내에 답변 드리겠습니다.
+            </p>
+          </div>
           
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block mb-2 font-medium text-warm-gray-dark">
+              <label htmlFor="name" className="block mb-2 font-medium text-warm-gray-dark text-lg">
                 이름 <span className="text-primary-red">*</span>
               </label>
               <input
                 type="text"
                 id="name"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Name')}
                 required
               />
               {form.formState.errors.Name && (
-                <p className="mt-1 text-primary-red text-sm">{form.formState.errors.Name.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Name.message}</p>
               )}
             </div>
             
             <div>
-              <label htmlFor="email" className="block mb-2 font-medium text-warm-gray-dark">
+              <label htmlFor="email" className="block mb-2 font-medium text-warm-gray-dark text-lg">
                 이메일 <span className="text-primary-red">*</span>
               </label>
               <input
                 type="email"
                 id="email"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Email')}
                 required
               />
               {form.formState.errors.Email && (
-                <p className="mt-1 text-primary-red text-sm">{form.formState.errors.Email.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Email.message}</p>
               )}
             </div>
             
             <div>
-              <label htmlFor="message" className="block mb-2 font-medium text-warm-gray-dark">
+              <label htmlFor="message" className="block mb-2 font-medium text-warm-gray-dark text-lg">
                 메시지 <span className="text-primary-red">*</span>
               </label>
               <textarea
                 id="message"
                 rows={5}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Message')}
                 required
               ></textarea>
               {form.formState.errors.Message && (
-                <p className="mt-1 text-primary-red text-sm">{form.formState.errors.Message.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Message.message}</p>
               )}
             </div>
             
@@ -132,12 +134,12 @@ export default function ContactForm() {
             <div className="mt-8 flex justify-center">
               <button
                 type="submit"
-                className="btn btn-primary py-3 px-8 font-medium text-base transition-transform hover:scale-105 inline-flex items-center shadow-lg"
+                className="bg-primary-red text-white py-4 px-10 rounded-md font-bold text-lg transition-all hover:bg-red-700 hover:scale-105 inline-flex items-center shadow-lg"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
