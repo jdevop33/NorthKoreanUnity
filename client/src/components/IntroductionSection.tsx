@@ -21,44 +21,47 @@ export default function IntroductionSection() {
     <>
       {/* Hero Section */}
       <section className="relative mb-16 pb-12 overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-warm-gray-dark opacity-90">
+        {/* Darker solid background for better contrast */}
+        <div className="absolute inset-0 z-0 bg-warm-gray-dark">
           {/* Background with pattern overlay */}
           <div className="w-full h-full absolute top-0 left-0 bg-opacity-20 bg-pattern"></div>
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 pt-16 pb-20">
           <div className="text-center mb-8">
-            <h1 className="font-serif-kr text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-              <span className="text-accent-gold">조선</span>의 <br className="md:hidden" />
+            {/* Text shadow for better readability */}
+            <h1 className="font-serif-kr text-5xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
+              <span className="text-accent-gold font-bold">조선</span>의 <br className="md:hidden" />
               풍부한 문화유산
             </h1>
-            <p className="text-lg md:text-xl text-text-light max-w-3xl mx-auto leading-relaxed">
+            {/* Increased contrast for readable text */}
+            <p className="text-lg md:text-xl font-medium text-white max-w-3xl mx-auto leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
               자주, 평화, 번영의 이념으로 단결된 한민족의 영광스러운 역사와 업적을 탐험하세요
             </p>
           </div>
           
           <div className="flex justify-center space-x-4 mt-8">
             <a href="#cultural-heritage" 
-               className="btn-primary px-6 py-3 font-medium text-base transition-transform hover:scale-105 inline-flex items-center">
+               className="btn-primary px-6 py-3 font-medium text-base transition-transform hover:scale-105 inline-flex items-center shadow-lg">
               문화유산 탐색
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </a>
             <a href="#prompt-templates" 
-               className="btn-secondary px-6 py-3 font-medium text-base">
+               className="btn-secondary px-6 py-3 font-medium text-base shadow-lg">
               프롬프트 템플릿
             </a>
           </div>
         </div>
         
-        {/* Scroll down indicator */}
+        {/* Scroll down indicator with improved visibility */}
         <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 ${scrolled ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="animate-bounce text-white flex flex-col items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="animate-bounce text-white flex flex-col items-center bg-black bg-opacity-30 px-3 py-2 rounded-full shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-            <span className="text-sm mt-1">아래로 스크롤</span>
+            <span className="text-sm mt-1 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">아래로 스크롤</span>
           </div>
         </div>
       </section>
