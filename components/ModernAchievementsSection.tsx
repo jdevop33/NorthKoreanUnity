@@ -1,60 +1,70 @@
-import { achievements } from "@/lib/data";
-import pyongyangCityscape from '../assets/pyongyang_cityscape.svg';
-import { useRef, useState, useEffect } from "react";
+"use client"; // Required for observer hook and translation
+
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 
-export default function ModernAchievementsSection() {
+import { achievements } from '@/lib/data'; // Data import
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { cn } from '@/lib/utils';
+
+// Define path for image served from public dir
+const pyongyangCityscape = '/assets/pyongyang_cityscape.svg';
+
+// Named export
+export function ModernAchievementsSection() {
   const { t } = useTranslation();
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  
+  // Use the intersection observer hook for the whole section
+  const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  // Client-side scroll function for links (if any were added, currently only href)
+  // const scrollToSection = (sectionId: string) => { ... };
 
   return (
-    <section id="modern-achievements" className="mb-20 pt-12" ref={sectionRef}>
+    // Added scroll-mt-16 and ref
+    <section id="modern-achievements" className="mb-20 pt-12 scroll-mt-16" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4">
+        {/* Section Title */}
         <div className="section-title">
           <h2>{t('achievements.title')}</h2>
           <p>{t('achievements.subtitle')}</p>
         </div>
         
-        <div className={`bg-content-bg-off p-8 rounded-lg shadow-md mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+        {/* Achievements Grid Section */}
+        <div className={cn(
+          "bg-content-bg-off p-8 rounded-lg shadow-md mb-12 transition-opacity duration-1000 ease-in",
+          isVisible ? 'opacity-100' : 'opacity-0'
+        )}
              style={{ transitionDelay: '0.2s' }}>
           <p className="mb-8 leading-relaxed text-lg text-text-primary">
             {t('achievements.description')}
           </p>
           
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+          {/* Grid Container - apply slide-up based on isVisible */}
+          <div className={cn(
+            "grid grid-cols-1 md:grid-cols-3 gap-6",
+            // If slide-up animation desired, apply based on visibility
+            // isVisible ? 'animate-slide-up' : 'opacity-0' 
+          )}>
             {achievements.map((achievement, index) => (
               <div 
-                key={index} 
-                className="card group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                key={achievement.id || index} // Use stable ID from data
+                className={cn(
+                  "card group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1",
+                  // Stagger animation based on visibility
+                  isVisible ? 'animate-slide-up' : 'opacity-0' // Assuming animate-slide-up exists
+                )}
                 style={{ animationDelay: `${index * 0.15 + 0.3}s` }}
               >
                 <div className="relative overflow-hidden rounded-t-lg">
-                  <img 
-                    src={achievement.image} 
+                  <Image 
+                    src={achievement.image} // Path from data.ts
                     alt={t(`achievements.items.${index}.title`, achievement.title)}
+                    width={400} // Example dimensions
+                    height={250}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                    unoptimized={achievement.image.endsWith('.svg')} // Unoptimize SVGs
                   />
                   <div className="absolute inset-0 bg-primary-red bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 </div>
@@ -71,26 +81,36 @@ export default function ModernAchievementsSection() {
           </div>
         </div>
         
-        <div className={`relative rounded-lg overflow-hidden shadow-lg ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-             style={{ animationDelay: '0.6s' }}>
-          <img 
-            src={pyongyangCityscape} 
+        {/* Continuous Progress Section */}
+        <div className={cn(
+              "relative rounded-lg overflow-hidden shadow-lg transition-opacity duration-1000 ease-in", 
+              isVisible ? 'opacity-100' : 'opacity-0'
+             )}
+             style={{ transitionDelay: '0.6s' }}>
+          <Image 
+            src={pyongyangCityscape}
             alt={t('achievements.modernDevelopmentAlt', 'Modern Development')}
-            className="w-full h-96 object-cover"
+            fill
+            style={{ objectFit: 'cover' }}
+            className="w-full h-96" // Set height via className when using fill
+            unoptimized // SVG
+            quality={75}
           />
-          <div className="absolute inset-0 bg-linear-to-t from-warm-gray-dark/80 to-transparent flex items-end">
+          {/* Fixed gradient typo */}
+          <div className="absolute inset-0 bg-gradient-to-t from-warm-gray-dark/80 to-transparent flex items-end z-10">
             <div className="p-8 text-white max-w-3xl">
-              <h3 className="font-serif-kr text-3xl font-semibold mb-4 text-white">
+              <h3 className="font-serif-kr text-3xl font-semibold mb-4 text-white text-shadow-sm">
                 {t('achievements.continuousProgressTitle', 'Continuous Progress and Innovation')}
               </h3>
-              <p className="text-lg mb-6 text-text-light">
-                {t('achievements.continuousProgressText', 'All development under the principle of self-reliance is for the happiness of the people and the prosperity of the nation. The innovative spirit of Korea shines even in difficulties and surprises the world.')}
+              <p className="text-lg mb-6 text-text-light text-shadow-sm">
+                {t('achievements.continuousProgressText', '...')}
               </p>
-              <a href="#prompt-templates" className="btn btn-primary px-6 py-3 inline-flex items-center group">
+              {/* Button needs scroll logic if #prompt-templates is on the same page */}
+              <a href="#prompt-templates" 
+                 /* onClick={(e) => { e.preventDefault(); scrollToSection('prompt-templates'); }} */
+                 className="btn btn-primary px-6 py-3 inline-flex items-center group">
                 {t('achievements.viewPromptTemplates', 'View Prompt Templates')}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+                <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>

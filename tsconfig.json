@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "resolveJsonModule": true, // Keep true for importing JSON locales
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -21,13 +21,13 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"], 
-      "@/components/*": ["./components/*"], // Alias for new components directory
-      "@/lib/*": ["./client/src/lib/*"], // Temporary alias for lib during migration
-      "@/hooks/*": ["./client/src/hooks/*"], // Temporary alias for hooks during migration
-      "@/assets/*": ["./client/src/assets/*"], // Temporary alias for assets during migration
-      "@/locales/*": ["./client/src/locales/*"], // Temporary alias for locales during migration
-      "@shared/*": ["./shared/*"] 
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"], // Point to root lib
+      "@/hooks/*": ["./hooks/*"], // Point to root hooks
+      "@/locales/*": ["./locales/*"], // Point to root locales
+      "@shared/*": ["./shared/*"] // Keep if shared dir is used
+      // No alias needed for public/assets
     }
   },
   "include": [
@@ -35,16 +35,22 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mjs",
+    "**/*.json", // Include JSON files for locales
     ".next/types/**/*.ts",
-    "app/**/*", 
-    "components/**/*", // Include the new components directory
-    "client/src/**/*", // Keep for lib, hooks, assets etc. for now
-    "shared/**/*"      
+    "app/**/*",
+    "components/**/*",
+    "lib/**/*", // Include root lib
+    "hooks/**/*", // Include root hooks
+    "locales/**/*", // Include root locales
+    "shared/**/*" 
+    // No need to explicitly include client/src anymore if empty
+    // No need to explicitly include public
   ],
   "exclude": [
     "node_modules", 
     "dist", 
     ".next", 
-    "out"
+    "out",
+    "client" // Exclude the old client directory entirely
   ]
 }

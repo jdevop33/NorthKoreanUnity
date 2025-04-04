@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 
-import modernArchitecture from '@/assets/modern_architecture.svg'; // Use updated alias
-import traditionalPalace from '@/assets/traditional_palace.svg';
-import pyongyangMonument from '@/assets/pyongyang_monument.svg';
-import { cn } from '@/lib/utils'; // Assuming cn utility exists
+// Update paths for images served from public dir
+const modernArchitecture = '/assets/modern_architecture.svg'; 
+const traditionalPalace = '/assets/traditional_palace.svg';
+const pyongyangMonument = '/assets/pyongyang_monument.svg';
+import { cn } from '@/lib/utils'; 
 
-// Define props interface for translations
 interface ArchitectureSectionProps {
   title: string;
   subtitle: string;
@@ -19,7 +19,6 @@ interface ArchitectureSectionProps {
   monumentImageAlt: string;
 }
 
-// Named export - This can now be a Server Component
 export function ArchitectureSection({ 
   title,
   subtitle,
@@ -32,7 +31,6 @@ export function ArchitectureSection({
 }: ArchitectureSectionProps) {
   
   return (
-    // Added scroll-mt-16 for sticky nav
     <section id="architecture" className="mb-16 pt-8 bg-white p-8 rounded-lg shadow-md scroll-mt-16">
       {/* Section Header */} 
       <div className="border-l-4 border-primary-red pl-4 mb-8">
@@ -50,12 +48,11 @@ export function ArchitectureSection({
         <Image 
           src={modernArchitecture} 
           alt={modernImageAlt}
-          fill // Use fill to cover container
+          fill 
           style={{ objectFit: 'cover' }} 
           quality={75}
-          // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          unoptimized={modernArchitecture.endsWith('.svg')} // Recommend unoptimized for SVGs
         />
-        {/* Fixed gradient typo */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-end z-10">
           <div className="p-6 text-white max-w-md">
             <h3 className="font-serif-kr text-2xl font-medium mb-2 text-shadow-sm">{modernTitle}</h3>
@@ -70,18 +67,20 @@ export function ArchitectureSection({
           <Image 
             src={traditionalPalace} 
             alt={traditionalImageAlt}
-            width={600} // Example dimension
-            height={400} // Example dimension
+            width={600} 
+            height={400} 
             className="w-full h-auto md:h-64 object-cover hover:scale-105 transition-transform duration-300"
+            unoptimized={traditionalPalace.endsWith('.svg')} // Recommend unoptimized for SVGs
           />
         </div>
         <div className="rounded-lg overflow-hidden shadow-sm">
           <Image 
             src={pyongyangMonument} 
             alt={monumentImageAlt}
-            width={600} // Example dimension
-            height={400} // Example dimension
+            width={600} 
+            height={400} 
             className="w-full h-auto md:h-64 object-cover hover:scale-105 transition-transform duration-300"
+            unoptimized={pyongyangMonument.endsWith('.svg')} // Recommend unoptimized for SVGs
           />
         </div>
       </div>

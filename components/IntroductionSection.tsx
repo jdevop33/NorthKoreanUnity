@@ -1,20 +1,18 @@
-"use client"; // Still client due to useTranslation and onClick handlers
+"use client"; 
 
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { ArrowRight, ChevronDown, ArrowDown } from 'lucide-react';
 
-import traditionalCeremony from '@/assets/traditional_ceremony.svg';
+// Update path for image served from public dir
+const traditionalCeremony = '/assets/traditional_ceremony.svg'; 
 import { cn } from '@/lib/utils';
-import { useScrollThreshold } from '@/hooks/use-scroll-threshold'; // Import the hook
+import { useScrollThreshold } from '@/hooks/use-scroll-threshold'; 
 
-// Named export
 export function IntroductionSection() {
   const { t } = useTranslation();
-  // Use the custom hook for scroll detection
   const isScrolled = useScrollThreshold(100);
 
-  // Client-side scroll function remains necessary for links
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -54,7 +52,6 @@ export function IntroductionSection() {
               {t('intro.exploreButton')}
               <ArrowDown className="h-5 w-5 ml-2" />
             </a>
-            {/* Assuming #prompt-templates is an ID on the page */}
             <a href="#prompt-templates" 
                onClick={(e) => { e.preventDefault(); scrollToSection('prompt-templates'); }}
                className="btn-secondary px-6 py-3 font-medium text-base shadow-lg">
@@ -63,10 +60,10 @@ export function IntroductionSection() {
           </div>
         </div>
         
-        {/* Scroll down indicator - uses state from hook */}
+        {/* Scroll down indicator */}
         <div className={cn(
           "absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500",
-          isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100' // Use isScrolled from hook
+          isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100' 
         )}>
           <div className="animate-bounce text-white flex flex-col items-center bg-black/30 px-3 py-2 rounded-full shadow-lg">
             <ChevronDown className="h-6 w-6 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]" />
@@ -82,7 +79,7 @@ export function IntroductionSection() {
         <div className="flex flex-col md:flex-row gap-12 items-center">
           {/* Text Content */}
           <div className="md:w-1/2">
-            <div className="section-title">
+            <div className="section-title"> 
               <h2>{t('intro.contentTitle')}</h2>
               <p>{t('intro.contentSubtitle')}</p>
             </div>
@@ -106,11 +103,12 @@ export function IntroductionSection() {
           <div className="md:w-1/2">
             <div className="rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
               <Image 
-                src={traditionalCeremony} 
+                src={traditionalCeremony} // Use path relative to public
                 alt={t('intro.imageAlt')}
                 width={600} 
                 height={400} 
                 className="w-full h-auto object-cover"
+                unoptimized={traditionalCeremony.endsWith('.svg')} // Recommend unoptimized for SVGs
               />
             </div>
             <p className="text-sm text-center mt-3 text-text-secondary">

@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react'; // Import icons
+import { Menu, X } from 'lucide-react'; 
 
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'; // Use updated alias
-import jucheEmblem from '@/assets/juche_emblem.svg'; // Use updated alias
-import { cn } from '@/lib/utils'; // Assuming cn utility exists
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'; 
+// Update path for image served from public dir
+const jucheEmblem = '/assets/juche_emblem.svg'; 
+import { cn } from '@/lib/utils'; 
 
-// Named export
 export function NavigationBar() {
   const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,14 +22,14 @@ export function NavigationBar() {
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false); // Close menu on mobile after clicking link
+      setMobileMenuOpen(false); 
     }
   };
 
   const navLinks = [
     { id: 'cultural-heritage', labelKey: 'navigation.heritage' },
     { id: 'architecture', labelKey: 'heritage.categories.architecture' },
-    { id: 'traditions', labelKey: 'heritage.categories.ceremonies' }, // Assuming label key was ceremonies based on original code
+    { id: 'traditions', labelKey: 'heritage.categories.ceremonies' }, 
     { id: 'modern-achievements', labelKey: 'navigation.achievements' },
   ];
 
@@ -48,11 +48,12 @@ export function NavigationBar() {
             className="flex items-center space-x-2 group shrink-0"
           >
             <Image 
-              src={jucheEmblem} // Keep using imported SVG
+              src={jucheEmblem} // Use path relative to public
               alt="Juche Emblem Logo" 
-              width={36} // Provide appropriate size
+              width={36} 
               height={36}
               className="rounded-full transition-transform duration-300 group-hover:scale-110"
+              unoptimized={jucheEmblem.endsWith('.svg')} // Recommend unoptimized for SVGs unless specifically needed
             />
             <span className="text-white font-serif-kr font-medium text-lg group-hover:text-accent-gold transition-colors duration-200">
               {t('navigation.home', 'Home')}
@@ -105,7 +106,7 @@ export function NavigationBar() {
           </div>
         </div>
 
-        {/* Mobile Menu - Using Conditional Rendering more cleanly */}
+        {/* Mobile Menu */}
         <div className={cn(
           "mt-4 bg-warm-gray rounded-md shadow-lg overflow-hidden md:hidden transition-all duration-300 ease-in-out",
           mobileMenuOpen ? "max-h-screen py-3 opacity-100" : "max-h-0 py-0 opacity-0"
