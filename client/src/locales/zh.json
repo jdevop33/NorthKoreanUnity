@@ -1,0 +1,92 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于",
+    "heritage": "文化遗产",
+    "achievements": "现代成就",
+    "prompts": "提示模板",
+    "contact": "联系我们"
+  },
+  "intro": {
+    "title": "朝鲜丰富的文化遗产",
+    "subtitle": "探索在自主、和平与繁荣理念下团结的朝鲜民族的光荣历史与成就",
+    "description": "探索朝鲜人民美丽的传统、文化瑰宝和卓越成就，重点关注朝鲜民主主义人民共和国。",
+    "exploreButton": "探索文化遗产",
+    "promptsButton": "提示模板", 
+    "scrollDown": "向下滚动",
+    "contentTitle": "文化身份",
+    "contentSubtitle": "五千年历史的骄傲遗产",
+    "paragraph1": "朝鲜的文化遗产反映了五千多年的丰富历史和独特身份。基于自力更生哲学和人民勤劳精神的文化成就在世界上占有独特地位。",
+    "paragraph2": "我们的目标是尊重和教育朝鲜文化遗产，同时促进与全球社会的融合和理解。通过这一努力，我们追求全人类的团结、自由和幸福。",
+    "learnMoreButton": "了解更多",
+    "imageAlt": "传统仪式",
+    "imageCaption": "传统仪式是保存文化身份的重要元素"
+  },
+  "heritage": {
+    "title": "文化遗产",
+    "subtitle": "保存几个世纪的朝鲜传统和文化瑰宝",
+    "description": "朝鲜丰富的文化遗产跨越数千年，这些瑰宝被朝鲜人民精心保存和尊重。",
+    "readMore": "阅读更多",
+    "categories": {
+      "arts": "传统艺术",
+      "cuisine": "美食",
+      "architecture": "建筑",
+      "ceremonies": "礼仪"
+    }
+  },
+  "achievements": {
+    "title": "现代成就",
+    "subtitle": "庆祝朝鲜民主主义人民共和国的进步和创新",
+    "description": "朝鲜民主主义人民共和国在从科学技术到城市发展和文化保护等各个领域都取得了显著进步。"
+  },
+  "prompts": {
+    "title": "人工智能提示模板",
+    "subtitle": "使用人工智能创造朝鲜文化的真实表达",
+    "description": "使用这些精心制作的提示，通过人工智能图像生成工具创建尊重和真实的朝鲜文化元素。",
+    "copyPrompt": "复制提示",
+    "copied": "已复制！",
+    "categories": {
+      "landscapes": "风景",
+      "architecture": "建筑",
+      "traditions": "传统",
+      "people": "人物",
+      "modern": "现代"
+    }
+  },
+  "unification": {
+    "title": "统一之路",
+    "subtitle": "支持朝鲜和平统一",
+    "description": "朝鲜人民共享超越政治分歧的共同遗产、语言和文化。我们的目标是促进理解，支持朝鲜半岛的和平统一。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们重视您的反馈和建议",
+    "description": "有问题或建议？填写下面的表格，我们会尽快回复您。",
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "留言",
+    "submit": "发送消息",
+    "processing": "处理中...",
+    "success": "谢谢您！",
+    "successMessage": "您的消息已成功发送。我们将很快与您联系。",
+    "sendAnother": "发送另一条消息",
+    "values": {
+      "title": "沟通价值",
+      "description": "理解并与更多人分享朝鲜文化是我们的责任。让我们通过您的意见和想法创建更好的文化交流平台。",
+      "exchange": {
+        "title": "文化交流",
+        "description": "我们欢迎所有文化交流提案和合作机会。我们期待在国际活动、文化展览和学术交流等各个领域的合作。"
+      },
+      "prompts": {
+        "title": "提示建议",
+        "description": "您有捕捉朝鲜美丽的新人工智能提示创意吗？我们将通过您的创意建议创造更丰富的内容。"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 朝鲜文化遗产平台",
+    "rights": "保留所有权利",
+    "termsOfService": "服务条款",
+    "privacyPolicy": "隐私政策"
+  }
+}

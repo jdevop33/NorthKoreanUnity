@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import jucheEmblem from '../assets/juche_emblem.svg';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function NavigationBar() {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -26,10 +29,12 @@ export default function NavigationBar() {
           }} className="flex items-center space-x-1 group">
             <img 
               src={jucheEmblem}
-              alt="주체 휘장" 
+              alt="Juche Emblem" 
               className="h-10 w-10 rounded-full transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-white font-serif-kr font-medium text-lg ml-2 group-hover:text-accent-gold transition-colors duration-200">조선 문화</span>
+            <span className="text-white font-serif-kr font-medium text-lg ml-2 group-hover:text-accent-gold transition-colors duration-200">
+              {t('navigation.home')}
+            </span>
           </a>
           
           <div className="hidden md:flex items-center space-x-6">
@@ -40,7 +45,7 @@ export default function NavigationBar() {
               }}
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
-              문화유산
+              {t('navigation.heritage')}
             </a>
             <a href="#architecture" 
               onClick={(e) => {
@@ -49,7 +54,7 @@ export default function NavigationBar() {
               }}
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
-              건축
+              {t('heritage.categories.architecture')}
             </a>
             <a href="#traditions" 
               onClick={(e) => {
@@ -58,7 +63,7 @@ export default function NavigationBar() {
               }}
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
-              전통
+              {t('heritage.categories.ceremonies')}
             </a>
             <a href="#modern-achievements" 
               onClick={(e) => {
@@ -67,7 +72,7 @@ export default function NavigationBar() {
               }}
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
-              현대적 성과
+              {t('navigation.achievements')}
             </a>
             <a href="#prompt-templates" 
               onClick={(e) => {
@@ -76,7 +81,7 @@ export default function NavigationBar() {
               }}
               className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
             >
-              프롬프트 템플릿
+              {t('navigation.prompts')}
             </a>
             <a href="#contact" 
               onClick={(e) => {
@@ -85,8 +90,9 @@ export default function NavigationBar() {
               }}
               className="bg-primary-red text-white px-4 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
             >
-              연락하기
+              {t('navigation.contact')}
             </a>
+            <LanguageSwitcher />
           </div>
           
           <div className="md:hidden">
@@ -112,7 +118,7 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
-              문화유산
+              {t('navigation.heritage')}
             </a>
             <a href="#architecture" 
               onClick={(e) => {
@@ -121,7 +127,7 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
-              건축
+              {t('heritage.categories.architecture')}
             </a>
             <a href="#traditions" 
               onClick={(e) => {
@@ -130,7 +136,7 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
-              전통
+              {t('heritage.categories.ceremonies')}
             </a>
             <a href="#modern-achievements" 
               onClick={(e) => {
@@ -139,7 +145,7 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
-              현대적 성과
+              {t('navigation.achievements')}
             </a>
             <a href="#prompt-templates" 
               onClick={(e) => {
@@ -148,7 +154,7 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
-              프롬프트 템플릿
+              {t('navigation.prompts')}
             </a>
             <a href="#contact" 
               onClick={(e) => {
@@ -157,8 +163,11 @@ export default function NavigationBar() {
               }}
               className="block px-4 py-2 bg-primary-red text-white hover:bg-primary-red/90 font-medium"
             >
-              연락하기
+              {t('navigation.contact')}
             </a>
+            <div className="block px-4 py-2 text-white">
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </div>

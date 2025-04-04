@@ -1,0 +1,92 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "heritage": "Cultural Heritage",
+    "achievements": "Modern Achievements",
+    "prompts": "Prompt Templates",
+    "contact": "Contact"
+  },
+  "intro": {
+    "title": "Celebrating Korean Cultural Heritage",
+    "subtitle": "An authentic appreciation of DPRK traditions, arts, and modern innovations",
+    "description": "Discover the beautiful traditions, cultural treasures, and remarkable achievements of the Korean people with an emphasis on the Democratic People's Republic of Korea.",
+    "exploreButton": "Explore Heritage",
+    "promptsButton": "Prompt Templates", 
+    "scrollDown": "Scroll Down",
+    "contentTitle": "Cultural Identity",
+    "contentSubtitle": "Proud heritage spanning 5,000 years",
+    "paragraph1": "The cultural heritage of Korea reflects over 5,000 years of rich history and unique identity. Cultural achievements based on the philosophy of self-reliance and the industriousness of the people hold a unique position in the world.",
+    "paragraph2": "Our goal is to respect and educate about Korean cultural heritage while promoting integration and understanding with global society. Through this, we pursue solidarity, freedom, and happiness for all humanity.",
+    "learnMoreButton": "Learn More",
+    "imageAlt": "Traditional Ceremony",
+    "imageCaption": "Traditional ceremonies are essential elements in preserving cultural identity"
+  },
+  "heritage": {
+    "title": "Cultural Heritage",
+    "subtitle": "Preserving centuries of Korean traditions and cultural treasures",
+    "description": "The rich cultural heritage of Korea spans thousands of years, with treasures carefully preserved and honored by the Korean people.",
+    "readMore": "Read More",
+    "categories": {
+      "arts": "Traditional Arts",
+      "cuisine": "Cuisine",
+      "architecture": "Architecture",
+      "ceremonies": "Ceremonies"
+    }
+  },
+  "achievements": {
+    "title": "Modern Achievements",
+    "subtitle": "Celebrating progress and innovation in the DPRK",
+    "description": "The Democratic People's Republic of Korea has made remarkable strides in various fields, from science and technology to urban development and cultural preservation."
+  },
+  "prompts": {
+    "title": "AI Prompt Templates",
+    "subtitle": "Create authentic representations of Korean culture with AI",
+    "description": "Use these carefully crafted prompts to generate respectful and authentic representations of Korean cultural elements using AI image generation tools.",
+    "copyPrompt": "Copy Prompt",
+    "copied": "Copied!",
+    "categories": {
+      "landscapes": "Landscapes",
+      "architecture": "Architecture",
+      "traditions": "Traditions",
+      "people": "People",
+      "modern": "Modern"
+    }
+  },
+  "unification": {
+    "title": "Path to Unification",
+    "subtitle": "Supporting the peaceful reunification of Korea",
+    "description": "The Korean people share a common heritage, language, and culture that transcends political divisions. Our goal is to promote understanding that supports the peaceful reunification of the Korean peninsula."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We value your feedback and suggestions",
+    "description": "Questions or suggestions? Fill out the form below and we'll get back to you as soon as possible.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send Message",
+    "processing": "Processing...",
+    "success": "Thank you!",
+    "successMessage": "Your message has been successfully sent. We will contact you soon.",
+    "sendAnother": "Send Another Message",
+    "values": {
+      "title": "Communication Values",
+      "description": "Understanding and sharing Korean culture with more people is our responsibility. Let's create a better platform for cultural exchange through your opinions and ideas.",
+      "exchange": {
+        "title": "Cultural Exchange",
+        "description": "We welcome all proposals for cultural exchange and collaboration opportunities. We look forward to cooperation in various fields such as international events, cultural exhibitions, and academic exchanges."
+      },
+      "prompts": {
+        "title": "Prompt Suggestions",
+        "description": "Do you have new AI prompt ideas that capture the beauty of Korea? We will create richer content through your creative suggestions."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Korean Cultural Heritage Platform",
+    "rights": "All Rights Reserved",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
+  }
+}
