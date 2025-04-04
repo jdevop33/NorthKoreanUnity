@@ -47,15 +47,15 @@
 
 @layer components {
   .section-title {
-    @apply border-l-4 border-primary-red pl-4 mb-8 py-1;
+    @apply border-l-4 border-primary-red pl-5 mb-10 py-1;
   }
 
   .section-title h2 {
-    @apply font-serif-kr text-3xl font-semibold text-text-primary;
+    @apply font-serif-kr text-3xl font-bold text-text-primary mb-2 tracking-tight;
   }
 
   .section-title p {
-    @apply text-text-secondary font-medium;
+    @apply text-text-secondary text-lg font-medium leading-relaxed;
   }
   
   /* High contrast text helper classes */
@@ -80,23 +80,31 @@
   }
 
   .card {
-    @apply bg-content-bg-light rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+    @apply bg-content-bg-light rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
   }
 
   .card-content {
-    @apply p-6;
+    @apply p-8;
+  }
+  
+  .card-title {
+    @apply text-xl font-bold mb-3 text-text-primary;
+  }
+  
+  .card-description {
+    @apply text-text-secondary leading-relaxed;
   }
 
   .btn {
-    @apply px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+    @apply px-5 py-3 rounded-md text-base font-medium transition-all duration-200 shadow-sm;
   }
 
   .btn-primary {
-    @apply bg-primary-red text-white hover:bg-red-700;
+    @apply bg-primary-red text-white hover:bg-red-700 hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply bg-primary-blue text-white hover:bg-blue-700;
+    @apply bg-primary-blue text-white hover:bg-blue-700 hover:shadow-md;
   }
   
   .bg-pattern {

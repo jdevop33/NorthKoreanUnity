@@ -37,7 +37,7 @@ export default function NavigationBar() {
             </span>
           </a>
           
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <a href="#cultural-heritage" 
               onClick={(e) => {
                 e.preventDefault();
@@ -74,16 +74,20 @@ export default function NavigationBar() {
             >
               {t('navigation.achievements')}
             </a>
-            <a href="#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
-              className="bg-primary-red text-white px-4 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
-            >
-              {t('navigation.contact')}
-            </a>
-            <LanguageSwitcher />
+            <div className="pl-2">
+              <a href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }}
+                className="bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
+              >
+                {t('navigation.contact')}
+              </a>
+            </div>
+            <div className="pl-2">
+              <LanguageSwitcher />
+            </div>
           </div>
           
           <div className="md:hidden">
@@ -101,13 +105,13 @@ export default function NavigationBar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="mt-4 bg-warm-gray rounded-md shadow-lg py-2 md:hidden">
+          <div className="mt-4 bg-warm-gray rounded-md shadow-lg py-3 md:hidden">
             <a href="#cultural-heritage" 
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('navigation.heritage')}
             </a>
@@ -116,7 +120,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('heritage.categories.architecture')}
             </a>
@@ -125,7 +129,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('heritage.categories.ceremonies')}
             </a>
@@ -134,20 +138,22 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('navigation.achievements')}
             </a>
-            <a href="#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
-              className="block px-4 py-2 bg-primary-red text-white hover:bg-primary-red/90 font-medium"
-            >
-              {t('navigation.contact')}
-            </a>
-            <div className="block px-4 py-2 text-white">
+            <div className="px-6 py-3">
+              <a href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }}
+                className="block w-full text-center bg-primary-red text-white py-3 rounded-md hover:bg-primary-red/90 font-medium"
+              >
+                {t('navigation.contact')}
+              </a>
+            </div>
+            <div className="px-6 py-3 text-white">
               <LanguageSwitcher />
             </div>
           </div>

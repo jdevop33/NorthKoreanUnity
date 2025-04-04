@@ -7,11 +7,11 @@ export default function Header() {
         alt="Korean Traditional Architecture" 
         className="w-full h-[500px] md:h-[600px] object-cover"
       />
-      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-white px-4">
-        <h1 className="font-serif-kr font-bold text-3xl md:text-5xl text-center mb-4">
+      <div className="absolute inset-0 z-20 flex flex-col justify-center items-center text-white px-6">
+        <h1 className="font-serif-kr font-bold text-3xl md:text-5xl lg:text-6xl text-center mb-6 tracking-tight">
           <span className="text-accent-gold">조선</span> 문화유산
         </h1>
-        <p className="text-lg md:text-xl max-w-2xl text-center font-light">
+        <p className="text-lg md:text-xl max-w-2xl text-center font-light leading-relaxed shadow-sm">
           전통과 현대가 어우러진 조선의 문화와 예술을 탐험해보세요
         </p>
       </div>
