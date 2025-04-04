@@ -42,7 +42,7 @@ export default function NavigationBar() {
           </a>
           
           {/* Desktop Navigation Menu */}
-          <div className="hidden md:flex items-center justify-end flex-grow ml-6">
+          <div className="hidden md:flex items-center justify-end grow ml-6">
             <div className="flex-1 flex items-center justify-evenly max-w-2xl">
               <a href="#cultural-heritage" 
                 onClick={(e) => {
@@ -82,7 +82,7 @@ export default function NavigationBar() {
               </a>
             </div>
             
-            <div className="flex items-center ml-4 lg:ml-6 flex-shrink-0">
+            <div className="flex items-center ml-4 lg:ml-6 shrink-0">
               <a href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
@@ -99,7 +99,7 @@ export default function NavigationBar() {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button 
-              className="text-white focus:outline-none p-2 rounded hover:bg-warm-gray transition-colors duration-200"
+              className="text-white focus:outline-hidden p-2 rounded hover:bg-warm-gray transition-colors duration-200"
               onClick={toggleMobileMenu}
               aria-label="메뉴 열기"
             >

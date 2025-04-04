@@ -60,7 +60,7 @@ export default function LanguageSwitcher() {
           <Button 
             variant="outline" 
             size="sm" 
-            className="bg-background/50 backdrop-blur-sm border-border/50 text-primary flex gap-2 items-center px-3 py-1 h-8"
+            className="bg-background/50 backdrop-blur-xs border-border/50 text-primary flex gap-2 items-center px-3 py-1 h-8"
           >
             <span>{LanguageFlags[currentLanguage as keyof typeof LanguageFlags]}</span>
             <span className="font-medium">{

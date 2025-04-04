@@ -78,7 +78,7 @@ export default function ModernAchievementsSection() {
             alt={t('achievements.modernDevelopmentAlt', 'Modern Development')}
             className="w-full h-96 object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-warm-gray-dark/80 to-transparent flex items-end">
+          <div className="absolute inset-0 bg-linear-to-t from-warm-gray-dark/80 to-transparent flex items-end">
             <div className="p-8 text-white max-w-3xl">
               <h3 className="font-serif-kr text-3xl font-semibold mb-4 text-white">
                 {t('achievements.continuousProgressTitle', 'Continuous Progress and Innovation')}

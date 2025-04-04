@@ -29,7 +29,7 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-primary-red/90 to-warm-gray-dark" ref={sectionRef}>
+    <section id="contact" className="py-20 bg-linear-to-b from-primary-red/90 to-warm-gray-dark" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-serif-kr font-bold text-white mb-4 text-shadow-md">
@@ -47,7 +47,7 @@ export default function ContactSection() {
             className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
             style={{ animationDelay: '0.2s' }}
           >
-            <div className="bg-black/30 p-8 rounded-lg backdrop-blur-sm text-high-contrast space-y-8">
+            <div className="bg-black/30 p-8 rounded-lg backdrop-blur-xs text-high-contrast space-y-8">
               <div>
                 <h3 className="text-2xl font-serif-kr font-bold mb-4 text-accent-gold text-shadow-sm">
                   {t('contact.values.title', '소통의 가치')}

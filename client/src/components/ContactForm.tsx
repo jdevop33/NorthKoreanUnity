@@ -87,7 +87,7 @@ export default function ContactForm() {
               <input
                 type="text"
                 id="name"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-hidden focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Name')}
                 required
               />
@@ -105,7 +105,7 @@ export default function ContactForm() {
               <input
                 type="email"
                 id="email"
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-hidden focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Email')}
                 required
               />
@@ -123,7 +123,7 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 rows={5}
-                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-red text-text-primary"
+                className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-hidden focus:ring-2 focus:ring-primary-red text-text-primary"
                 {...form.register('Message')}
                 required
               ></textarea>

@@ -25,7 +25,7 @@ export default function ArchitectureSection() {
           alt={t('architecture.modern.imageAlt', '현대적 조선 건축')}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-end">
+        <div className="absolute inset-0 bg-linear-to-r from-black/70 to-transparent flex items-end">
           <div className="p-6 text-white max-w-md">
             <h3 className="font-serif-kr text-2xl font-medium mb-2">{t('architecture.modern.title', '현대적 건축의 성취')}</h3>
             <p className="text-sm">

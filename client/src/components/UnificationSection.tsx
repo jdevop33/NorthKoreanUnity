@@ -6,7 +6,7 @@ export default function UnificationSection() {
   const { t } = useTranslation();
   
   return (
-    <section className="mb-16 pt-8 bg-gradient-to-r from-primary-blue to-primary-red p-1 rounded-lg">
+    <section className="mb-16 pt-8 bg-linear-to-r from-primary-blue to-primary-red p-1 rounded-lg">
       <div className="bg-white p-8 rounded-lg">
         <h2 className="font-serif-kr text-3xl font-semibold text-center mb-6">
           <span className="border-b-4 border-accent-gold pb-2">{t('unification.title', '통일과 화합')}</span>

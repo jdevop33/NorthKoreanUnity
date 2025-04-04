@@ -1,9 +1,194 @@
 /* Import Korean fonts */
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap')
+layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-blue: #3b5ddf;
+  --color-primary-red: #d5384d;
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-gold: #d4af37;
+  --color-accent-light: #f9f7f0;
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --color-warm-gray: #2e3440;
+  --color-warm-gray-light: #4c566a;
+  --color-warm-gray-dark: #1e2127;
+
+  --color-text-primary: #2e3440;
+  --color-text-secondary: #4c566a;
+  --color-text-light: #eceff4;
+  --color-text-accent: #d94141;
+
+  --color-content-bg-light: #ffffff;
+  --color-content-bg-off: #f9f7f0;
+  --color-content-bg-accent: #fbf3f3;
+
+  --font-serif-kr: NanumMyeongjo, serif;
+  --font-sans-kr: NanumGothic, sans-serif;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility section-title {
+  @apply border-l-4 border-primary-red pl-5 mb-10 py-1;
+
+  & h2 {
+    @apply font-serif-kr text-3xl font-bold text-text-primary mb-2 tracking-tight;
+  }
+
+  & p {
+    @apply text-text-secondary text-lg font-medium leading-relaxed;
+  }
+}
+
+@utility text-high-contrast {
+  /* High contrast text helper classes */
+  @apply text-white font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)];
+}
+
+@utility text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@utility text-shadow-lg {
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.75);
+}
+
+@utility backdrop-blur-text {
+  @apply bg-black bg-opacity-25 px-4 py-2 rounded-lg backdrop-blur-xs;
+}
+
+@utility card {
+  @apply bg-content-bg-light rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
+}
+
+@utility card-content {
+  @apply p-8;
+}
+
+@utility card-title {
+  @apply text-xl font-bold mb-3 text-text-primary;
+}
+
+@utility card-description {
+  @apply text-text-secondary leading-relaxed;
+}
+
+@utility btn {
+  @apply px-5 py-3 rounded-md text-base font-medium transition-all duration-200 shadow-xs;
+}
+
+@utility btn-primary {
+  @apply bg-primary-red text-white hover:bg-red-700 hover:shadow-md;
+}
+
+@utility btn-secondary {
+  @apply bg-primary-blue text-white hover:bg-blue-700 hover:shadow-md;
+}
+
+@utility bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@utility animate-fade-in {
+  /* Animation utilities */
+  animation: fadeIn 1s ease-in-out;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
 
 @layer base {
   * {
@@ -46,83 +231,10 @@
 }
 
 @layer components {
-  .section-title {
-    @apply border-l-4 border-primary-red pl-5 mb-10 py-1;
-  }
-
-  .section-title h2 {
-    @apply font-serif-kr text-3xl font-bold text-text-primary mb-2 tracking-tight;
-  }
-
-  .section-title p {
-    @apply text-text-secondary text-lg font-medium leading-relaxed;
-  }
-  
-  /* High contrast text helper classes */
-  .text-high-contrast {
-    @apply text-white font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)];
-  }
-  
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  }
-  
-  .text-shadow-md {
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  }
-  
-  .text-shadow-lg {
-    text-shadow: 0 3px 6px rgba(0,0,0,0.75);
-  }
-  
-  .backdrop-blur-text {
-    @apply bg-black bg-opacity-25 px-4 py-2 rounded-lg backdrop-blur-sm;
-  }
-
-  .card {
-    @apply bg-content-bg-light rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
-  }
-
-  .card-content {
-    @apply p-8;
-  }
-  
-  .card-title {
-    @apply text-xl font-bold mb-3 text-text-primary;
-  }
-  
-  .card-description {
-    @apply text-text-secondary leading-relaxed;
-  }
-
-  .btn {
-    @apply px-5 py-3 rounded-md text-base font-medium transition-all duration-200 shadow-sm;
-  }
-
-  .btn-primary {
-    @apply bg-primary-red text-white hover:bg-red-700 hover:shadow-md;
-  }
-
-  .btn-secondary {
-    @apply bg-primary-blue text-white hover:bg-blue-700 hover:shadow-md;
-  }
-  
-  .bg-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  /* Animation utilities */
-  .animate-fade-in {
-    animation: fadeIn 1s ease-in-out;
-  }
 
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
   }
 
   @keyframes slideUp {

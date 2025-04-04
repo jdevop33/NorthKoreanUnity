@@ -1,23 +1,39 @@
 {
-  "include": ["client/src/**/*", "shared/**/*", "server/**/*"],
-  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
-    "noEmit": true,
-    "module": "ESNext",
-    "strict": true,
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "jsx": "preserve",
-    "esModuleInterop": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "moduleResolution": "bundler",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler", // Changed from "node" to "bundler" for modern TS/Next.js
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve", // Keep JSX as preserve for Next.js
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": ".",
-    "types": ["node", "vite/client"],
     "paths": {
-      "@/*": ["./client/src/*"],
-      "@shared/*": ["./shared/*"]
+      "@/*": ["./client/src/*"], // Will likely need adjustment for new structure
+      "@shared/*": ["./shared/*"] // Will likely need adjustment
     }
-  }
+  },
+  "include": [
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    ".next/types/**/*.ts",
+    // Keep existing includes for now, adjust later
+    "client/src/**/*", 
+    "shared/**/*", 
+    "server/**/*" 
+  ],
+  "exclude": ["node_modules", "dist", ".next", "out"]
 }
