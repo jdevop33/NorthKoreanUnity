@@ -92,13 +92,13 @@ export default function Footer() {
               <h4 className="text-accent-gold font-medium mb-3">{t('footer.resources', '자료')}</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="#prompt-templates"
+                  <a href="#cultural-preservation"
                      onClick={(e) => {
                        e.preventDefault();
-                       scrollToSection('prompt-templates');
+                       scrollToSection('cultural-preservation');
                      }}
                      className="text-text-light hover:text-accent-gold transition-colors duration-200">
-                    {t('prompts.title', '프롬프트 템플릿')}
+                    {t('preservation.title', '문화 보존')}
                   </a>
                 </li>
                 <li>

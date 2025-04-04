@@ -74,15 +74,6 @@ export default function NavigationBar() {
             >
               {t('navigation.achievements')}
             </a>
-            <a href="#prompt-templates" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('prompt-templates');
-              }}
-              className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
-            >
-              {t('navigation.prompts')}
-            </a>
             <a href="#contact" 
               onClick={(e) => {
                 e.preventDefault();
@@ -146,15 +137,6 @@ export default function NavigationBar() {
               className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('navigation.achievements')}
-            </a>
-            <a href="#prompt-templates" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('prompt-templates');
-              }}
-              className="block px-4 py-2 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
-            >
-              {t('navigation.prompts')}
             </a>
             <a href="#contact" 
               onClick={(e) => {

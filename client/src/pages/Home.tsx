@@ -5,7 +5,7 @@ import CulturalHeritageSection from "@/components/CulturalHeritageSection";
 import ArchitectureSection from "@/components/ArchitectureSection";
 import TraditionsSection from "@/components/TraditionsSection";
 import ModernAchievementsSection from "@/components/ModernAchievementsSection";
-import PromptTemplatesSection from "@/components/PromptTemplatesSection";
+import CulturalPreservationSection from "@/components/CulturalPreservationSection";
 import UnificationSection from "@/components/UnificationSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -23,7 +23,7 @@ export default function Home() {
           <ArchitectureSection />
           <TraditionsSection />
           <ModernAchievementsSection />
-          <PromptTemplatesSection />
+          <CulturalPreservationSection />
         </div>
         
         <UnificationSection />
