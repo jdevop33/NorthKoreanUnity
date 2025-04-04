@@ -1,0 +1,114 @@
+/* Import Korean fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap') layer(base);
+
+/* Import Tailwind v4 */
+@import "tailwindcss";
+
+/* Import v4 compatible plugins (if any) */
+/* Note: tailwindcss-animate import removed as animations are handled via @theme */
+
+/* 
+  Note: @tailwindcss/typography needs separate configuration for v4.
+*/
+/* @plugin '@tailwindcss/typography'; */ 
+
+/* --- Customizations & Utilities --- */
+
+/* @custom-variant dark (&:is(.dark *)); */ 
+
+/* --- Base Layer --- */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    /* V3 Border Color Compatibility - Consider removing */
+    border-color: var(--color-gray-200, currentcolor); 
+  }
+
+  * {
+    @apply border-border; 
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif-kr font-semibold text-text-primary;
+  }
+
+  h1 { @apply text-4xl md:text-5xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  p, li, span {
+     @apply text-text-primary;
+  }
+
+  .bg-warm-gray *,
+  .bg-primary * {
+    @apply text-text-light;
+  }
+}
+
+/* --- Custom Utilities --- */
+@utility section-title {
+  @apply border-l-4 border-primary-red pl-5 mb-10 py-1;
+  & h2 { @apply font-serif-kr text-3xl font-bold text-text-primary mb-2 tracking-tight; }
+  & p { @apply text-text-secondary text-lg font-medium leading-relaxed; }
+}
+
+@utility text-high-contrast {
+  @apply text-white font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)];
+}
+
+@utility text-shadow-sm { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+@utility text-shadow-md { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+@utility text-shadow-lg { text-shadow: 0 3px 6px rgba(0, 0, 0, 0.75); }
+
+@utility backdrop-blur-text {
+  @apply bg-black bg-opacity-25 px-4 py-2 rounded-lg backdrop-blur-xs;
+}
+
+@utility card {
+  @apply bg-card rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300;
+}
+
+@utility card-content { @apply p-8; }
+@utility card-title { @apply text-xl font-bold mb-3 text-card-foreground; }
+@utility card-description { @apply text-text-secondary leading-relaxed; }
+
+@utility btn {
+  @apply px-5 py-3 rounded-md text-base font-medium transition-all duration-200 shadow-xs;
+}
+
+@utility btn-primary {
+  @apply bg-primary-red text-white hover:bg-red-700 hover:shadow-md;
+}
+
+@utility btn-secondary {
+  @apply bg-primary-blue text-white hover:bg-blue-700 hover:shadow-md;
+}
+
+@utility bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Define animations used by utilities */
+/* These should match names used in tailwind.config.css if defined there */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+@utility animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards; /* Added forwards */
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards; /* Added forwards */
+}

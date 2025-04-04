@@ -1,35 +1,39 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google'; // Using Inter as an example, can be changed
-import { cn } from "@/lib/utils"; // Assuming Shadcn's utils are in lib
+// Import fonts
+import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google'; 
+import { cn } from "@/lib/utils"; 
+import { Toaster } from "@/components/ui/toaster"; // Import Shadcn Toaster
 
-// Import global styles - Make sure this path is correct relative to app/layout.tsx
-import '../client/src/index.css'; 
+// Import global styles
+import '@/globals.css'; 
 
-// If using specific fonts from Google like Nanum Gothic/Myeongjo, import them here
-// import { Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google';
-
-/* Example Google Font usage:
-const nanumGothic = Nanum_Gothic({
-  subsets: ['latin'], // Adjust subsets as needed
-  weight: ['400', '700', '800'],
-  variable: '--font-sans-kr' // CSS variable for Tailwind theme
-});
-const nanumMyeongjo = Nanum_Myeongjo({
-  subsets: ['latin'],
-  weight: ['400', '700', '800'],
-  variable: '--font-serif-kr' // CSS variable for Tailwind theme
-});
-*/
-
-// Default font example
+// Configure fonts
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-sans' // Example CSS variable for default sans font
+  variable: '--font-sans' 
+});
+
+const nanumGothic = Nanum_Gothic({
+  subsets: ['latin'], // Adjust subsets if needed (e.g., 'korean')
+  weight: ['400', '700', '800'],
+  variable: '--font-sans-kr', // Matches variable in tailwind.config.css
+  display: 'swap', // Use swap for better perceived performance
+});
+
+const nanumMyeongjo = Nanum_Myeongjo({
+  subsets: ['latin'], // Adjust subsets if needed
+  weight: ['400', '700', '800'],
+  variable: '--font-serif-kr', // Matches variable in tailwind.config.css
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'North Korean Unity', 
-  description: 'Promoting peace and understanding.', 
+  title: {
+    default: 'North Korean Unity', 
+    template: '%s | North Korean Unity', 
+  },
+  description: 'Explore North Korean culture, heritage, and modern achievements. Promoting peace and understanding.', 
+  // TODO: Add more metadata (Open Graph, Twitter, Icons)
 };
 
 interface RootLayoutProps {
@@ -38,17 +42,19 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    // Apply font variables to html tag for Tailwind integration
-    // Use cn utility to merge potential font classes
-    <html lang="en" className={cn(
-      "antialiased", // Basic antialiasing 
-      inter.variable // Add default font variable 
-      // nanumGothic.variable, // Add Korean font variables if used
-      // nanumMyeongjo.variable
-    )} suppressHydrationWarning> {/* Recommended for Next.js + theme switching */}
-      {/* Body tag gets base background/text colors from index.css */}
+    <html 
+      lang="en" 
+      className={cn(
+        "antialiased", 
+        inter.variable, 
+        nanumGothic.variable, 
+        nanumMyeongjo.variable
+      )}
+      suppressHydrationWarning
+    >
       <body>
         {children}
+        <Toaster /> {/* Add Toaster component here */}
       </body>
     </html>
   );

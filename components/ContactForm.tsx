@@ -5,9 +5,8 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
-import { CheckCircle2, Loader2 } from 'lucide-react'; // Import icons
+import { CheckCircle2, Loader2 } from 'lucide-react'; 
 
-// Import Shadcn UI components
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,10 +19,9 @@ import {
   FormLabel, 
   FormMessage 
 } from "@/components/ui/form";
+import { toast } from "@/hooks/use-toast"; // Import toast hook
 import { cn } from "@/lib/utils";
 
-// Define schema using translation keys for potential server-side validation later
-// Also, use refine for better cross-field validation if needed.
 const createContactFormSchema = (t: Function) => z.object({
   Name: z.string()
     .min(2, { message: t('contact.errors.name.min', 'Name must be at least 2 characters.') })
@@ -35,17 +33,19 @@ const createContactFormSchema = (t: Function) => z.object({
     .max(500, { message: t('contact.errors.message.max', 'Message must be 500 characters or less.') })
 });
 
-// Type derived from schema definition function
 type ContactFormValues = z.infer<ReturnType<typeof createContactFormSchema>>;
 
-// Named export
+// Get the endpoint URL from environment variables
+// Needs to be prefixed with NEXT_PUBLIC_ for client-side access
+const FORM_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT;
+
 export function ContactForm() {
   const { t } = useTranslation();
-  const contactFormSchema = createContactFormSchema(t); // Create schema with t function
+  const contactFormSchema = createContactFormSchema(t);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  // Removed submitError state, will use toast directly
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -56,15 +56,18 @@ export function ContactForm() {
     }
   });
 
-  // Form submission handler
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
-    setSubmitError(null);
+
+    if (!FORM_ENDPOINT) {
+        console.error("Contact form endpoint URL is not configured.");
+        toast({ title: t('contact.errors.submit.title', "Submission Error"), description: t('contact.errors.config', 'Form configuration error. Please contact support.'), variant: "destructive" });
+        setIsSubmitting(false);
+        return;
+    }
     
-    // TODO: Consider moving fetch logic to a separate utility or using Server Actions
     try {
-      // Using the Herotofu endpoint provided in the original code
-      const response = await fetch('https://public.herotofu.com/v1/cb3ceee0-1058-11f0-8dc2-010227905b4a', {
+      const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,38 +78,35 @@ export function ContactForm() {
       
       if (response.ok) {
         setFormSubmitted(true);
-        form.reset(); // Reset form fields on success
+        form.reset(); 
+        toast({ title: t('contact.success.toast.title', "Message Sent!"), description: t('contact.success.toast.desc', 'We will get back to you soon.') });
       } else {
         const errorText = await response.text();
         console.error('Form submission error:', response.status, errorText);
-        setSubmitError(t('contact.errors.submit', 'Failed to send message. Please try again.'));
+        toast({ title: t('contact.errors.submit.title', "Submission Error"), description: t('contact.errors.submit', 'Failed to send message. Please try again.'), variant: "destructive" });
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitError(t('contact.errors.submit', 'An unexpected error occurred. Please try again.'));
+      toast({ title: t('contact.errors.submit.title', "Submission Error"), description: t('contact.errors.submit.network', 'An unexpected network error occurred. Please try again.'), variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Success State UI
   if (formSubmitted) {
-    return (
-      <div className="text-center py-8 bg-white p-8 rounded-lg shadow-lg border border-green-200">
+     return (
+      <div className="text-center py-8 bg-white p-8 rounded-lg shadow-lg border border-green-200 flex flex-col items-center justify-center min-h-[400px]">
         <div className="mb-6 text-green-500">
           <CheckCircle2 className="h-16 w-16 mx-auto" strokeWidth={1.5} />
         </div>
         <h3 className="text-2xl font-serif-kr font-bold mb-4 text-warm-gray-dark">
           {t('contact.success', 'Thank you!')}
         </h3>
-        <p className="text-text-primary mb-6">
+        <p className="text-text-primary mb-6 max-w-sm">
           {t('contact.successMessage', 'Your message has been sent successfully. We will contact you soon.')}
         </p>
         <Button 
-          onClick={() => {
-            setFormSubmitted(false);
-            setSubmitError(null); // Clear any previous errors
-          }}
+          onClick={() => setFormSubmitted(false)}
           variant="outline"
           className="py-3 px-8"
         >
@@ -116,7 +116,6 @@ export function ContactForm() {
     );
   }
 
-  // Form UI
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
       <div className="mb-8 text-center">
@@ -128,10 +127,10 @@ export function ContactForm() {
         </p>
       </div>
       
-      {/* Using Shadcn Form component integrated with react-hook-form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
+          {/* ... FormFields remain the same ... */}
+           <FormField
             control={form.control}
             name="Name"
             render={({ field }) => (
@@ -143,14 +142,13 @@ export function ContactForm() {
                   <Input 
                     placeholder={t('contact.name.placeholder', 'Your Name')} 
                     {...field} 
-                    className="py-3" // Adjust padding if needed
+                    className="py-3"
                   />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="Email"
@@ -171,7 +169,6 @@ export function ContactForm() {
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="Message"
@@ -192,26 +189,17 @@ export function ContactForm() {
             )}
           />
           
-          {/* Honeypot - keep hidden */}
           <div className="hidden" aria-hidden="true">
             <Label htmlFor="_gotcha">Don't fill this out if you're human:</Label>
             <Input type="text" id="_gotcha" name="_gotcha" tabIndex={-1} autoComplete="off" />
           </div>
-
-          {/* Display submission error if exists */}
-          {submitError && (
-             <p className="mt-4 text-center text-destructive text-sm font-medium">
-                {submitError}
-              </p>
-          )}
           
-          {/* Submit Button */}
           <div className="mt-8 flex justify-center">
             <Button
               type="submit"
-              size="lg" // Use Shadcn sizes
+              size="lg"
               className="bg-primary-red hover:bg-red-700 text-white py-4 px-10 text-lg font-bold transition-all hover:scale-105 shadow-lg"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !FORM_ENDPOINT} // Disable if endpoint not configured
             >
               {isSubmitting ? (
                 <>
