@@ -2,16 +2,18 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 
 const contactFormSchema = z.object({
-  Name: z.string().min(2, '이름을 입력해주세요').max(50),
-  Email: z.string().email('유효한 이메일 주소를 입력해주세요'),
-  Message: z.string().min(5, '메시지를 입력해주세요').max(500)
+  Name: z.string().min(2).max(50),
+  Email: z.string().email(),
+  Message: z.string().min(5).max(500)
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   
@@ -59,28 +61,28 @@ export default function ContactForm() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 className="text-2xl font-serif-kr font-bold mb-4 text-warm-gray-dark">감사합니다!</h3>
-          <p className="text-text-primary mb-6">귀하의 메시지가 성공적으로 전송되었습니다. 곧 연락드리겠습니다.</p>
+          <h3 className="text-2xl font-serif-kr font-bold mb-4 text-warm-gray-dark">{t('contact.success', '감사합니다!')}</h3>
+          <p className="text-text-primary mb-6">{t('contact.successMessage', '귀하의 메시지가 성공적으로 전송되었습니다. 곧 연락드리겠습니다.')}</p>
           <button 
             onClick={() => setFormSubmitted(false)}
             className="btn btn-primary py-3 px-8 font-medium"
           >
-            다른 메시지 보내기
+            {t('contact.sendAnother', '다른 메시지 보내기')}
           </button>
         </div>
       ) : (
         <>
           <div className="mb-8 text-center">
-            <h3 className="font-serif-kr text-3xl font-bold mb-3 text-primary-red">연락하기</h3>
+            <h3 className="font-serif-kr text-3xl font-bold mb-3 text-primary-red">{t('contact.title', '연락하기')}</h3>
             <p className="text-text-primary text-lg font-medium">
-              질문이나 제안이 있으신가요? 아래 양식을 작성하시면 빠른 시일내에 답변 드리겠습니다.
+              {t('contact.description', '질문이나 제안이 있으신가요? 아래 양식을 작성하시면 빠른 시일내에 답변 드리겠습니다.')}
             </p>
           </div>
           
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div>
               <label htmlFor="name" className="block mb-2 font-medium text-warm-gray-dark text-lg">
-                이름 <span className="text-primary-red">*</span>
+                {t('contact.name', '이름')} <span className="text-primary-red">*</span>
               </label>
               <input
                 type="text"
@@ -90,13 +92,15 @@ export default function ContactForm() {
                 required
               />
               {form.formState.errors.Name && (
-                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Name.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">
+                  {t('contact.errors.name', '이름을 입력해주세요')}
+                </p>
               )}
             </div>
             
             <div>
               <label htmlFor="email" className="block mb-2 font-medium text-warm-gray-dark text-lg">
-                이메일 <span className="text-primary-red">*</span>
+                {t('contact.email', '이메일')} <span className="text-primary-red">*</span>
               </label>
               <input
                 type="email"
@@ -106,13 +110,15 @@ export default function ContactForm() {
                 required
               />
               {form.formState.errors.Email && (
-                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Email.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">
+                  {t('contact.errors.email', '유효한 이메일 주소를 입력해주세요')}
+                </p>
               )}
             </div>
             
             <div>
               <label htmlFor="message" className="block mb-2 font-medium text-warm-gray-dark text-lg">
-                메시지 <span className="text-primary-red">*</span>
+                {t('contact.message', '메시지')} <span className="text-primary-red">*</span>
               </label>
               <textarea
                 id="message"
@@ -122,7 +128,9 @@ export default function ContactForm() {
                 required
               ></textarea>
               {form.formState.errors.Message && (
-                <p className="mt-1 text-primary-red text-sm font-medium">{form.formState.errors.Message.message}</p>
+                <p className="mt-1 text-primary-red text-sm font-medium">
+                  {t('contact.errors.message', '메시지를 입력해주세요')}
+                </p>
               )}
             </div>
             
@@ -143,10 +151,10 @@ export default function ContactForm() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    처리 중...
+                    {t('contact.processing', '처리 중...')}
                   </>
                 ) : (
-                  '메시지 보내기'
+                  t('contact.submit', '메시지 보내기')
                 )}
               </button>
             </div>

@@ -145,6 +145,11 @@
     "success": "谢谢您！",
     "successMessage": "您的消息已成功发送。我们将很快与您联系。",
     "sendAnother": "发送另一条消息",
+    "errors": {
+      "name": "请输入您的姓名",
+      "email": "请输入有效的电子邮件地址",
+      "message": "请输入您的留言"
+    },
     "values": {
       "title": "沟通价值",
       "description": "理解并与更多人分享朝鲜文化是我们的责任。让我们通过您的意见和想法创建更好的文化交流平台。",
@@ -159,6 +164,12 @@
     }
   },
   "footer": {
+    "title": "朝鲜文化遗产",
+    "description": "本网站旨在介绍和教育朝鲜丰富的文化遗产和成就。我们的目标是促进文化理解，促进统一与和平。",
+    "juche": "主体思想",
+    "scrollToTop": "返回顶部",
+    "mainSections": "主要部分",
+    "resources": "资源",
     "copyright": "© 2025 朝鲜文化遗产平台",
     "rights": "保留所有权利",
     "termsOfService": "服务条款",

@@ -145,6 +145,11 @@
     "success": "Thank you!",
     "successMessage": "Your message has been successfully sent. We will contact you soon.",
     "sendAnother": "Send Another Message",
+    "errors": {
+      "name": "Please enter your name",
+      "email": "Please enter a valid email address",
+      "message": "Please enter your message"
+    },
     "values": {
       "title": "Communication Values",
       "description": "Understanding and sharing Korean culture with more people is our responsibility. Let's create a better platform for cultural exchange through your opinions and ideas.",
@@ -159,6 +164,12 @@
     }
   },
   "footer": {
+    "title": "Korean Cultural Heritage",
+    "description": "This site is designed to introduce and educate about the rich cultural heritage and achievements of Korea. Our goal is to promote cultural understanding for unification and peace.",
+    "juche": "Juche Philosophy",
+    "scrollToTop": "Back to Top",
+    "mainSections": "Main Sections",
+    "resources": "Resources",
     "copyright": "© 2025 Korean Cultural Heritage Platform",
     "rights": "All Rights Reserved",
     "termsOfService": "Terms of Service",
