@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next'; // Removed i18n
 import { CheckCircle2, Loader2 } from 'lucide-react'; 
 
 import { Button } from "@/components/ui/button";
@@ -19,33 +19,33 @@ import {
   FormLabel, 
   FormMessage 
 } from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast"; // Import toast hook
+import { toast } from "@/hooks/use-toast"; 
 import { cn } from "@/lib/utils";
 
-const createContactFormSchema = (t: Function) => z.object({
+// Placeholder function for t
+const t = (key: string, fallback: string) => fallback;
+
+const createContactFormSchema = (tFunc: Function) => z.object({
   Name: z.string()
-    .min(2, { message: t('contact.errors.name.min', 'Name must be at least 2 characters.') })
-    .max(50, { message: t('contact.errors.name.max', 'Name must be 50 characters or less.') }),
+    .min(2, { message: tFunc('contact.errors.name.min', 'Name must be at least 2 characters.') })
+    .max(50, { message: tFunc('contact.errors.name.max', 'Name must be 50 characters or less.') }),
   Email: z.string()
-    .email({ message: t('contact.errors.email', 'Please enter a valid email address.') }),
+    .email({ message: tFunc('contact.errors.email', 'Please enter a valid email address.') }),
   Message: z.string()
-    .min(5, { message: t('contact.errors.message.min', 'Message must be at least 5 characters.') })
-    .max(500, { message: t('contact.errors.message.max', 'Message must be 500 characters or less.') })
+    .min(5, { message: tFunc('contact.errors.message.min', 'Message must be at least 5 characters.') })
+    .max(500, { message: tFunc('contact.errors.message.max', 'Message must be 500 characters or less.') })
 });
 
 type ContactFormValues = z.infer<ReturnType<typeof createContactFormSchema>>;
 
-// Get the endpoint URL from environment variables
-// Needs to be prefixed with NEXT_PUBLIC_ for client-side access
 const FORM_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT;
 
 export function ContactForm() {
-  const { t } = useTranslation();
-  const contactFormSchema = createContactFormSchema(t);
+  // const { t } = useTranslation(); // Removed i18n
+  const contactFormSchema = createContactFormSchema(t); // Use placeholder t
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  // Removed submitError state, will use toast directly
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -129,8 +129,7 @@ export function ContactForm() {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* ... FormFields remain the same ... */}
-           <FormField
+          <FormField
             control={form.control}
             name="Name"
             render={({ field }) => (
@@ -199,7 +198,7 @@ export function ContactForm() {
               type="submit"
               size="lg"
               className="bg-primary-red hover:bg-red-700 text-white py-4 px-10 text-lg font-bold transition-all hover:scale-105 shadow-lg"
-              disabled={isSubmitting || !FORM_ENDPOINT} // Disable if endpoint not configured
+              disabled={isSubmitting || !FORM_ENDPOINT} 
             >
               {isSubmitting ? (
                 <>
