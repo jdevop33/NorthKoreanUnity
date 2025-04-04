@@ -1,7 +1,12 @@
+"use client"; // Required for useTranslation and DOM manipulation
+
 import { useTranslation } from 'react-i18next';
 
-export default function Footer() {
+// Named export as per guidelines
+export function Footer() {
   const { t } = useTranslation();
+
+  // Client-side function for smooth scrolling
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -9,10 +14,12 @@ export default function Footer() {
     }
   };
 
+  // Can be calculated client-side or passed as prop if needed server-side initially
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-warm-gray text-text-light py-16">
+      {/* Using theme variables like --color-warm-gray, --color-text-light */}
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-10 md:mb-0">
@@ -24,6 +31,7 @@ export default function Footer() {
               <a href="https://juche.org" target="_blank" rel="noopener noreferrer" 
                 className="text-text-light hover:text-accent-gold transition-colors duration-200">
                 <span className="sr-only">{t('footer.juche', '주체 사상')}</span>
+                {/* Consider replacing inline SVG with lucide-react or similar library */}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h2a2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2v1.5" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11V9a4 4 0 018 0v6M3 21h18" />
@@ -55,7 +63,8 @@ export default function Footer() {
                     {t('heritage.title', '문화유산')}
                   </a>
                 </li>
-                <li>
+                {/* ... other list items with onClick ... */}
+                 <li>
                   <a href="#architecture"
                      onClick={(e) => {
                        e.preventDefault();
@@ -91,7 +100,7 @@ export default function Footer() {
             <div>
               <h4 className="text-accent-gold font-medium text-lg mb-4">{t('footer.resources', '자료')}</h4>
               <ul className="space-y-3">
-                <li>
+                 <li>
                   <a href="#cultural-preservation"
                      onClick={(e) => {
                        e.preventDefault();
@@ -123,6 +132,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 mt-10 pt-8 text-center text-text-light">
+           {/* Use CSS variable for border color --color-gray-700 likely needs mapping in theme */}
           <p>{t('footer.copyright', '© {{year}} 조선 문화유산 플랫폼', { year: currentYear })}</p>
           <p className="mt-4">
             <a href="#" className="hover:text-accent-gold transition-colors duration-200">{t('footer.termsOfService', '이용약관')}</a> · 

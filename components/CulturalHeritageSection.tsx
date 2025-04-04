@@ -1,34 +1,23 @@
-import { heritageItems } from "@/lib/data";
-import { useState, useEffect, useRef } from "react";
-import { useTranslation } from 'react-i18next';
+"use client"; // Required for state, observer hook, translation
 
-export default function CulturalHeritageSection() {
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
+
+import { heritageItems } from '@/lib/data'; // Assuming data structure is correct
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { cn } from '@/lib/utils';
+
+// Named export
+export function CulturalHeritageSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  
+  // Use the intersection observer hook
+  const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.15 }); // Adjust threshold as needed
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
+  // Hover handlers remain client-side
   const handleMouseEnter = (index: number) => {
     setActiveIndex(index);
   };
@@ -37,32 +26,55 @@ export default function CulturalHeritageSection() {
     setActiveIndex(null);
   };
 
+  // Client-side scroll function remains necessary for links
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="cultural-heritage" className="mb-20 pt-12" ref={sectionRef}>
+    // Assign the ref from the hook to the section
+    <section id="cultural-heritage" className="mb-20 pt-12 scroll-mt-16" ref={sectionRef}> 
       <div className="max-w-6xl mx-auto px-4">
-        <div className="section-title">
+        <div className="section-title"> {/* Assumes styles applied via @utility */} 
           <h2>{t('heritage.title')}</h2>
           <p>{t('heritage.subtitle')}</p>
         </div>
         
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+        {/* Grid container - Apply fade-in based on isVisible */}
+        <div className={cn(
+          "grid grid-cols-1 md:grid-cols-3 gap-8 transition-opacity duration-1000 ease-in",
+          isVisible ? 'opacity-100' : 'opacity-0'
+        )}>
           {heritageItems.map((item, index) => (
             <div 
-              key={index} 
-              className={`card group transition-all duration-300 ${isVisible ? 'animate-slide-up' : ''}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={item.id || index} // Prefer stable ID if available
+              className={cn(
+                "card group transition-all duration-300", 
+                // Apply slide-up animation conditionally based on visibility
+                isVisible ? 'animate-slide-up' : 'opacity-0', // Assuming animate-slide-up is defined
+              )}
+              style={{ animationDelay: `${index * 0.1}s` }} // Stagger animation
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={item.image} 
-                  alt={t(`heritage.items.${index}.title`, item.title)}
-                  className={`w-full h-56 object-cover transition-transform duration-700 ${activeIndex === index ? 'scale-110' : ''}`}
+              <div className="relative overflow-hidden rounded-t-lg"> {/* Ensure overflow hidden for scale */}
+                <Image 
+                  src={item.image} // Assuming item.image is a valid path/URL
+                  alt={t(`heritage.items.${index}.title`, item.title)} // Use dynamic key or pass t function
+                  width={500} // Provide appropriate dimensions
+                  height={350}
+                  className={cn(
+                    "w-full h-56 object-cover transition-transform duration-700 ease-in-out",
+                    activeIndex === index ? 'scale-110' : 'scale-100' // Explicitly set scale-100
+                  )}
                 />
-                <div className="absolute inset-0 bg-primary-blue bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-primary-blue bg-opacity-0 group-hover:bg-opacity-10 transition-opacity duration-300"></div>
               </div>
-              <div className="card-content">
+              <div className="card-content"> {/* Assumes styles via @utility */} 
                 <h3 className="font-serif-kr font-semibold text-xl mb-3 text-text-primary group-hover:text-primary-blue transition-colors duration-300">
                   {t(`heritage.items.${index}.title`, item.title)}
                 </h3>
@@ -70,11 +82,10 @@ export default function CulturalHeritageSection() {
                   {t(`heritage.items.${index}.description`, item.description)}
                 </p>
                 <div className="mt-4 flex justify-end">
+                  {/* Consider making this a Link component if it navigates */}
                   <button className="inline-flex items-center text-primary-blue hover:text-primary-red transition-colors duration-200 text-sm font-medium group">
                     {t('heritage.readMore')}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
+                    <ArrowRight className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-200" />
                   </button>
                 </div>
               </div>
@@ -82,13 +93,16 @@ export default function CulturalHeritageSection() {
           ))}
         </div>
         
+        {/* Explore More Button */}
         <div className="text-center mt-12">
           <p className="text-text-secondary mb-6">{t('heritage.description')}</p>
-          <a href="#architecture" className="btn btn-primary inline-flex items-center group">
+          <a 
+            href="#architecture" 
+            onClick={(e) => { e.preventDefault(); scrollToSection('architecture'); }}
+            className="btn btn-primary inline-flex items-center group"
+          >
             {t('heritage.exploreArchitecture', 'Explore Architecture')}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
+            <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>
