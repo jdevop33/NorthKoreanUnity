@@ -21,7 +21,7 @@ export default function NavigationBar() {
 
   return (
     <nav className="bg-warm-gray-dark py-4 sticky top-0 z-50 shadow-md">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <a href="#" onClick={(e) => {
             e.preventDefault();
@@ -37,13 +37,13 @@ export default function NavigationBar() {
             </span>
           </a>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-10">
             <a href="#cultural-heritage" 
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
+              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
             >
               {t('navigation.heritage')}
             </a>
@@ -52,7 +52,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
+              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
             >
               {t('heritage.categories.architecture')}
             </a>
@@ -61,7 +61,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
+              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
             >
               {t('heritage.categories.ceremonies')}
             </a>
@@ -70,7 +70,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="text-white hover:text-accent-gold transition-colors duration-200 font-medium"
+              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
             >
               {t('navigation.achievements')}
             </a>
@@ -80,7 +80,7 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('contact');
                 }}
-                className="bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
+                className="whitespace-nowrap bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
               >
                 {t('navigation.contact')}
               </a>
@@ -111,7 +111,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
             >
               {t('navigation.heritage')}
             </a>
@@ -120,7 +120,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
             >
               {t('heritage.categories.architecture')}
             </a>
@@ -129,7 +129,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
             >
               {t('heritage.categories.ceremonies')}
             </a>
@@ -138,7 +138,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
             >
               {t('navigation.achievements')}
             </a>
@@ -148,7 +148,7 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('contact');
                 }}
-                className="block w-full text-center bg-primary-red text-white py-3 rounded-md hover:bg-primary-red/90 font-medium"
+                className="block w-full text-center bg-primary-red text-white py-3 rounded-md hover:bg-primary-red/90 font-medium whitespace-nowrap"
               >
                 {t('navigation.contact')}
               </a>
