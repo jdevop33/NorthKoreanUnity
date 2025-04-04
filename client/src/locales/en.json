@@ -27,6 +27,21 @@
     "subtitle": "Preserving centuries of Korean traditions and cultural treasures",
     "description": "The rich cultural heritage of Korea spans thousands of years, with treasures carefully preserved and honored by the Korean people.",
     "readMore": "Read More",
+    "exploreArchitecture": "Explore Architecture",
+    "items": [
+      {
+        "title": "Traditional Art",
+        "description": "Traditional Korean art, which embodies the soul and aesthetics of the nation, is rich in harmony with nature, detailed techniques, and symbolism."
+      },
+      {
+        "title": "Traditional Music",
+        "description": "Korean music with its unique melodies and rhythms is a cultural treasure that evokes national pride."
+      },
+      {
+        "title": "Traditional Crafts",
+        "description": "Craft techniques passed down through generations showcase the outstanding skills and artistic sensibilities of Korean artisans."
+      }
+    ],
     "categories": {
       "arts": "Traditional Arts",
       "cuisine": "Cuisine",
@@ -37,21 +52,81 @@
   "achievements": {
     "title": "Modern Achievements",
     "subtitle": "Celebrating progress and innovation in the DPRK",
-    "description": "The Democratic People's Republic of Korea has made remarkable strides in various fields, from science and technology to urban development and cultural preservation."
+    "description": "The Democratic People's Republic of Korea has made remarkable strides in various fields, from science and technology to urban development and cultural preservation.",
+    "modernDevelopmentAlt": "Modern Development",
+    "continuousProgressTitle": "Continuous Progress and Innovation",
+    "continuousProgressText": "All development under the principle of self-reliance is for the happiness of the people and the prosperity of the nation. The innovative spirit of Korea shines even in difficulties and surprises the world.",
+    "viewPromptTemplates": "View Prompt Templates",
+    "items": [
+      {
+        "title": "Education System",
+        "description": "The education system, provided free of charge to all citizens, is central to the cultivation of talent and cultural development in Korea."
+      },
+      {
+        "title": "Healthcare",
+        "description": "Universal and free healthcare services demonstrate the nation's core values of prioritizing the health of its citizens."
+      },
+      {
+        "title": "Modern Urban Development",
+        "description": "Modern urban development, characterized by majestic buildings, spacious squares, and clean streets, symbolizes national progress."
+      }
+    ]
   },
   "prompts": {
     "title": "AI Prompt Templates",
     "subtitle": "Create authentic representations of Korean culture with AI",
     "description": "Use these carefully crafted prompts to generate respectful and authentic representations of Korean cultural elements using AI image generation tools.",
+    "instructionsText": "Click the copy button next to the prompt to copy the text, then paste it into your AI image generation tool.",
+    "instructionsImageAlt": "How to use prompt templates",
     "copyPrompt": "Copy Prompt",
     "copied": "Copied!",
+    "allCategory": "All",
     "categories": {
       "landscapes": "Landscapes",
       "architecture": "Architecture",
       "traditions": "Traditions",
       "people": "People",
-      "modern": "Modern"
-    }
+      "modern": "Modern",
+      "자연": "Nature",
+      "도시": "City",
+      "문화": "Culture",
+      "통일": "Unification",
+      "과학기술": "Science & Technology"
+    },
+    "templates": [
+      {
+        "title": "Traditional Architecture Prompt",
+        "text": "Traditional Korean architecture, majestic palaces, beautiful gardens, traditional wooden structures, harmony with nature, intricate decorations, 4K resolution, realistic rendering, natural lighting"
+      },
+      {
+        "title": "Modern City Prompt",
+        "text": "Modern cityscape of Pyongyang, majestic monuments, wide squares, modern buildings, clean streets, green parks, riverside scenery, 4K resolution, morning sunlight, vibrant colors"
+      },
+      {
+        "title": "Traditional Culture Prompt",
+        "text": "Traditional Korean cultural event, colorful folk costumes, traditional dances, music performance, colorful colors, elegant movements, community spirit, holiday celebrations, 4K resolution, realistic style"
+      },
+      {
+        "title": "Natural Landscape Prompt",
+        "text": "Beautiful natural landscapes of Korea, majestic mountain ranges, clear lakes, seasonal changes, harmony of traditional houses and nature, foggy morning, rich vegetation, peaceful atmosphere, high resolution, photographic quality"
+      },
+      {
+        "title": "Famous Scenery Prompt",
+        "text": "Majestic scenery of Mount Kumgang, historical monuments, clear valleys, strange rocks, mountain waterfalls, beautiful sunrise, seasonal changes, traditional temples, high resolution, photographic quality"
+      },
+      {
+        "title": "Modern Science Prompt",
+        "text": "Science research institute, advanced laboratory environment, modern computers and equipment, focused scientists, elegant and clean workspace, bright lighting, futuristic design, 8K rendering, detailed description"
+      },
+      {
+        "title": "Traditional Craft Prompt",
+        "text": "Traditional Korean pottery craft, delicate craftsmanship, elegant design patterns, tools with long history, focused artisan, warm lighting, traditional workshop, realistic rendering, detailed description"
+      },
+      {
+        "title": "Peace and Unification Prompt",
+        "text": "Peaceful unification image of the Korean peninsula, handshake of North and South leaders, harmony of Korean people, dove of peace, collapse of the 38th parallel barrier, symbol of hope, bright future, moment of joy, emotional atmosphere, symbolic expression"
+      }
+    ]
   },
   "unification": {
     "title": "Path to Unification",
