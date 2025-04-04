@@ -21,12 +21,16 @@ export default function NavigationBar() {
 
   return (
     <nav className="bg-warm-gray-dark py-4 sticky top-0 z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }} className="flex items-center space-x-1 group">
+          {/* Logo and Home link */}
+          <a href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }} 
+            className="flex items-center space-x-1 group shrink-0"
+          >
             <img 
               src={jucheEmblem}
               alt="Juche Emblem" 
@@ -37,59 +41,62 @@ export default function NavigationBar() {
             </span>
           </a>
           
-          <div className="hidden md:flex items-center space-x-4 sm:space-x-6 md:space-x-8 lg:space-x-10">
-            <a href="#cultural-heritage" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('cultural-heritage');
-              }}
-              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
-            >
-              {t('navigation.heritage')}
-            </a>
-            <a href="#architecture" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('architecture');
-              }}
-              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
-            >
-              {t('heritage.categories.architecture')}
-            </a>
-            <a href="#traditions" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('traditions');
-              }}
-              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
-            >
-              {t('heritage.categories.ceremonies')}
-            </a>
-            <a href="#modern-achievements" 
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('modern-achievements');
-              }}
-              className="whitespace-nowrap text-white hover:text-accent-gold transition-colors duration-200 font-medium px-1"
-            >
-              {t('navigation.achievements')}
-            </a>
-            <div className="pl-2">
+          {/* Desktop Navigation Menu */}
+          <div className="hidden md:flex items-center justify-end flex-grow ml-6">
+            <div className="flex items-center justify-between flex-grow max-w-3xl">
+              <a href="#cultural-heritage" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('cultural-heritage');
+                }}
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+              >
+                {t('navigation.heritage')}
+              </a>
+              <a href="#architecture" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('architecture');
+                }}
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+              >
+                {t('heritage.categories.architecture')}
+              </a>
+              <a href="#traditions" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('traditions');
+                }}
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+              >
+                {t('heritage.categories.ceremonies')}
+              </a>
+              <a href="#modern-achievements" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection('modern-achievements');
+                }}
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+              >
+                {t('navigation.achievements')}
+              </a>
+            </div>
+            
+            <div className="flex items-center ml-6">
               <a href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('contact');
                 }}
-                className="whitespace-nowrap bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md"
+                className="bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md mr-4"
               >
                 {t('navigation.contact')}
               </a>
-            </div>
-            <div className="pl-2">
               <LanguageSwitcher />
             </div>
           </div>
           
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button 
               className="text-white focus:outline-none p-2 rounded hover:bg-warm-gray transition-colors duration-200"
@@ -111,7 +118,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('cultural-heritage');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('navigation.heritage')}
             </a>
@@ -120,7 +127,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('architecture');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('heritage.categories.architecture')}
             </a>
@@ -129,7 +136,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('traditions');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('heritage.categories.ceremonies')}
             </a>
@@ -138,7 +145,7 @@ export default function NavigationBar() {
                 e.preventDefault();
                 scrollToSection('modern-achievements');
               }}
-              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium whitespace-nowrap"
+              className="block px-6 py-3 text-white hover:bg-warm-gray-dark hover:text-accent-gold font-medium"
             >
               {t('navigation.achievements')}
             </a>
@@ -148,7 +155,7 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('contact');
                 }}
-                className="block w-full text-center bg-primary-red text-white py-3 rounded-md hover:bg-primary-red/90 font-medium whitespace-nowrap"
+                className="block w-full text-center bg-primary-red text-white py-3 rounded-md hover:bg-primary-red/90 font-medium"
               >
                 {t('navigation.contact')}
               </a>
