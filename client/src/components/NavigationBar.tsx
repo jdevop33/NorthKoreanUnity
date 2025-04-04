@@ -43,13 +43,13 @@ export default function NavigationBar() {
           
           {/* Desktop Navigation Menu */}
           <div className="hidden md:flex items-center justify-end flex-grow ml-6">
-            <div className="flex items-center justify-between flex-grow max-w-3xl">
+            <div className="flex-1 flex items-center justify-evenly max-w-2xl">
               <a href="#cultural-heritage" 
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('cultural-heritage');
                 }}
-                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center whitespace-nowrap px-1 lg:px-3"
               >
                 {t('navigation.heritage')}
               </a>
@@ -58,7 +58,7 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('architecture');
                 }}
-                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center whitespace-nowrap px-1 lg:px-3"
               >
                 {t('heritage.categories.architecture')}
               </a>
@@ -67,7 +67,7 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('traditions');
                 }}
-                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center whitespace-nowrap px-1 lg:px-3"
               >
                 {t('heritage.categories.ceremonies')}
               </a>
@@ -76,19 +76,19 @@ export default function NavigationBar() {
                   e.preventDefault();
                   scrollToSection('modern-achievements');
                 }}
-                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center px-2"
+                className="text-white hover:text-accent-gold transition-colors duration-200 font-medium text-center whitespace-nowrap px-1 lg:px-3"
               >
                 {t('navigation.achievements')}
               </a>
             </div>
             
-            <div className="flex items-center ml-6">
+            <div className="flex items-center ml-4 lg:ml-6 flex-shrink-0">
               <a href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('contact');
                 }}
-                className="bg-primary-red text-white px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md mr-4"
+                className="bg-primary-red text-white px-3 lg:px-5 py-2 rounded-md hover:bg-primary-red/90 transition-colors duration-200 font-medium shadow-md mr-2 lg:mr-4 whitespace-nowrap"
               >
                 {t('navigation.contact')}
               </a>

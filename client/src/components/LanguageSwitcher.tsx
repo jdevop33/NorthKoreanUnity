@@ -35,9 +35,19 @@ export default function LanguageSwitcher() {
   ];
 
   const handleLanguageChange = (languageCode: string) => {
+    // Don't do anything if clicking the already selected language
+    if (languageCode === currentLanguage) {
+      setIsOpen(false);
+      return;
+    }
+    
     console.log(`Changing language to: ${languageCode}`);
     i18n.changeLanguage(languageCode);
+    
+    // Store user's explicit language selection
     localStorage.setItem('i18nextLng', languageCode);
+    localStorage.setItem('userSelectedLanguage', 'true');
+    
     // Force a re-render by setting a timestamp in localStorage
     localStorage.setItem('languageTimestamp', Date.now().toString());
     setIsOpen(false);

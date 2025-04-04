@@ -56,18 +56,33 @@ i18n
 // Add our geo location detector
 i18n.services.languageDetector.addDetector(geoLocationDetector);
 
-// Set initial language based on user's location
+// Set initial language based on user's preferences and location
 (async () => {
   try {
-    const preferredLanguage = await getPreferredLanguage();
+    // Check if user has explicitly selected a language before
+    const userSelected = localStorage.getItem('userSelectedLanguage') === 'true';
     const savedLanguage = localStorage.getItem('i18nextLng');
     
-    // Only set language if user hasn't manually chosen one
-    if (!savedLanguage || savedLanguage === 'en') {
+    // If user has explicitly selected a language and it's a valid option, use it
+    if (userSelected && savedLanguage && ['en', 'ko', 'zh', 'ru'].includes(savedLanguage)) {
+      i18n.changeLanguage(savedLanguage);
+      console.log('Using user-selected language:', savedLanguage);
+    } 
+    // If we have a previously saved language that's valid, use it
+    else if (savedLanguage && ['en', 'ko', 'zh', 'ru'].includes(savedLanguage)) {
+      i18n.changeLanguage(savedLanguage);
+      console.log('Using previously saved language:', savedLanguage);
+    } 
+    // Otherwise, try to detect the preferred language based on location
+    else {
+      const preferredLanguage = await getPreferredLanguage();
       i18n.changeLanguage(preferredLanguage);
+      console.log('Using geo-detected language:', preferredLanguage);
     }
   } catch (error) {
     console.error('Failed to set initial language:', error);
+    // If all else fails, use English
+    i18n.changeLanguage('en');
   }
 })();
 
