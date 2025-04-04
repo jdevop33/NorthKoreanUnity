@@ -35,8 +35,11 @@ export default function LanguageSwitcher() {
   ];
 
   const handleLanguageChange = (languageCode: string) => {
+    console.log(`Changing language to: ${languageCode}`);
     i18n.changeLanguage(languageCode);
     localStorage.setItem('i18nextLng', languageCode);
+    // Force a re-render by setting a timestamp in localStorage
+    localStorage.setItem('languageTimestamp', Date.now().toString());
     setIsOpen(false);
   };
 

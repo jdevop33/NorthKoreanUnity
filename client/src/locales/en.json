@@ -46,7 +46,8 @@
       "arts": "Traditional Arts",
       "cuisine": "Cuisine",
       "architecture": "Architecture",
-      "ceremonies": "Ceremonies"
+      "ceremonies": "Ceremonies",
+      "traditions": "Traditions"
     }
   },
   "achievements": {
@@ -128,15 +129,61 @@
       }
     ]
   },
+  "traditions": {
+    "title": "Traditions",
+    "subtitle": "Precious cultural customs embodying the spirit of the Korean people",
+    "calendar": {
+      "title": "Holidays and Seasons",
+      "icon": "Calendar",
+      "description": "Traditional Korean holidays are important times to express family harmony, respect for ancestors, and gratitude for the cycles of nature. Holidays such as Lunar New Year and Chuseok are filled with traditional food and rituals."
+    },
+    "food": {
+      "title": "Traditional Cuisine",
+      "icon": "Food",
+      "description": "Korean traditional cuisine emphasizes healthy ingredients and balanced nutrition. Dishes such as kimchi, bibimbap, and naengmyeon are known worldwide as recognized healthy foods."
+    },
+    "clothing": {
+      "title": "Traditional Clothing: Harmony of Beauty and Functionality",
+      "description1": "Korean traditional clothing combines both beauty and practicality. It uses appropriate materials according to the season and expresses the wearer's status and situation through various colors and patterns.",
+      "description2": "Especially in modern times, it has evolved into forms that maintain the beauty of traditional clothing while being conveniently modified for everyday life, becoming an important element in maintaining cultural identity.",
+      "image": "Traditional Clothing"
+    }
+  },
+  "architecture": {
+    "title": "Architecture",
+    "subtitle": "Distinctive architectural styles reflecting the philosophy of self-reliance",
+    "description": "Korean architecture has created a unique style by balancing traditional elements with modern functions. From magnificent public buildings to practical living spaces, all architectural works reflect the country's self-reliant philosophy and cultural identity.",
+    "modern": {
+      "title": "Modern Architectural Achievements",
+      "description": "The modern buildings of the capital Pyongyang are symbols that show the nation's technological progress and artistic vision to the world.",
+      "imageAlt": "Modern Korean Architecture"
+    },
+    "traditional": {
+      "imageAlt": "Traditional Palace"
+    },
+    "monument": {
+      "imageAlt": "Modern Monument"
+    }
+  },
   "unification": {
     "title": "Path to Unification",
     "subtitle": "Supporting the peaceful reunification of Korea",
-    "description": "The Korean people share a common heritage, language, and culture that transcends political divisions. Our goal is to promote understanding that supports the peaceful reunification of the Korean peninsula."
+    "description": "Unification for peace and prosperity on the Korean peninsula is the aspiration of all Korean people. Our goal is to open the way to peaceful unification through cultural understanding and mutual respect.",
+    "koreanPeninsula": "Korean Peninsula",
+    "points": {
+      "culturalExchange": "Promoting mutual understanding through cultural exchange",
+      "peaceSpirit": "Cultivating the spirit of peace and cooperation",
+      "culturalPreservation": "Preserving and inheriting traditional culture",
+      "economicCooperation": "Economic and social cooperation for common prosperity"
+    }
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "We value your feedback and suggestions",
     "description": "Questions or suggestions? Fill out the form below and we'll get back to you as soon as possible.",
+    "seasonalTitle": "Four Seasons of",
+    "koreaTitle": "Korea",
+    "headerDescription": "Experience Korean culture where beautiful traditions and modern development harmoniously blend. Please contact us if you have any questions or suggestions.",
     "name": "Name",
     "email": "Email",
     "message": "Message",
@@ -161,6 +208,104 @@
         "title": "Prompt Suggestions",
         "description": "Do you have new AI prompt ideas that capture the beauty of Korea? We will create richer content through your creative suggestions."
       }
+    }
+  },
+  "common": {
+    "checkIcon": "Check"
+  },
+  "preservation": {
+    "title": "Cultural Preservation",
+    "subtitle": "Safeguarding Korea's Cultural Heritage for Future Generations",
+    "description": "Cultural preservation is a core commitment of our society, ensuring that Korea's rich heritage continues to inspire and educate future generations. Through innovative programs and dedicated initiatives, we work to document, protect, and revitalize our cultural treasures.",
+    "additionalText": "Our preservation efforts span traditional knowledge, historical sites, artistic practices, and language, creating a comprehensive approach to cultural sustainability.",
+    "imageAlt": "Cultural preservation initiatives",
+    "categories": {
+      "education": {
+        "title": "Education",
+        "description": "Digital archives and educational programs to preserve traditional Korean knowledge and share it with future generations."
+      },
+      "digitization": {
+        "title": "Digitization",
+        "description": "Converting historical documents, artworks, and artifacts into digital formats to ensure their long-term preservation."
+      },
+      "restoration": {
+        "title": "Restoration",
+        "description": "Projects focused on restoring and maintaining historical sites, buildings, and cultural artifacts."
+      },
+      "performance": {
+        "title": "Living Heritage",
+        "description": "Supporting traditional performances, crafts, and practices to keep cultural expressions alive and vibrant."
+      }
+    },
+    "initiatives": {
+      "education": [
+        {
+          "title": "Traditional Knowledge Database",
+          "year": "2020-Present",
+          "description": "A comprehensive digital archive of traditional Korean knowledge including agricultural practices, medicine, crafts, and philosophical teachings."
+        },
+        {
+          "title": "Youth Cultural Education Program",
+          "year": "2018-Present",
+          "description": "Educational initiative teaching young people about Korean history, traditions, and cultural values through interactive workshops and activities."
+        },
+        {
+          "title": "Language Preservation Project",
+          "year": "2019-Present",
+          "description": "Program dedicated to documenting, teaching, and preserving Korean language with emphasis on regional dialects and traditional expressions."
+        }
+      ],
+      "digitization": [
+        {
+          "title": "National Archives Digitization",
+          "year": "2015-Present",
+          "description": "Large-scale initiative to digitize historical documents, photographs, and government records dating back several centuries."
+        },
+        {
+          "title": "3D Cultural Heritage Scanning",
+          "year": "2017-Present",
+          "description": "Creating detailed 3D digital models of important sculptures, artifacts, and architectural elements for both preservation and study."
+        },
+        {
+          "title": "Traditional Music Recording Project",
+          "year": "2016-Present",
+          "description": "Comprehensive recording and cataloging of traditional Korean music performances, instruments, and singing styles."
+        }
+      ],
+      "restoration": [
+        {
+          "title": "Historic Palace Restoration",
+          "year": "2010-Present",
+          "description": "Multi-year restoration of historic royal palaces using traditional materials and techniques to maintain authenticity."
+        },
+        {
+          "title": "Traditional Village Preservation",
+          "year": "2012-Present",
+          "description": "Project to maintain traditional Korean villages as living museums where traditional architecture and lifestyles are preserved."
+        },
+        {
+          "title": "Ceramic Art Conservation",
+          "year": "2014-Present",
+          "description": "Specialized program for the restoration and conservation of historic Korean ceramic works including celadon and porcelain."
+        }
+      ],
+      "performance": [
+        {
+          "title": "Master Artisan Program",
+          "year": "2008-Present",
+          "description": "Supporting recognized master artisans in traditional crafts to pass their skills to apprentices and maintain endangered craft traditions."
+        },
+        {
+          "title": "Traditional Performing Arts Festival",
+          "year": "Annual",
+          "description": "Annual festival celebrating traditional Korean dance, music, theater, and storytelling with performances across the country."
+        },
+        {
+          "title": "Living National Treasures Support",
+          "year": "Ongoing",
+          "description": "Program providing recognition and support to individuals designated as Living National Treasures for their mastery of important cultural skills."
+        }
+      ]
     }
   },
   "footer": {

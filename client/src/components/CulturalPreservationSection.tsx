@@ -109,29 +109,23 @@ export default function CulturalPreservationSection() {
   return (
     <section id="cultural-preservation" className="mb-16 pt-8">
       <div className="section-title">
-        <h2>{t('preservation.title', { defaultValue: 'Cultural Preservation' })}</h2>
-        <p>{t('preservation.subtitle', { defaultValue: 'Safeguarding Korea\'s Cultural Heritage for Future Generations' })}</p>
+        <h2>{t('preservation.title', '문화 보존')}</h2>
+        <p>{t('preservation.subtitle', '미래 세대를 위한 조선의 문화유산 보호')}</p>
       </div>
       
       <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
         <div className="md:w-1/2">
           <p className="leading-relaxed mb-4 text-text-primary">
-            {t('preservation.description', { 
-              defaultValue: 'Cultural preservation is a core commitment of our society, ensuring that Korea\'s rich heritage continues to inspire and educate future generations. Through innovative programs and dedicated initiatives, we work to document, protect, and revitalize our cultural treasures.'
-            })}
+            {t('preservation.description', '문화 보존은 우리 사회의 핵심 약속으로, 조선의 풍부한 유산이 미래 세대에게 영감을 주고 교육을 계속할 수 있도록 합니다. 혁신적인 프로그램과 헌신적인 이니셔티브를 통해 우리는 문화적 보물을 기록, 보호 및 활성화하기 위해 노력합니다.')}
           </p>
           <p className="leading-relaxed text-text-primary">
-            {t('preservation.additionalText', {
-              defaultValue: 'Our preservation efforts span traditional knowledge, historical sites, artistic practices, and language, creating a comprehensive approach to cultural sustainability.'
-            })}
+            {t('preservation.additionalText', '우리의 보존 노력은 전통 지식, 역사적 장소, 예술적 관행 및 언어를 포괄하여 문화적 지속가능성에 대한 종합적인 접근 방식을 만듭니다.')}
           </p>
         </div>
         <div className="md:w-1/2">
           <img 
             src={promptTemplateIllustration} 
-            alt={t('preservation.imageAlt', { 
-              defaultValue: 'Cultural preservation initiatives' 
-            })} 
+            alt={t('preservation.imageAlt', '문화 보존 이니셔티브')} 
             className="rounded-lg shadow-md w-full"
           />
         </div>
@@ -149,23 +143,21 @@ export default function CulturalPreservationSection() {
                 : 'bg-gray-200 text-text-primary hover:bg-gray-300'}`}
           >
             <span className="mr-2">{category.icon}</span>
-            {t(`preservation.categories.${category.id}.title`, {
-              defaultValue: category.title
-            })}
+            {t(`preservation.categories.${category.id}.title`, category.title)}
           </button>
         ))}
       </div>
       
       <div className="bg-white p-6 rounded-lg shadow-md mb-8">
         <h3 className="text-2xl font-serif-kr font-bold mb-3 text-primary-red">
-          {t(`preservation.categories.${activeCategory}.title`, {
-            defaultValue: preservationCategories.find(c => c.id === activeCategory)?.title || 'Category'
-          })}
+          {t(`preservation.categories.${activeCategory}.title`, 
+            preservationCategories.find(c => c.id === activeCategory)?.title || 'Category'
+          )}
         </h3>
         <p className="text-text-primary mb-6">
-          {t(`preservation.categories.${activeCategory}.description`, {
-            defaultValue: preservationCategories.find(c => c.id === activeCategory)?.description || 'Description'
-          })}
+          {t(`preservation.categories.${activeCategory}.description`, 
+            preservationCategories.find(c => c.id === activeCategory)?.description || 'Description'
+          )}
         </p>
       </div>
       
@@ -175,20 +167,14 @@ export default function CulturalPreservationSection() {
             <div className="card-content">
               <div className="mb-3">
                 <h3 className="font-serif-kr text-xl font-medium text-primary-blue">
-                  {t(`preservation.initiatives.${activeCategory}.${index}.title`, {
-                    defaultValue: initiative.title
-                  })}
+                  {t(`preservation.initiatives.${activeCategory}.${index}.title`, initiative.title)}
                 </h3>
                 <span className="inline-block px-3 py-1 bg-gray-200 text-xs font-medium rounded-full text-text-secondary mt-2">
-                  {t(`preservation.initiatives.${activeCategory}.${index}.year`, {
-                    defaultValue: initiative.year
-                  })}
+                  {t(`preservation.initiatives.${activeCategory}.${index}.year`, initiative.year)}
                 </span>
               </div>
               <p className="text-text-primary">
-                {t(`preservation.initiatives.${activeCategory}.${index}.description`, {
-                  defaultValue: initiative.description
-                })}
+                {t(`preservation.initiatives.${activeCategory}.${index}.description`, initiative.description)}
               </p>
             </div>
           </div>

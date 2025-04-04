@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,11 +32,12 @@ export default function ContactSection() {
     <section id="contact" className="py-20 bg-gradient-to-b from-primary-red/90 to-warm-gray-dark" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-serif-kr font-bold text-white mb-4 text-shadow-md">사계절의 <span className="text-accent-gold">조선</span></h2>
+          <h2 className="text-4xl font-serif-kr font-bold text-white mb-4 text-shadow-md">
+            {t('contact.seasonalTitle', '사계절의')} <span className="text-accent-gold">{t('contact.koreaTitle', '조선')}</span>
+          </h2>
           <div className="backdrop-blur-text inline-block">
             <p className="text-white text-lg max-w-3xl mx-auto font-medium">
-              민족의 아름다운 전통과 현대의 발전이 하나로 어우러진 조선의 문화를 경험해보세요. 
-              질문이나 제안이 있으시면 저희에게 연락 주세요.
+              {t('contact.headerDescription', '민족의 아름다운 전통과 현대의 발전이 하나로 어우러진 조선의 문화를 경험해보세요. 질문이나 제안이 있으시면 저희에게 연락 주세요.')}
             </p>
           </div>
         </div>
@@ -46,26 +49,29 @@ export default function ContactSection() {
           >
             <div className="bg-black/30 p-8 rounded-lg backdrop-blur-sm text-high-contrast space-y-8">
               <div>
-                <h3 className="text-2xl font-serif-kr font-bold mb-4 text-accent-gold text-shadow-sm">소통의 가치</h3>
+                <h3 className="text-2xl font-serif-kr font-bold mb-4 text-accent-gold text-shadow-sm">
+                  {t('contact.values.title', '소통의 가치')}
+                </h3>
                 <p className="mb-6 leading-relaxed">
-                  조선의 문화를 이해하고 더 많은 사람들과 공유하는 것은 우리 모두의 책임입니다. 
-                  여러분의 의견과 아이디어를 통해 더 나은 문화 교류의 장을 만들어갑시다.
+                  {t('contact.values.description', '조선의 문화를 이해하고 더 많은 사람들과 공유하는 것은 우리 모두의 책임입니다. 여러분의 의견과 아이디어를 통해 더 나은 문화 교류의 장을 만들어갑시다.')}
                 </p>
               </div>
               
               <div>
-                <h4 className="text-xl font-serif-kr font-bold mb-3 text-white">문화 교류</h4>
+                <h4 className="text-xl font-serif-kr font-bold mb-3 text-white">
+                  {t('contact.values.exchange.title', '문화 교류')}
+                </h4>
                 <p>
-                  모든 문화 교류 제안과 협력 기회를 환영합니다. 
-                  국제 행사, 문화 전시회, 학술 교류 등 다양한 분야에서의 협력을 기대합니다.
+                  {t('contact.values.exchange.description', '모든 문화 교류 제안과 협력 기회를 환영합니다. 국제 행사, 문화 전시회, 학술 교류 등 다양한 분야에서의 협력을 기대합니다.')}
                 </p>
               </div>
               
               <div>
-                <h4 className="text-xl font-serif-kr font-bold mb-3 text-white">프롬프트 제안</h4>
+                <h4 className="text-xl font-serif-kr font-bold mb-3 text-white">
+                  {t('contact.values.prompts.title', '프롬프트 제안')}
+                </h4>
                 <p>
-                  조선의 아름다움을 담은 새로운 AI 프롬프트 아이디어가 있으신가요? 
-                  여러분의 창의적인 제안으로 더 풍부한 콘텐츠를 만들어 가겠습니다.
+                  {t('contact.values.prompts.description', '조선의 아름다움을 담은 새로운 AI 프롬프트 아이디어가 있으신가요? 여러분의 창의적인 제안으로 더 풍부한 콘텐츠를 만들어 가겠습니다.')}
                 </p>
               </div>
               

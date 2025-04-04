@@ -33,7 +33,7 @@ i18n
   .use(initReactI18next)
   .init({
     detection: {
-      order: ['querystring', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+      order: ['localStorage', 'querystring', 'navigator', 'htmlTag', 'path', 'subdomain'],
       lookupQuerystring: 'lng',
       lookupLocalStorage: 'i18nextLng',
       lookupFromPathIndex: 0,
@@ -47,6 +47,7 @@ i18n
       ru: { translation: ruTranslation },
     },
     fallbackLng: 'en',
+    debug: true, // Add debug mode to see what's happening
     interpolation: {
       escapeValue: false, // React already escapes values
     },
