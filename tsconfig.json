@@ -9,10 +9,10 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler", // Changed from "node" to "bundler" for modern TS/Next.js
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve", // Keep JSX as preserve for Next.js
+    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
@@ -21,19 +21,30 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/src/*"], // Will likely need adjustment for new structure
-      "@shared/*": ["./shared/*"] // Will likely need adjustment
+      "@/*": ["./*"], 
+      "@/components/*": ["./components/*"], // Alias for new components directory
+      "@/lib/*": ["./client/src/lib/*"], // Temporary alias for lib during migration
+      "@/hooks/*": ["./client/src/hooks/*"], // Temporary alias for hooks during migration
+      "@/assets/*": ["./client/src/assets/*"], // Temporary alias for assets during migration
+      "@/locales/*": ["./client/src/locales/*"], // Temporary alias for locales during migration
+      "@shared/*": ["./shared/*"] 
     }
   },
   "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
-    "**/*.tsx", 
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
     ".next/types/**/*.ts",
-    // Keep existing includes for now, adjust later
-    "client/src/**/*", 
-    "shared/**/*", 
-    "server/**/*" 
+    "app/**/*", 
+    "components/**/*", // Include the new components directory
+    "client/src/**/*", // Keep for lib, hooks, assets etc. for now
+    "shared/**/*"      
   ],
-  "exclude": ["node_modules", "dist", ".next", "out"]
+  "exclude": [
+    "node_modules", 
+    "dist", 
+    ".next", 
+    "out"
+  ]
 }
