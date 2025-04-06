@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+// Removed unused LanguageDetector import
+// import LanguageDetector from 'i18next-browser-languagedetector'; 
 
 // Define language resource files
 import enTranslation from '../locales/en.json';
