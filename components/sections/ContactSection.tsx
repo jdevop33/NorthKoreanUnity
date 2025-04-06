@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { ContactForm } from '@/components/features/ContactForm';
 
 export function ContactSection() {
@@ -23,7 +22,7 @@ export function ContactSection() {
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-3 text-primary-red">Our Mission</h3>
                 <p className="text-text-secondary mb-4">
-                  We're dedicated to preserving and sharing the rich cultural heritage of North Korea. 
+                  We&apos;re dedicated to preserving and sharing the rich cultural heritage of North Korea. 
                   Your interest and support help us document and protect these valuable traditions for future generations.
                 </p>
                 <p className="text-text-secondary">
@@ -60,7 +59,7 @@ export function ContactSection() {
                   <form 
                     action="https://public.herotofu.com/v1/cb3ceee0-1058-11f0-8dc2-010227905b4a" 
                     method="post" 
-                    accept-charset="UTF-8"
+                    acceptCharset="UTF-8"
                     className="space-y-3"
                   >
                     <div>

@@ -88,7 +88,8 @@ function Calendar({
             return (
               <Select
                 value={value?.toString()}
-                onValueChange={(newValue) => {
+                // Add type string for newValue
+                onValueChange={(newValue: string) => {
                   const event = { target: { value: newValue } } as React.ChangeEvent<HTMLSelectElement>; 
                   onChange?.(event);
                 }}
@@ -117,7 +118,8 @@ function Calendar({
             return (
               <Select
                 value={value?.toString()}
-                onValueChange={(newValue) => {
+                // Add type string for newValue
+                onValueChange={(newValue: string) => {
                    const event = { target: { value: newValue } } as React.ChangeEvent<HTMLSelectElement>; 
                   onChange?.(event);
                 }}

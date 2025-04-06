@@ -7,9 +7,6 @@ const nextConfig = {
     // React Compiler for automatic optimizations
     reactCompiler: true,
     
-    // Partial Prerendering for better performance
-    ppr: true,
-    
     // Optimized image processing
     optimizePackageImports: [
       'lucide-react',

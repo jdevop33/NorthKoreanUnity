@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { z } from 'zod';
-import { useForm } from 'react-hook-form';
+// Import ControllerRenderProps for explicit typing
+import { useForm, ControllerRenderProps, FieldValues } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2, Loader2 } from 'lucide-react'; 
 
@@ -112,7 +113,7 @@ export function ContactForm() {
         </p>
         <Button 
           onClick={() => setFormSubmitted(false)}
-          variant="outline"
+          variant="outline" // Assuming 'outline' is a valid variant defined in buttonVariants
           className="py-3 px-8"
         >
           Send Another Message
@@ -138,7 +139,8 @@ export function ContactForm() {
           <FormField
             control={form.control}
             name="name"
-            render={({ field }) => (
+            // Add explicit type for the 'field' parameter
+            render={({ field }: { field: ControllerRenderProps<ContactFormValues, 'name'> }) => (
               <FormItem>
                 <FormLabel className="text-lg font-medium text-warm-gray-dark">
                   Name <span className="text-primary-red">*</span>
@@ -147,7 +149,6 @@ export function ContactForm() {
                   <Input 
                     placeholder="Your Name" 
                     {...field} 
-                    name="name"
                     className="py-3"
                   />
                 </FormControl>
@@ -158,7 +159,8 @@ export function ContactForm() {
           <FormField
             control={form.control}
             name="email"
-            render={({ field }) => (
+            // Add explicit type for the 'field' parameter
+            render={({ field }: { field: ControllerRenderProps<ContactFormValues, 'email'> }) => (
               <FormItem>
                 <FormLabel className="text-lg font-medium text-warm-gray-dark">
                   Email <span className="text-primary-red">*</span>
@@ -166,7 +168,6 @@ export function ContactForm() {
                 <FormControl>
                   <Input 
                     type="email" 
-                    name="email"
                     placeholder="your.email@example.com"
                     {...field} 
                     className="py-3"
@@ -179,7 +180,8 @@ export function ContactForm() {
           <FormField
             control={form.control}
             name="message"
-            render={({ field }) => (
+            // Add explicit type for the 'field' parameter
+            render={({ field }: { field: ControllerRenderProps<ContactFormValues, 'message'> }) => (
               <FormItem>
                 <FormLabel className="text-lg font-medium text-warm-gray-dark">
                   Message <span className="text-primary-red">*</span>
@@ -187,7 +189,6 @@ export function ContactForm() {
                 <FormControl>
                   <Textarea 
                     rows={5} 
-                    name="message"
                     placeholder="Your message here..." 
                     {...field} 
                   />
@@ -210,7 +211,7 @@ export function ContactForm() {
               <form 
                 action={FORM_ENDPOINT}
                 method="post" 
-                accept-charset="UTF-8"
+                acceptCharset="UTF-8"
                 className="mt-4"
               >
                 <Input name="name" placeholder="Your Name" required className="mb-2" />
@@ -224,7 +225,7 @@ export function ContactForm() {
           <div className="mt-8 flex justify-center">
             <Button
               type="submit"
-              size="lg"
+              size="lg" // Assuming 'lg' is a valid size defined in buttonVariants
               className="bg-primary-red hover:bg-red-700 text-white py-4 px-10 text-lg font-bold transition-all hover:scale-105 shadow-lg"
               disabled={isSubmitting}
             >
