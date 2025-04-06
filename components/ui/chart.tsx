@@ -1,5 +1,9 @@
 import * as React from "react"
+// Import specific types from recharts
 import * as RechartsPrimitive from "recharts"
+import { Payload } from "recharts/types/component/DefaultLegendContent"; // Type for legend payload items
+// Remove incorrect TooltipPayload import, use TooltipProps generics
+import { TooltipProps } from "recharts/types/component/Tooltip"; 
 
 import { cn } from "@/lib/utils"
 
@@ -106,9 +110,14 @@ ${cssRules}
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
+// Use types from recharts for Tooltip content props
+// Define ValueType and NameType generics for TooltipProps
+type ValueType = number | string | (number | string)[]; 
+type NameType = number | string;
+
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+  TooltipProps<ValueType, NameType> & // Use TooltipProps with appropriate value/name types
     React.ComponentProps<"div"> & {
       hideLabel?: boolean
       hideIndicator?: boolean
@@ -120,7 +129,7 @@ const ChartTooltipContent = React.forwardRef<
   (
     {
       active,
-      payload,
+      payload, // This will be typed by TooltipProps as Payload<ValueType, NameType>[] | undefined
       className,
       indicator = "dot",
       hideLabel = false,
@@ -142,7 +151,9 @@ const ChartTooltipContent = React.forwardRef<
         return null
       }
 
-      const [item] = payload
+      // payload item is now typed as Payload<ValueType, NameType>
+      const item = payload[0];
+      // Use type assertion or check for properties if needed, as item structure can vary
       const key = `${labelKey || item.dataKey || item.name || "value"}`
       const itemConfig = getPayloadConfigFromPayload(config, item, key)
       const value =
@@ -153,6 +164,7 @@ const ChartTooltipContent = React.forwardRef<
       if (labelFormatter) {
         return (
           <div className={cn("font-medium", labelClassName)}>
+            {/* labelFormatter might receive typed payload now */}
             {labelFormatter(value, payload)}
           </div>
         )
@@ -189,20 +201,24 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {/* Add types for item and index */} 
-          {payload.map((item: any, index: number) => {
+          {/* item is now properly typed from payload */} 
+          {payload.map((item, index: number) => { 
+            // item type is Payload<ValueType, NameType> from recharts
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            const indicatorColor = color || item.payload.fill || item.color
+            // Access item.payload for underlying data if needed, carefully check types
+            const indicatorColor = color || (item.payload as any)?.fill || item.color
 
             return (
               <div
-                key={item.dataKey}
+                // Use item.name or item.dataKey which should be unique 
+                key={item.dataKey || item.name || index} 
                 className={cn(
                   "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
                   indicator === "dot" && "items-center"
                 )}
               >
+                {/* formatter might receive typed item/payload now */} 
                 {formatter && item?.value !== undefined && item.name ? (
                   formatter(item.value, item.name, item, index, item.payload)
                 ) : (
@@ -238,9 +254,10 @@ const ChartTooltipContent = React.forwardRef<
                           {itemConfig?.label || item.name}
                         </span>
                       </div>
-                      {item.value && (
+                      {item.value !== undefined && item.value !== null && (
                         <span className="font-mono font-medium tabular-nums text-foreground">
-                          {item.value.toLocaleString()}
+                          {/* Ensure value is displayable */}
+                          {typeof item.value === 'number' || typeof item.value === 'string' ? item.value.toLocaleString() : ''}
                         </span>
                       )}
                     </div>
@@ -258,6 +275,7 @@ ChartTooltipContent.displayName = "ChartTooltipContent"
 
 const ChartLegend = RechartsPrimitive.Legend
 
+// Use Payload type from recharts 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
@@ -272,6 +290,7 @@ const ChartLegendContent = React.forwardRef<
   ) => {
     const { config } = useChart()
 
+    // payload type is now Payload[] | undefined from LegendProps
     if (!payload?.length) {
       return null
     }
@@ -285,13 +304,15 @@ const ChartLegendContent = React.forwardRef<
           className
         )}
       >
-        {/* Add type for item */} 
-        {payload.map((item: any) => {
-          const key = `${nameKey || item.dataKey || "value"}`
+        {/* Use Payload type for item */} 
+        {payload.map((item: Payload) => {
+          // item.value should contain the dataKey here according to Recharts Payload type
+          const key = `${nameKey || item.value || "value"}` 
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
           return (
             <div
+              // Use item.value (dataKey) for the key 
               key={item.value}
               className={cn(
                 "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
@@ -303,11 +324,12 @@ const ChartLegendContent = React.forwardRef<
                 <div
                   className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
+                    // Use item.color which should be provided by Recharts Payload type
                     backgroundColor: item.color,
                   }}
                 />
               )}
-              {itemConfig?.label}
+              {itemConfig?.label || item.value} {/* Display item.value (dataKey) if no label */} 
             </div>
           )
         })}
@@ -318,39 +340,55 @@ const ChartLegendContent = React.forwardRef<
 ChartLegendContent.displayName = "ChartLegend"
 
 // Helper to extract item config from a payload.
+// Use a union type for the payload parameter.
+// Define the specific recharts payload type for tooltips
+type TooltipItemPayload = NonNullable<TooltipProps<ValueType, NameType>['payload']>[number];
+type PossiblePayloadItem = Payload | TooltipItemPayload;
+
 function getPayloadConfigFromPayload(
   config: ChartConfig,
-  payload: unknown,
+  payload: PossiblePayloadItem,
   key: string
 ) {
+  // Keep the implementation logic as it needs to check for various properties
+  // that might exist on either type in the union.
   if (typeof payload !== "object" || payload === null) {
     return undefined
   }
 
+  // For tooltip payload, the actual data might be in payload.payload
+  // Use type assertion or check if 'payload' property exists
   const payloadPayload =
-    "payload" in payload &&
+    'payload' in payload &&
+    payload.payload &&
     typeof payload.payload === "object" &&
     payload.payload !== null
       ? payload.payload
       : undefined
 
-  let configLabelKey: string = key
+  let configLabelKey: string = key;
 
-  if (
-    key in payload &&
-    typeof payload[key as keyof typeof payload] === "string"
-  ) {
-    configLabelKey = payload[key as keyof typeof payload] as string
-  } else if (
-    payloadPayload &&
-    key in payloadPayload &&
-    typeof payloadPayload[key as keyof typeof payloadPayload] === "string"
-  ) {
-    configLabelKey = payloadPayload[
-      key as keyof typeof payloadPayload
-    ] as string
+  // Check payload itself (common for legend: item.value is the key)
+  if ('value' in payload && payload.value === key) {
+      configLabelKey = key;
+  }
+  // Check tooltip item's direct properties (name or dataKey)
+  else if ('name' in payload && payload.name === key) {
+     configLabelKey = key;
+  }
+  else if ('dataKey' in payload && payload.dataKey === key) {
+     configLabelKey = key;
+  } 
+  // Check inside payload.payload (common in tooltips for underlying data)
+  else if (payloadPayload && key in payloadPayload && typeof payloadPayload[key as keyof typeof payloadPayload] === "string") {
+    configLabelKey = payloadPayload[key as keyof typeof payloadPayload] as string;
+  }
+  // Fallback check for string value on payload (less common)
+  else if (key in payload && typeof payload[key as keyof typeof payload] === "string") {
+      configLabelKey = payload[key as keyof typeof payload] as string;
   }
 
+  // Return config based on derived key or original key
   return configLabelKey in config
     ? config[configLabelKey]
     : config[key as keyof typeof config]
