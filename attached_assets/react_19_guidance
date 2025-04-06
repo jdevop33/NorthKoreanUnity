@@ -1,0 +1,879 @@
+Docs
+Next.js 15 + React 19
+Next.js 15 + React 19
+Using shadcn/ui with Next.js 15 and React 19.
+
+Update: We have added full support for React 19 and Tailwind v4 in the canary release. See the docs for Tailwind v4 for more information.
+
+The following guide applies to any framework that supports React 19. I titled this page "Next.js 15 + React 19" to help people upgrading to Next.js 15 find it. We are working with package maintainers to help upgrade to React 19.
+
+TL;DR
+If you're using npm, you can install shadcn/ui dependencies with a flag. The shadcn CLI will prompt you to select a flag when you run it. No flags required for pnpm, bun, or yarn.
+
+See Upgrade Status for the status of React 19 support for each package.
+
+What's happening?
+React 19 is now rc and is tested and supported in the latest Next.js 15 release.
+
+To support React 19, package maintainers will need to test and update their packages to include React 19 as a peer dependency. This is already in progress.
+
+"peerDependencies": {
+-  "react": "^16.8 || ^17.0 || ^18.0",
++  "react": "^16.8 || ^17.0 || ^18.0 || ^19.0",
+-  "react-dom": "^16.8 || ^17.0 || ^18.0"
++  "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0"
+},
+Copy
+You can check if a package lists React 19 as a peer dependency by running npm info <package> peerDependencies.
+
+In the meantime, if you are installing a package that does not list React 19 as a peer dependency, you will see an error message like this:
+
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error
+npm error While resolving: my-app@0.1.0
+npm error Found: react@19.0.0-rc-69d4b800-20241021
+npm error node_modules/react
+npm error   react@"19.0.0-rc-69d4b800-20241021" from the root project
+Copy
+Note: This is npm only. PNPM and Bun will only show a silent warning.
+
+How to fix this
+Solution 1: --force or --legacy-peer-deps
+You can force install a package with the --force or the --legacy-peer-deps flag.
+
+npm i <package> --force
+ 
+npm i <package> --legacy-peer-deps
+Copy
+This will install the package and ignore the peer dependency warnings.
+
+
+What do the --force and --legacy-peer-deps flag do?
+
+Solution 2: Use React 18
+You can downgrade react and react-dom to version 18, which is compatible with the package you are installing and upgrade when the dependency is updated.
+
+npm i react@18 react-dom@18
+Copy
+Whichever solution you choose, make sure you test your app thoroughly to ensure there are no regressions.
+
+Using shadcn/ui on Next.js 15
+Using pnpm, bun, or yarn
+Follow the instructions in the installation guide to install shadcn/ui. No flags are needed.
+
+Using npm
+When you run npx shadcn@latest init -d, you will be prompted to select an option to resolve the peer dependency issues.
+
+It looks like you are using React 19.
+Some packages may fail to install due to peer dependency issues (see https://ui.shadcn.com/react-19).
+ 
+? How would you like to proceed? › - Use arrow-keys. Return to submit.
+❯   Use --force
+    Use --legacy-peer-deps
+Copy
+You can then run the command with the flag you choose.
+
+Adding components
+The process for adding components is the same as above. Select a flag to resolve the peer dependency issues.
+
+Remember to always test your app after installing new dependencies.
+
+Upgrade Status
+To make it easy for you track the progress of the upgrade, I've created a table below with React 19 support status for the shadcn/ui dependencies.
+
+✅ - Works with React 19 using npm, pnpm, and bun.
+🚧 - Works with React 19 using pnpm and bun. Requires flag for npm. PR is in progress.
+Package	Status	Note
+radix-ui	✅	
+lucide-react	✅	
+class-variance-authority	✅	Does not list React 19 as a peer dependency.
+tailwindcss-animate	✅	Does not list React 19 as a peer dependency.
+embla-carousel-react	✅	
+recharts	✅	See note below
+react-hook-form	✅	
+react-resizable-panels	✅	
+sonner	✅	
+react-day-picker	✅	Works with flag for npm. Work to upgrade to v9 in progress.
+input-otp	✅	
+vaul	✅	
+@radix-ui/react-icons	🚧	See PR #194
+cmdk	✅	
+If you have any questions, please open an issue on GitHub.
+
+Recharts
+To use recharts with React 19, you will need to override the react-is dependency.
+
+Add the following to your package.json
+package.json
+"overrides": {
+  "react-is": "^19.0.0-rc-69d4b800-20241021"
+}
+Copy
+Note: the react-is version needs to match the version of React 19 you are using. The above is an example.
+
+Run npm install --legacy-peer-deps
+
+Docs
+Next.js
+Next.js
+Install and configure shadcn/ui for Next.js.
+
+Note: The following guide is for Tailwind v4. If you are using Tailwind v3, use shadcn@2.3.0.
+
+Create project
+Run the init command to create a new Next.js project or to setup an existing one:
+
+pnpm
+npm
+yarn
+bun
+pnpm dlx shadcn@latest init
+Copy
+Choose between a Next.js project or a Monorepo.
+
+Add Components
+You can now start adding components to your project.
+
+pnpm
+npm
+yarn
+bun
+pnpm dlx shadcn@latest add button
+Copy
+The command above will add the Button component to your project. You can then import it like this:
+
+import { Button } from "@/components/ui/button"
+ 
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+
+
+Thursday, May 23rd 2024
+
+Next.js 15 RC
+Posted by
+Delba de Oliveira
+Delba de Oliveira
+@delba_oliveira
+Zack Tanner
+Zack Tanner
+@zt1072
+The Next.js 15 Release Candidate (RC) is now available. This early version allows you to test the latest features before the upcoming stable release.
+
+React: Support for the React 19 RC, React Compiler (Experimental), and hydration error improvements
+Caching: fetch requests, GET Route Handlers, and client navigations are no longer cached by default
+Partial Prerendering (Experimental): New Layout and Page config option for incremental adoption
+next/after (Experimental): New API to execute code after a response has finished streaming
+create-next-app: Updated design and a new flag to enable Turbopack in local development
+Bundling external packages (Stable): New config options for App and Pages Router
+Try the Next.js 15 RC today:
+
+Terminal
+
+npm install next@rc react@rc react-dom@rc
+React 19 RC
+The Next.js App Router is built on the React canary channel for frameworks, which has allowed developers to use and provide feedback on these new React APIs before the v19 release.
+
+Next.js 15 RC now supports React 19 RC, which includes new features for both the client and server like Actions.
+
+Read the Next.js 15 upgrade guide, the React 19 upgrade guide, and watch the React Conf Keynote to learn more.
+
+Note: Some third party libraries may not be compatible with React 19 yet.
+
+React Compiler (Experimental)
+The React Compiler is a new experimental compiler created by the React team at Meta. The compiler understands your code at a deep level through its understanding of plain JavaScript semantics and the Rules of React, which allows it to add automatic optimizations to your code. The compiler reduces the amount of manual memoization developers have to do through APIs such as useMemo and useCallback - making code simpler, easier to maintain, and less error prone.
+
+With Next.js 15, we've added support for the React Compiler.
+
+Install babel-plugin-react-compiler:
+
+Terminal
+
+npm install babel-plugin-react-compiler
+Then, add experimental.reactCompiler option in next.config.js:
+
+next.config.ts
+
+const nextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
+};
+ 
+module.exports = nextConfig;
+Optionally, you can configure the compiler to run in "opt-in" mode as follows:
+
+next.config.ts
+
+const nextConfig = {
+  experimental: {
+    reactCompiler: {
+      compilationMode: 'annotation',
+    },
+  },
+};
+ 
+module.exports = nextConfig;
+Note: The React Compiler is currently only possible to use in Next.js through a Babel plugin, which could result in slower build times.
+
+Learn more about the React Compiler, and the available Next.js config options.
+
+Hydration error improvements
+Next.js 14.1 made improvements to error messages and hydration errors. Next.js 15 continues to build on those by adding an improved hydration error view. Hydration errors now display the source code of the error with suggestions on how to address the issue.
+
+For example, this was a previous hydration error message in Next.js 14.1:
+
+Hydration error message in Next.js 14.1
+Next.js 15 RC has improved this to:
+
+Hydration error message improved in Next.js 15 RC
+Caching updates
+Next.js App Router launched with opinionated caching defaults. These were designed to provide the most performant option by default with the ability to opt out when required.
+
+Based on your feedback, we re-evaluated our caching heuristics and how they would interact with projects like Partial Prerendering (PPR) and with third party libraries using fetch.
+
+With Next.js 15, we’re changing the caching default for fetch requests, GET Route Handlers, and Client Router Cache from cached by default to uncached by default. If you want to retain the previous behavior, you can continue to opt-into caching.
+
+We're continuing to improve caching in Next.js in the coming months and we'll share more details in the Next.js 15 GA announcement.
+
+fetch Requests are no longer cached by default
+Next.js uses the Web fetch API cache option to configure how a server-side fetch request interacts with the framework's persistent HTTP cache:
+
+
+fetch('https://...', { cache: 'force-cache' | 'no-store' });
+no-store - fetch a resource from a remote server on every request and do not update the cache
+force-cache - fetch a resource from the cache (if it exists) or a remote server and update the cache
+In Next.js 14, force-cache was used by default if a cache option was not provided, unless a dynamic function or dynamic config option was used.
+
+In Next.js 15, no-store is used by default if a cache option is not provided. This means fetch requests will not be cached by default.
+
+You can still opt into caching fetch requests by:
+
+Setting the cache option to force-cache in a single fetch call
+Setting the dynamic route config option to 'force-static' for a single route
+Setting the fetchCache route config option to 'default-cache' to override all fetch requests in a Layout or Page to use force-cache unless they explicitly specify their own cache option
+GET Route Handlers are no longer cached by default
+In Next 14, Route Handlers that used the GET HTTP method were cached by default unless they used a dynamic function or dynamic config option. In Next.js 15, GET functions are not cached by default.
+
+You can still opt into caching using a static route config option such as export dynamic = 'force-static'.
+
+Special Route Handlers like sitemap.ts, opengraph-image.tsx, and icon.tsx, and other metadata files remain static by default unless they use dynamic functions or dynamic config options.
+
+Client Router Cache no longer caches Page components by default
+In Next.js 14.2.0, we introduced an experimental staleTimes flag to allow custom configuration of the Router Cache.
+
+In Next.js 15, this flag still remains accessible, but we are changing the default behavior to have a staleTime of 0 for Page segments. This means that as you navigate around your app, the client will always reflect the latest data from the Page component(s) that become active as part of the navigation. However, there are still important behaviors that remain unchanged:
+
+Shared layout data won't be refetched from the server to continue to support partial rendering.
+Back/forward navigation will still restore from cache to ensure the browser can restore scroll position.
+Loading.js will remain cached for 5 minutes (or the value of the staleTimes.static configuration).
+You can opt into the previous Client Router Cache behavior by setting the following configuration:
+
+next.config.ts
+
+const nextConfig = {
+  experimental: {
+    staleTimes: {
+      dynamic: 30,
+    },
+  },
+};
+ 
+module.exports = nextConfig;
+Incremental adoption of Partial Prerendering (Experimental)
+In Next.js 14, we introduced Partial Prerendering (PPR) - an optimization that combines static and dynamic rendering on the same page.
+
+Next.js currently defaults to static rendering unless you use dynamic functions such as cookies(), headers(), and uncached data requests. These APIs opt an entire route into dynamic rendering. With PPR, you can wrap any dynamic UI in a Suspense boundary. When a new request comes in, Next.js will immediately serve a static HTML shell, then render and stream the dynamic parts in the same HTTP request.
+
+To allow for incremental adoption, we’ve added an experimental_ppr route config option for opting specific Layouts and Pages into PPR:
+
+app/page.jsx
+
+import { Suspense } from "react"
+import { StaticComponent, DynamicComponent } from "@/app/ui"
+ 
+export const experimental_ppr = true
+ 
+export default function Page() {
+  return {
+     <>
+	     <StaticComponent />
+	     <Suspense fallback={...}>
+		     <DynamicComponent />
+	     </Suspense>
+     </>
+  };
+}
+To use the new option, you’ll need to set the experimental.ppr config in your next.config.js file to 'incremental':
+
+next.config.ts
+
+const nextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+};
+ 
+module.exports = nextConfig;
+Once all the segments have PPR enabled, it’ll be considered safe for you to set the ppr value to true, and enable it for the entire app and all future routes.
+
+We will share more about our PPR roadmap in our Next.js 15 GA blog post.
+
+Learn more about Partial Prerendering.
+
+Executing code after a response with next/after (Experimental)
+When processing a user request, the server typically performs tasks directly related to computing the response. However, you may need to perform tasks such as logging, analytics, and other external system synchronization.
+
+Since these tasks are not directly related to the response, the user should not have to wait for them to complete. Deferring the work after responding to the user poses a challenge because serverless functions stop computation immediately after the response is closed.
+
+after() is a new experimental API that solves this problem by allowing you to schedule work to be processed after the response has finished streaming, enabling secondary tasks to run without blocking the primary response.
+
+To use it, add experimental.after to next.config.js:
+
+next.config.ts
+
+const nextConfig = {
+  experimental: {
+    after: true,
+  },
+};
+ 
+module.exports = nextConfig;
+Then, import the function in Server Components, Server Actions, Route Handlers, or Middleware.
+
+
+import { unstable_after as after } from 'next/server';
+import { log } from '@/app/utils';
+ 
+export default function Layout({ children }) {
+  // Secondary task
+  after(() => {
+    log();
+  });
+ 
+  // Primary task
+  return <>{children}</>;
+}
+Learn more about next/after.
+
+create-next-app updates
+For Next.js 15, we've updated create-next-app with a new design.
+
+New design for create-next-app in Next.js 15 RC
+When running create-next-app, there is a new prompt asking if you want to enable Turbopack for local development (defaults to No).
+
+Terminal
+
+✔ Would you like to use Turbopack for next dev? … No / Yes
+The --turbo flag can be used to enable Turbopack.
+
+Terminal
+
+npx create-next-app@rc --turbo
+To make getting started on a new project even easier, a new --empty flag has been added to the CLI. This will remove any extraneous files and styles, resulting in a minimal "hello world" page.
+
+Terminal
+
+npx create-next-app@rc --empty
+Optimizing bundling of external packages (Stable)
+Bundling external packages can improve the cold start performance of your application. In the App Router, external packages are bundled by default, and you can opt-out specific packages using the new serverExternalPackages config option.
+
+In the Pages Router, external packages are not bundled by default, but you can provide a list of packages to bundle using the existing transpilePackages option. With this configuration option, you need to specify each package.
+
+To unify configuration between App and Pages Router, we’re introducing a new option, bundlePagesRouterDependencies to match the default automatic bundling of the App Router. You can then use serverExternalPackages to opt-out specific packages, if needed.
+
+next.config.ts
+
+const nextConfig = {
+  // Automatically bundle external packages in the Pages Router:
+  bundlePagesRouterDependencies: true,
+  // Opt specific packages out of bundling for both App and Pages Router:
+  serverExternalPackages: ['package-name'],
+};
+ 
+module.exports = nextConfig;
+Learn more about optimizing external packages.
+
+Other Changes
+[Breaking] Minimum React version is now 19 RC
+[Breaking] next/image: Removed squoosh in favor of sharp as an optional dependency (PR)
+[Breaking] next/image: Changed default Content-Disposition to attachment (PR)
+[Breaking] next/image: Error when src has leading or trailing spaces (PR)
+[Breaking] Middleware: Apply react-server condition to limit unrecommended react API imports (PR)
+[Breaking] next/font: Removed support for external @next/font package (PR)
+[Breaking] next/font: Removed font-family hashing (PR)
+[Breaking] Caching: force-dynamic will now set a no-store default to the fetch cache (PR)
+[Breaking] Config: Enable swcMinify (PR), missingSuspenseWithCSRBailout (PR), and outputFileTracing (PR) behavior by default and remove deprecated options
+[Breaking] Remove auto-instrumentation for Speed Insights (must now use the dedicated @vercel/speed-insights package) (PR)
+[Breaking] Remove .xml extension for dynamic sitemap routes and align sitemap URLs between development and production (PR)
+[Improvement] Metadata: Updated environmental variable fallbacks for metadataBase when hosted on Vercel (PR)
+[Improvement] Fix tree-shaking with mixed namespace and named imports from optimizePackageImports (PR)
+[Improvement] Parallel Routes: Provide unmatched catch-all routes with all known params (PR)
+[Improvement] Config bundlePagesExternals is now stable and renamed to bundlePagesRouterDependencies
+[Improvement] Config serverComponentsExternalPackages is now stable and renamed to serverExternalPackages
+[Improvement] create-next-app: New projects ignore all .env files by default (PR)
+[Docs] Improve auth documentation (PR)
+[Docs] @next/env package (PR)
+To learn more, check out the upgrade guide.
+
+Building Your Application
+Upgrading
+Version 15
+Version 15
+Upgrading from 14 to 15
+To update to Next.js version 15, you can use the upgrade codemod:
+
+Terminal
+
+npx @next/codemod@canary upgrade latest
+If you prefer to do it manually, ensure that you're installing the latest Next & React versions:
+
+Terminal
+
+npm i next@latest react@latest react-dom@latest eslint-config-next@latest
+Good to know:
+
+If you see a peer dependencies warning, you may need to update react and react-dom to the suggested versions, or you use the --force or --legacy-peer-deps flag to ignore the warning. This won't be necessary once both Next.js 15 and React 19 are stable.
+React 19
+The minimum versions of react and react-dom is now 19.
+useFormState has been replaced by useActionState. The useFormState hook is still available in React 19, but it is deprecated and will be removed in a future release. useActionState is recommended and includes additional properties like reading the pending state directly. Learn more.
+useFormStatus now includes additional keys like data, method, and action. If you are not using React 19, only the pending key is available. Learn more.
+Read more in the React 19 upgrade guide.
+Good to know: If you are using TypeScript, ensure you also upgrade @types/react and @types/react-dom to their latest versions.
+
+Async Request APIs (Breaking change)
+Previously synchronous Dynamic APIs that rely on runtime information are now asynchronous:
+
+cookies
+headers
+draftMode
+params in layout.js, page.js, route.js, default.js, opengraph-image, twitter-image, icon, and apple-icon.
+searchParams in page.js
+To ease the burden of migration, a codemod is available to automate the process and the APIs can temporarily be accessed synchronously.
+
+cookies
+Recommended Async Usage
+
+import { cookies } from 'next/headers'
+ 
+// Before
+const cookieStore = cookies()
+const token = cookieStore.get('token')
+ 
+// After
+const cookieStore = await cookies()
+const token = cookieStore.get('token')
+Temporary Synchronous Usage
+app/page.tsx
+TypeScript
+
+TypeScript
+
+import { cookies, type UnsafeUnwrappedCookies } from 'next/headers'
+ 
+// Before
+const cookieStore = cookies()
+const token = cookieStore.get('token')
+ 
+// After
+const cookieStore = cookies() as unknown as UnsafeUnwrappedCookies
+// will log a warning in dev
+const token = cookieStore.get('token')
+headers
+Recommended Async Usage
+
+import { headers } from 'next/headers'
+ 
+// Before
+const headersList = headers()
+const userAgent = headersList.get('user-agent')
+ 
+// After
+const headersList = await headers()
+const userAgent = headersList.get('user-agent')
+Temporary Synchronous Usage
+app/page.tsx
+TypeScript
+
+TypeScript
+
+import { headers, type UnsafeUnwrappedHeaders } from 'next/headers'
+ 
+// Before
+const headersList = headers()
+const userAgent = headersList.get('user-agent')
+ 
+// After
+const headersList = headers() as unknown as UnsafeUnwrappedHeaders
+// will log a warning in dev
+const userAgent = headersList.get('user-agent')
+draftMode
+Recommended Async Usage
+
+import { draftMode } from 'next/headers'
+ 
+// Before
+const { isEnabled } = draftMode()
+ 
+// After
+const { isEnabled } = await draftMode()
+Temporary Synchronous Usage
+app/page.tsx
+TypeScript
+
+TypeScript
+
+import { draftMode, type UnsafeUnwrappedDraftMode } from 'next/headers'
+ 
+// Before
+const { isEnabled } = draftMode()
+ 
+// After
+// will log a warning in dev
+const { isEnabled } = draftMode() as unknown as UnsafeUnwrappedDraftMode
+params & searchParams
+Asynchronous Layout
+app/layout.tsx
+TypeScript
+
+TypeScript
+
+// Before
+type Params = { slug: string }
+ 
+export function generateMetadata({ params }: { params: Params }) {
+  const { slug } = params
+}
+ 
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Params
+}) {
+  const { slug } = params
+}
+ 
+// After
+type Params = Promise<{ slug: string }>
+ 
+export async function generateMetadata({ params }: { params: Params }) {
+  const { slug } = await params
+}
+ 
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Params
+}) {
+  const { slug } = await params
+}
+Synchronous Layout
+app/layout.tsx
+TypeScript
+
+TypeScript
+
+// Before
+type Params = { slug: string }
+ 
+export default function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Params
+}) {
+  const { slug } = params
+}
+ 
+// After
+import { use } from 'react'
+ 
+type Params = Promise<{ slug: string }>
+ 
+export default function Layout(props: {
+  children: React.ReactNode
+  params: Params
+}) {
+  const params = use(props.params)
+  const slug = params.slug
+}
+Asynchronous Page
+app/page.tsx
+TypeScript
+
+TypeScript
+
+// Before
+type Params = { slug: string }
+type SearchParams = { [key: string]: string | string[] | undefined }
+ 
+export function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const { slug } = params
+  const { query } = searchParams
+}
+ 
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const { slug } = params
+  const { query } = searchParams
+}
+ 
+// After
+type Params = Promise<{ slug: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+ 
+export async function generateMetadata(props: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const params = await props.params
+  const searchParams = await props.searchParams
+  const slug = params.slug
+  const query = searchParams.query
+}
+ 
+export default async function Page(props: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const params = await props.params
+  const searchParams = await props.searchParams
+  const slug = params.slug
+  const query = searchParams.query
+}
+Synchronous Page
+
+'use client'
+ 
+// Before
+type Params = { slug: string }
+type SearchParams = { [key: string]: string | string[] | undefined }
+ 
+export default function Page({
+  params,
+  searchParams,
+}: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const { slug } = params
+  const { query } = searchParams
+}
+ 
+// After
+import { use } from 'react'
+ 
+type Params = Promise<{ slug: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
+ 
+export default function Page(props: {
+  params: Params
+  searchParams: SearchParams
+}) {
+  const params = use(props.params)
+  const searchParams = use(props.searchParams)
+  const slug = params.slug
+  const query = searchParams.query
+}
+
+// Before
+export default function Page({ params, searchParams }) {
+  const { slug } = params
+  const { query } = searchParams
+}
+ 
+// After
+import { use } from "react"
+ 
+export default function Page(props) {
+  const params = use(props.params)
+  const searchParams = use(props.searchParams)
+  const slug = params.slug
+  const query = searchParams.query
+}
+ 
+Route Handlers
+app/api/route.ts
+
+// Before
+type Params = { slug: string }
+ 
+export async function GET(request: Request, segmentData: { params: Params }) {
+  const params = segmentData.params
+  const slug = params.slug
+}
+ 
+// After
+type Params = Promise<{ slug: string }>
+ 
+export async function GET(request: Request, segmentData: { params: Params }) {
+  const params = await segmentData.params
+  const slug = params.slug
+}
+app/api/route.js
+
+// Before
+export async function GET(request, segmentData) {
+  const params = segmentData.params
+  const slug = params.slug
+}
+ 
+// After
+export async function GET(request, segmentData) {
+  const params = await segmentData.params
+  const slug = params.slug
+}
+runtime configuration (Breaking change)
+The runtime segment configuration previously supported a value of experimental-edge in addition to edge. Both configurations refer to the same thing, and to simplify the options, we will now error if experimental-edge is used. To fix this, update your runtime configuration to edge. A codemod is available to automatically do this.
+
+fetch requests
+fetch requests are no longer cached by default.
+
+To opt specific fetch requests into caching, you can pass the cache: 'force-cache' option.
+
+app/layout.js
+
+export default async function RootLayout() {
+  const a = await fetch('https://...') // Not Cached
+  const b = await fetch('https://...', { cache: 'force-cache' }) // Cached
+ 
+  // ...
+}
+To opt all fetch requests in a layout or page into caching, you can use the export const fetchCache = 'default-cache' segment config option. If individual fetch requests specify a cache option, that will be used instead.
+
+app/layout.js
+
+// Since this is the root layout, all fetch requests in the app
+// that don't set their own cache option will be cached.
+export const fetchCache = 'default-cache'
+ 
+export default async function RootLayout() {
+  const a = await fetch('https://...') // Cached
+  const b = await fetch('https://...', { cache: 'no-store' }) // Not cached
+ 
+  // ...
+}
+Route Handlers
+GET functions in Route Handlers are no longer cached by default. To opt GET methods into caching, you can use a route config option such as export const dynamic = 'force-static' in your Route Handler file.
+
+app/api/route.js
+
+export const dynamic = 'force-static'
+ 
+export async function GET() {}
+Client-side Router Cache
+When navigating between pages via <Link> or useRouter, page segments are no longer reused from the client-side router cache. However, they are still reused during browser backward and forward navigation and for shared layouts.
+
+To opt page segments into caching, you can use the staleTimes config option:
+
+next.config.js
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    staleTimes: {
+      dynamic: 30,
+      static: 180,
+    },
+  },
+}
+ 
+module.exports = nextConfig
+Layouts and loading states are still cached and reused on navigation.
+
+next/font
+The @next/font package has been removed in favor of the built-in next/font. A codemod is available to safely and automatically rename your imports.
+
+app/layout.js
+
+// Before
+import { Inter } from '@next/font/google'
+ 
+// After
+import { Inter } from 'next/font/google'
+bundlePagesRouterDependencies
+experimental.bundlePagesExternals is now stable and renamed to bundlePagesRouterDependencies.
+
+next.config.js
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Before
+  experimental: {
+    bundlePagesExternals: true,
+  },
+ 
+  // After
+  bundlePagesRouterDependencies: true,
+}
+ 
+module.exports = nextConfig
+serverExternalPackages
+experimental.serverComponentsExternalPackages is now stable and renamed to serverExternalPackages.
+
+next.config.js
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Before
+  experimental: {
+    serverComponentsExternalPackages: ['package-name'],
+  },
+ 
+  // After
+  serverExternalPackages: ['package-name'],
+}
+ 
+module.exports = nextConfig
+Speed Insights
+Auto instrumentation for Speed Insights was removed in Next.js 15.
+
+To continue using Speed Insights, follow the Vercel Speed Insights Quickstart guide.
+
+NextRequest Geolocation
+The geo and ip properties on NextRequest have been removed as these values are provided by your hosting provider. A codemod is available to automate this migration.
+
+If you are using Vercel, you can alternatively use the geolocation and ipAddress functions from @vercel/functions instead:
+
+middleware.ts
+
+import { geolocation } from '@vercel/functions'
+import type { NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  const { city } = geolocation(request)
+ 
+  // ...
+}
+middleware.ts
+
+import { ipAddress } from '@vercel/functions'
+import type { NextRequest } from 'next/server'
+ 
+export function middleware(request: NextRequest) {
+  const ip = ipAddress(request)
+ 
+  // ...
+}

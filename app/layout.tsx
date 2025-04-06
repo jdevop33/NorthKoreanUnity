@@ -1,40 +1,38 @@
-import type { Metadata } from 'next';
-// Import fonts
+import { Metadata } from 'next';
 import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google'; 
 import { cn } from "@/lib/utils"; 
-import { Toaster } from "@/components/ui/toaster"; // Import Shadcn Toaster
+import { Toaster } from "@/components/ui/toaster";
+import { baseMetadata } from './metadata';
 
 // Import global styles
-import '@/globals.css'; 
+import '@/app/globals.css'; 
 
-// Configure fonts
+// Configure fonts with proper optimization
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-sans' 
+  variable: '--font-sans',
+  display: 'swap',
+  preload: true
 });
 
 const nanumGothic = Nanum_Gothic({
-  subsets: ['latin'], // Adjust subsets if needed (e.g., 'korean')
+  subsets: ['latin'],
   weight: ['400', '700', '800'],
-  variable: '--font-sans-kr', // Matches variable in tailwind.config.css
-  display: 'swap', // Use swap for better perceived performance
+  variable: '--font-sans-kr',
+  display: 'swap',
+  preload: true
 });
 
 const nanumMyeongjo = Nanum_Myeongjo({
-  subsets: ['latin'], // Adjust subsets if needed
+  subsets: ['latin'],
   weight: ['400', '700', '800'],
-  variable: '--font-serif-kr', // Matches variable in tailwind.config.css
+  variable: '--font-serif-kr',
   display: 'swap',
+  preload: true
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'North Korean Unity', 
-    template: '%s | North Korean Unity', 
-  },
-  description: 'Explore North Korean culture, heritage, and modern achievements. Promoting peace and understanding.', 
-  // TODO: Add more metadata (Open Graph, Twitter, Icons)
-};
+// Use our prepared metadata
+export const metadata: Metadata = baseMetadata;
 
 interface RootLayoutProps {
   children: React.ReactNode;

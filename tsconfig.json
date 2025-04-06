@@ -23,11 +23,12 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["./components/*"],
-      "@/lib/*": ["./lib/*"], // Point to root lib
-      "@/hooks/*": ["./hooks/*"], // Point to root hooks
-      "@/locales/*": ["./locales/*"], // Point to root locales
-      "@shared/*": ["./shared/*"] // Keep if shared dir is used
-      // No alias needed for public/assets
+      "@/lib/*": ["./lib/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/locales/*": ["./locales/*"],
+      "@/types": ["./types"],
+      "@/types/*": ["./types/*"],
+      "@shared/*": ["./shared/*"]
     }
   },
   "include": [
@@ -35,16 +36,15 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mjs",
-    "**/*.json", // Include JSON files for locales
+    "**/*.json",
     ".next/types/**/*.ts",
     "app/**/*",
     "components/**/*",
-    "lib/**/*", // Include root lib
-    "hooks/**/*", // Include root hooks
-    "locales/**/*", // Include root locales
-    "shared/**/*" 
-    // No need to explicitly include client/src anymore if empty
-    // No need to explicitly include public
+    "lib/**/*",
+    "hooks/**/*",
+    "types/**/*",
+    "locales/**/*",
+    "shared/**/*"
   ],
   "exclude": [
     "node_modules", 
