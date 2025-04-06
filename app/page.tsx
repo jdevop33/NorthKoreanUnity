@@ -1,30 +1,33 @@
-// app/page.tsx - Updated to pass translations to Server Components
+// app/page.tsx - Simplified for build troubleshooting
 
 import { Header } from "@/components/layout/Header";
 import { NavigationBar } from "@/components/layout/NavigationBar";
 import { Footer } from "@/components/layout/Footer";
 
-import { IntroductionSection } from "@/components/sections/IntroductionSection";
-import { CulturalHeritageSection } from "@/components/sections/CulturalHeritageSection";
-import { ArchitectureSection } from "@/components/sections/ArchitectureSection";
-import { TraditionsSection } from "@/components/sections/TraditionsSection";
-import { ModernAchievementsSection } from "@/components/sections/ModernAchievementsSection";
-import { CulturalPreservationSection } from "@/components/sections/CulturalPreservationSection";
-import { UnificationSection } from "@/components/sections/UnificationSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { Suspense } from "react";
+// Comment out section imports
+// import { IntroductionSection } from "@/components/sections/IntroductionSection";
+// import { CulturalHeritageSection } from "@/components/sections/CulturalHeritageSection";
+// import { ArchitectureSection } from "@/components/sections/ArchitectureSection";
+// import { TraditionsSection } from "@/components/sections/TraditionsSection";
+// import { ModernAchievementsSection } from "@/components/sections/ModernAchievementsSection";
+// import { CulturalPreservationSection } from "@/components/sections/CulturalPreservationSection";
+// import { UnificationSection } from "@/components/sections/UnificationSection";
+// import { ContactSection } from "@/components/sections/ContactSection";
+// import { Suspense } from "react";
 
-import translations from "@/locales/en.json";
+// Comment out direct translation imports if sections using them are removed
+// import translations from "@/locales/en.json";
 
-// Enable Partial Prerendering (PPR) for optimal performance
-export const experimental_ppr = true;
+// PPR flag (can remain)
+// export const experimental_ppr = true;
 
-// Root Page Component - Server Component
+// Simplified Root Page Component
 export default function HomePage() {
-  // Extract necessary translations
-  const archTranslations = translations.architecture;
-  const tradTranslations = translations.traditions;
-  const unifTranslations = translations.unification;
+
+  // Comment out translation extraction if sections using them are removed
+  // const archTranslations = translations.architecture;
+  // const tradTranslations = translations.traditions;
+  // const unifTranslations = translations.unification;
 
   return (
     <>
@@ -32,11 +35,12 @@ export default function HomePage() {
       <NavigationBar /> 
       
       <main>
-        {/* Sections within main content container */}
+        {/* Sections within main content container - All commented out */}
         <div className="max-w-6xl mx-auto px-4 py-12 space-y-16 md:space-y-24">
-          <IntroductionSection />
-          <CulturalHeritageSection /> 
-          <ArchitectureSection 
+          <h2 className="text-center text-2xl">Page Content Removed for Build Test</h2> 
+          {/* <IntroductionSection /> */}
+          {/* <CulturalHeritageSection /> */}
+          {/* <ArchitectureSection 
             title={archTranslations.title}
             subtitle={archTranslations.subtitle}
             description={archTranslations.description}
@@ -45,8 +49,8 @@ export default function HomePage() {
             modernImageAlt={archTranslations.modern.imageAlt}
             traditionalImageAlt={archTranslations.traditional.imageAlt}
             monumentImageAlt={archTranslations.monument.imageAlt}
-          />
-          <TraditionsSection 
+          /> */}
+          {/* <TraditionsSection 
             title={tradTranslations.title}
             subtitle={tradTranslations.subtitle}
             calendarTitle={tradTranslations.calendar.title}
@@ -59,15 +63,13 @@ export default function HomePage() {
             clothingDescription1={tradTranslations.clothing.description1}
             clothingDescription2={tradTranslations.clothing.description2}
             clothingImageAlt={tradTranslations.clothing.image} 
-          />
-          <ModernAchievementsSection />
-          <CulturalPreservationSection />
+          /> */}
+          {/* <ModernAchievementsSection /> */}
+          {/* <CulturalPreservationSection /> */}
         </div>
         
-        {/* Full width or custom container sections */}
-        {/* Note: UnificationSection is now outside the max-w-6xl container */}
-        {/* If it needs the container, move it back inside the div above */}
-        <UnificationSection 
+        {/* Full width or custom container sections - All commented out */}
+        {/* <UnificationSection 
           title={unifTranslations.title}
           description={unifTranslations.description}
           koreanPeninsulaAlt={unifTranslations.koreanPeninsula}
@@ -75,14 +77,14 @@ export default function HomePage() {
           pointPeaceSpirit={unifTranslations.points.peaceSpirit}
           pointCulturalPreservation={unifTranslations.points.culturalPreservation}
           pointEconomicCooperation={unifTranslations.points.economicCooperation}
-        /> 
-        <Suspense fallback={
+        /> */}
+        {/* <Suspense fallback={
           <div className="p-8 bg-content-bg-off min-h-[400px] flex items-center justify-center">
             <div className="animate-pulse w-full max-w-5xl h-64 bg-gray-200 rounded-lg"></div>
           </div>
         }>
           <ContactSection />
-        </Suspense>
+        </Suspense> */}
       </main>
       
       <Footer />
