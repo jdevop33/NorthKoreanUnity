@@ -6,7 +6,7 @@ import Image from 'next/image';
 const modernArchitecture = '/assets/modern_architecture.svg'; 
 const traditionalPalace = '/assets/traditional_palace.svg';
 const pyongyangMonument = '/assets/pyongyang_monument.svg';
-import { cn } from '@/lib/utils'; 
+// Removed unused import: import { cn } from '@/lib/utils'; 
 
 interface ArchitectureSectionProps {
   title: string;

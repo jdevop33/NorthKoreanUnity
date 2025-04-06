@@ -20,12 +20,15 @@ import {
   FormMessage 
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast"; 
-import { cn } from "@/lib/utils";
+// Removed unused import: import { cn } from "@/lib/utils";
+
+// Define a more specific type for the translation function
+type TranslationFunc = (key: string, fallback: string) => string;
 
 // Placeholder function for t
-const t = (key: string, fallback: string) => fallback;
+const t: TranslationFunc = (key: string, fallback: string) => fallback;
 
-const createContactFormSchema = (tFunc: Function) => z.object({
+const createContactFormSchema = (tFunc: TranslationFunc) => z.object({
   Name: z.string()
     .min(2, { message: tFunc('contact.errors.name.min', 'Name must be at least 2 characters.') })
     .max(50, { message: tFunc('contact.errors.name.max', 'Name must be 50 characters or less.') }),
@@ -189,7 +192,7 @@ export function ContactForm() {
           />
           
           <div className="hidden" aria-hidden="true">
-            <Label htmlFor="_gotcha">Don't fill this out if you're human:</Label>
+            <Label htmlFor="_gotcha">Don&apos;t fill this out if you&apos;re human:</Label>
             <Input type="text" id="_gotcha" name="_gotcha" tabIndex={-1} autoComplete="off" />
           </div>
           

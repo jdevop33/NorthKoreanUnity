@@ -8,8 +8,9 @@ export function Header() {
   // TODO: Replace placeholder src with a locally hosted image in /public
   // TODO: Provide actual width/height of the source image
   const headerImageSrc = "https://images.unsplash.com/photo-1548115184-bc6544d06a58?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"; 
-  const imageWidth = 1920; // Placeholder width
-  const imageHeight = 1080; // Placeholder height for aspect ratio
+  // Removed unused variables:
+  // const imageWidth = 1920; // Placeholder width
+  // const imageHeight = 1080; // Placeholder height for aspect ratio
 
   return (
     <header className="relative h-[500px] md:h-[600px] text-white overflow-hidden">

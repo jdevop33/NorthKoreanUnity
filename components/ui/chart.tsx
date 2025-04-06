@@ -50,12 +50,13 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
+          // Reverted escaped single quotes
           "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
           className
         )}
         {...props}
       >
-        <ChartStyle id={chartId} config={config} />
+        {/* <ChartStyle id={chartId} config={config} /> */}
         <RechartsPrimitive.ResponsiveContainer>
           {children}
         </RechartsPrimitive.ResponsiveContainer>
@@ -65,38 +66,45 @@ const ChartContainer = React.forwardRef<
 })
 ChartContainer.displayName = "Chart"
 
+/* Temporarily commented out using block comment */
+/*
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([_, config]) => config.theme || config.color
-  )
+    ([, itemConfig]) => itemConfig.theme || itemConfig.color
+  );
 
   if (!colorConfig.length) {
-    return null
+    return null;
   }
 
-  return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
-  })
-  .join("\n")}
-}
-`
-          )
-          .join("\n"),
-      }}
-    />
-  )
-}
+  const cssBlocks: string[] = [];
+
+  Object.entries(THEMES).forEach(([theme, prefix]) => {
+    const cssVariableLines = colorConfig
+      .map(([key, itemConfig]) => {
+        const color =
+          itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+          itemConfig.color;
+        return color ? "  --color-" + key + ": " + color + ";" : null;
+      })
+      .filter(Boolean);
+
+    if (cssVariableLines.length > 0) {
+      const variablesString = cssVariableLines.join("
+"); // Join variable lines with newline
+      // DIAGNOSTIC: Construct the full block using basic string concatenation WITHOUT newlines
+      cssBlocks.push(prefix + " [data-chart=" + id + "] { " + variablesString + " }");
+    }
+  });
+
+  // Join all theme blocks with a newline
+  const finalCss = cssBlocks.join("
+");
+
+  // Render the style tag only if there's CSS content
+  return finalCss ? <style dangerouslySetInnerHTML={{ __html: finalCss }} /> : null;
+};
+*/
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
@@ -205,22 +213,17 @@ const ChartTooltipContent = React.forwardRef<
                     ) : (
                       !hideIndicator && (
                         <div
-                          className={cn(
-                            "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
-                            {
-                              "h-2.5 w-2.5": indicator === "dot",
-                              "w-1": indicator === "line",
-                              "w-0 border-[1.5px] border-dashed bg-transparent":
-                                indicator === "dashed",
-                              "my-0.5": nestLabel && indicator === "dashed",
-                            }
-                          )}
-                          style={
-                            {
-                              "--color-bg": indicatorColor,
-                              "--color-border": indicatorColor,
-                            } as React.CSSProperties
-                          }
+                          className={cn("shrink-0 rounded-[2px]", {
+                            "h-2.5 w-2.5": indicator === "dot",
+                            "w-1": indicator === "line",
+                            "w-0 border-[1.5px] border-dashed bg-transparent":
+                              indicator === "dashed",
+                            "my-0.5": nestLabel && indicator === "dashed",
+                          })}
+                          style={{
+                            backgroundColor: indicator !== "dashed" ? indicatorColor : undefined,
+                            borderColor: indicatorColor
+                          }}
                         />
                       )
                     )}
@@ -252,7 +255,7 @@ const ChartTooltipContent = React.forwardRef<
     )
   }
 )
-ChartTooltipContent.displayName = "ChartTooltip"
+ChartTooltipContent.displayName = "ChartTooltipContent"
 
 const ChartLegend = RechartsPrimitive.Legend
 
@@ -359,5 +362,5 @@ export {
   ChartTooltipContent,
   ChartLegend,
   ChartLegendContent,
-  ChartStyle,
+  // ChartStyle, // Temporarily removed
 }

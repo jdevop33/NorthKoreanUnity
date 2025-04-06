@@ -45,7 +45,8 @@ export const detectCountry = async (): Promise<string> => {
     
     // For demo, we're using the browser's language as a fallback
     // Get browser language (e.g., 'en-US', 'zh-CN')
-    const browserLang = navigator.language || (navigator as any).userLanguage;
+    // Removed non-standard (navigator as any).userLanguage fallback
+    const browserLang = navigator.language;
     
     // Extract country code from browser language if available
     if (browserLang && browserLang.includes('-')) {
