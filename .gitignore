@@ -1,6 +1,46 @@
-node_modules
-dist
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.pnp.loader.mjs
+
+# Testing
+/coverage
+
+# Next.js build output
+/.next
+/out
+
+# Miscellaneous
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+*.pem
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# next-env.d.ts - Automatically created by Next.js
+# Recursive searches might conflict with this file, hiding it solves the issue
+# https://github.com/vercel/next.js/issues/40846
+next-env.d.ts
+
+# Vercel
+.vercel
+
+# TypeScript cache
+tsconfig.tsbuildinfo
+
+# Drizzle migrations
+/migrations/*.sql
+/migrations/meta/
+
+# ESLint cache
+.eslintcache

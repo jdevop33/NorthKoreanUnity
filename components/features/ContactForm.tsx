@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { z } from 'zod';
-// Import ControllerRenderProps for explicit typing
-import { useForm, ControllerRenderProps, FieldValues } from 'react-hook-form';
+// Import ControllerRenderProps, remove unused FieldValues
+import { useForm, ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2, Loader2 } from 'lucide-react'; 
 

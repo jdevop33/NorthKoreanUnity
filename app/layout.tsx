@@ -1,8 +1,16 @@
+// Use 'use client' if I18nProvider has client-side logic, 
+// otherwise keep Layout as Server Component if possible.
+// Since I18nProvider handles client-side effects (localStorage, detection), it must be a client component.
+// Consequently, the RootLayout consuming it *might* need to be client, 
+// OR wrap only {children} with the Provider if Metadata export is crucial.
+// Let's try wrapping just children first.
+
 import { Metadata } from 'next';
 import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google'; 
 import { cn } from "@/lib/utils"; 
 import { Toaster } from "@/components/ui/toaster";
 import { baseMetadata } from './metadata';
+import { I18nProvider } from "@/components/I18nProvider"; // Import the provider
 
 // Import global styles
 import '@/app/globals.css'; 
@@ -41,7 +49,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html 
-      lang="en" 
+      lang="en" // Set initial lang, i18n provider will update client-side if needed
       className={cn(
         "antialiased", 
         inter.variable, 
@@ -51,7 +59,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
     >
       <body>
-        {children}
+        {/* Wrap children with the I18nProvider */}
+        <I18nProvider>
+          {children}
+        </I18nProvider>
         <Toaster /> {/* Add Toaster component here */}
       </body>
     </html>
