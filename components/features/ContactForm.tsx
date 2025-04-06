@@ -113,7 +113,7 @@ export function ContactForm() {
         </p>
         <Button 
           onClick={() => setFormSubmitted(false)}
-          variant="outline" // Assuming 'outline' is a valid variant defined in buttonVariants
+          variant="outline" // Assuming 'outline' is valid
           className="py-3 px-8"
         >
           Send Another Message
@@ -225,7 +225,7 @@ export function ContactForm() {
           <div className="mt-8 flex justify-center">
             <Button
               type="submit"
-              size="lg" // Assuming 'lg' is a valid size defined in buttonVariants
+              size="lg" // Assuming 'lg' is valid
               className="bg-primary-red hover:bg-red-700 text-white py-4 px-10 text-lg font-bold transition-all hover:scale-105 shadow-lg"
               disabled={isSubmitting}
             >

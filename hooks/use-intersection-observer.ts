@@ -12,15 +12,15 @@ export function useIntersectionObserver<T extends HTMLElement = HTMLElement>(
   const ref = useRef<T>(null); 
 
   useEffect(() => {
-    const element = ref.current; // Get the current element inside the effect
-    if (!element) return;
+    const currentElement = ref.current; // Get the current element inside the effect
+    if (!currentElement) return;
 
     const observer = new IntersectionObserver(([entry]) => {
       // Update state when intersection changes
       setIsIntersecting(entry.isIntersecting);
     }, options);
 
-    observer.observe(element);
+    observer.observe(currentElement);
 
     // Cleanup observer on component unmount
     return () => {
