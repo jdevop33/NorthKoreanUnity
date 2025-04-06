@@ -1,11 +1,12 @@
 "use client";
 
+import * as React from 'react'; // Explicit React import
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react'; 
 
-import { LanguageSwitcher } from '@/components/LanguageSwitcher'; 
+import { LanguageSwitcher } from '@/components/features/LanguageSwitcher'; // Corrected path 
 // Update path for image served from public dir
 const jucheEmblem = '/assets/juche_emblem.svg'; 
 import { cn } from '@/lib/utils'; 

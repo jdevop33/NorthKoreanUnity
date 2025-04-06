@@ -1,5 +1,6 @@
 "use client"; // Required for useTranslation and DOM manipulation
 
+import * as React from 'react'; // Explicit React import
 import { useTranslation } from 'react-i18next';
 
 // Named export as per guidelines
@@ -143,7 +144,7 @@ export function Footer() {
             }} className="hover:text-accent-gold transition-colors duration-200">{t('contact.title', '연락처')}</a>
           </p>
         </div>
-      </div>
+      </div> {/* Add missing closing div for max-w-6xl */} 
     </footer>
   );
 }
