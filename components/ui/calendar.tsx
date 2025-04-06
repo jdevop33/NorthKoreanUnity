@@ -1,11 +1,14 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+import { DayPicker, type DayPickerProps, type DropdownProps } from "react-day-picker" 
+import { format, getMonth, getYear } from "date-fns"; // Import date-fns functions
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select" 
+import { ScrollArea } from "./scroll-area"
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = DayPickerProps;
 
 function Calendar({
   className,
@@ -22,6 +25,7 @@ function Calendar({
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
+        caption_dropdowns: "flex justify-center gap-1", 
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
@@ -49,11 +53,88 @@ function Calendar({
         day_range_middle:
           "aria-selected:bg-accent aria-selected:text-accent-foreground",
         day_hidden: "invisible",
-        ...classNames,
+        vhidden: "vhidden hidden",
+        ...classNames, 
       }}
       components={{
-        IconLeft: ({ /* ...props */ }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ /* ...props */ }) => <ChevronRight className="h-4 w-4" />,
+        // Corrected icon keys
+        icon_left: () => <ChevronLeft className="h-4 w-4" />,
+        icon_right: () => <ChevronRight className="h-4 w-4" />,
+        // Updated Dropdown component implementation for v9+
+        Dropdown: (dropdownProps: DropdownProps) => {
+          // Removed caption and children from destructuring
+          const { name, value, onChange } = dropdownProps;
+          
+          const currentYear = new Date().getFullYear();
+          const fromYear = props.fromYear || currentYear - 100; 
+          const toYear = props.toYear || currentYear + 10;
+          const locale = props.locale; // Get locale from DayPicker props
+          
+          if (name === "months") {
+            // Generate month options using date-fns
+            const monthOptions = Array.from({ length: 12 }).map((_, i) => ({
+              value: i.toString(),
+              label: format(new Date(currentYear, i), "MMMM", { locale }),
+            }));
+
+            const selectedMonthLabel = monthOptions.find(m => m.value === value?.toString())?.label;
+
+            return (
+              <Select
+                value={value?.toString()}
+                onValueChange={(newValue) => {
+                  const event = { target: { value: newValue } } as React.ChangeEvent<HTMLSelectElement>; 
+                  onChange?.(event);
+                }}
+              >
+                <SelectTrigger className="h-[28px] w-[60px] sm:w-auto text-xs">
+                  <SelectValue>{selectedMonthLabel}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <ScrollArea className="h-40">
+                    {monthOptions.map((option) => (
+                      <SelectItem key={`${name}-${option.value}`} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </ScrollArea>
+                </SelectContent>
+              </Select>
+            );
+          } else if (name === "years") {
+            const yearOptions: { value: string; label: string }[] = [];
+            for (let i = fromYear; i <= toYear; i++) {
+              yearOptions.push({ value: i.toString(), label: i.toString() });
+            }
+            const selectedYearLabel = yearOptions.find(y => y.value === value?.toString())?.label;
+
+            return (
+              <Select
+                value={value?.toString()}
+                onValueChange={(newValue) => {
+                   const event = { target: { value: newValue } } as React.ChangeEvent<HTMLSelectElement>; 
+                  onChange?.(event);
+                }}
+              >
+                <SelectTrigger className="h-[28px] w-[60px] sm:w-auto text-xs">
+                   <SelectValue>{selectedYearLabel}</SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <ScrollArea className="h-40">
+                     {yearOptions.map((option) => (
+                      <SelectItem key={`${name}-${option.value}`} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </ScrollArea>
+                </SelectContent>
+              </Select>
+            );
+          }
+
+          // Return null or an appropriate fallback if needed
+          return null;
+        }
       }}
       {...props}
     />

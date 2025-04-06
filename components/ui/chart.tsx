@@ -3,8 +3,8 @@ import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/lib/utils"
 
-// Format: { THEME_NAME: CSS_SELECTOR }
-const THEMES = { light: "", dark: ".dark" } as const
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const THEMES = { light: "", dark: ".dark" } as const 
 
 export type ChartConfig = {
   [k in string]: {
@@ -50,7 +50,6 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
-          // Reverted escaped single quotes
           "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
           className
         )}
@@ -66,44 +65,43 @@ const ChartContainer = React.forwardRef<
 })
 ChartContainer.displayName = "Chart"
 
-/* Temporarily commented out using block comment */
+/* Temporarily commented out due to persistent parsing error */
 /*
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
     ([, itemConfig]) => itemConfig.theme || itemConfig.color
-  );
+  )
 
   if (!colorConfig.length) {
-    return null;
+    return null
   }
 
-  const cssBlocks: string[] = [];
-
-  Object.entries(THEMES).forEach(([theme, prefix]) => {
-    const cssVariableLines = colorConfig
-      .map(([key, itemConfig]) => {
-        const color =
-          itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-          itemConfig.color;
-        return color ? "  --color-" + key + ": " + color + ";" : null;
-      })
-      .filter(Boolean);
-
-    if (cssVariableLines.length > 0) {
-      const variablesString = cssVariableLines.join("
-"); // Join variable lines with newline
-      // DIAGNOSTIC: Construct the full block using basic string concatenation WITHOUT newlines
-      cssBlocks.push(prefix + " [data-chart=" + id + "] { " + variablesString + " }");
-    }
-  });
-
-  // Join all theme blocks with a newline
-  const finalCss = cssBlocks.join("
-");
-
-  // Render the style tag only if there's CSS content
-  return finalCss ? <style dangerouslySetInnerHTML={{ __html: finalCss }} /> : null;
-};
+  return (
+    <style
+      dangerouslySetInnerHTML={{
+        __html: Object.entries(THEMES)
+          .map(([theme, prefix]) => {
+            const cssRules = colorConfig
+              .map(([key, itemConfig]) => {
+                const color =
+                  itemConfig.theme?.[theme as keyof typeof THEMES] ||
+                  itemConfig.color;
+                return color ? `  --color-${key}: ${color};` : null;
+              })
+              .filter(Boolean)
+              .join("
+")
+              
+            return `${prefix} [data-chart=${id}] {
+${cssRules}
+}`;
+          })
+          .join("
+")
+      }}
+    />
+  )
+}
 */
 
 const ChartTooltip = RechartsPrimitive.Tooltip
