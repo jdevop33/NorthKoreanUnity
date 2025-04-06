@@ -1,7 +1,13 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker, type DayPickerProps, type DropdownProps } from "react-day-picker" 
-import { format, getMonth, getYear } from "date-fns"; // Import date-fns functions
+import { 
+  DayPicker, 
+  type DayPickerProps, 
+  type DropdownProps 
+} from "react-day-picker" 
+import { format } from "date-fns";
+import { enUS } from "date-fns/locale/en-US";
+import type { Locale } from "date-fns"; 
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -16,6 +22,7 @@ function Calendar({
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
+  
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
@@ -56,22 +63,20 @@ function Calendar({
         vhidden: "vhidden hidden",
         ...classNames, 
       }}
+      // Using PascalCase Icon keys for v9, removed `as any` and `as Locale`
       components={{
-        // Corrected icon keys
-        icon_left: () => <ChevronLeft className="h-4 w-4" />,
-        icon_right: () => <ChevronRight className="h-4 w-4" />,
-        // Updated Dropdown component implementation for v9+
-        Dropdown: (dropdownProps: DropdownProps) => {
-          // Removed caption and children from destructuring
+        IconLeft: () => <ChevronLeft className="h-4 w-4" />,
+        IconRight: () => <ChevronRight className="h-4 w-4" />,
+        Dropdown: (dropdownProps: DropdownProps) => { 
           const { name, value, onChange } = dropdownProps;
           
           const currentYear = new Date().getFullYear();
-          const fromYear = props.fromYear || currentYear - 100; 
-          const toYear = props.toYear || currentYear + 10;
-          const locale = props.locale; // Get locale from DayPicker props
+          const startYear = currentYear - 100;
+          const endYear = currentYear + 10; 
+          // Use optional chaining and default locale
+          const locale = props.locale || enUS;
           
           if (name === "months") {
-            // Generate month options using date-fns
             const monthOptions = Array.from({ length: 12 }).map((_, i) => ({
               value: i.toString(),
               label: format(new Date(currentYear, i), "MMMM", { locale }),
@@ -103,7 +108,7 @@ function Calendar({
             );
           } else if (name === "years") {
             const yearOptions: { value: string; label: string }[] = [];
-            for (let i = fromYear; i <= toYear; i++) {
+            for (let i = startYear; i <= endYear; i++) {
               yearOptions.push({ value: i.toString(), label: i.toString() });
             }
             const selectedYearLabel = yearOptions.find(y => y.value === value?.toString())?.label;
@@ -132,10 +137,9 @@ function Calendar({
             );
           }
 
-          // Return null or an appropriate fallback if needed
-          return null;
+          return <></>;
         }
-      }}
+      }} 
       {...props}
     />
   )
