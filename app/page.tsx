@@ -1,4 +1,4 @@
-// app/page.tsx - Restored
+// app/page.tsx - Restored (React 18)
 
 import { Header } from "@/components/layout/Header";
 import { NavigationBar } from "@/components/layout/NavigationBar";
@@ -18,8 +18,8 @@ import { Suspense } from "react";
 // Ideally, this would use server-side translation loading
 import translations from "@/locales/en.json"; 
 
-// Enable Partial Prerendering (PPR) for optimal performance
-export const experimental_ppr = true; // Re-enabled for Next.js 15+
+// Remove experimental_ppr export for Next.js 14
+// export const experimental_ppr = true; 
 
 // Root Page Component - Server Component
 export default function HomePage() {

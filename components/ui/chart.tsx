@@ -2,8 +2,7 @@ import * as React from "react"
 // Import specific types from recharts
 import * as RechartsPrimitive from "recharts"
 import { Payload } from "recharts/types/component/DefaultLegendContent"; // Type for legend payload items
-// Remove incorrect TooltipPayload import, use TooltipProps generics
-import { TooltipProps } from "recharts/types/component/Tooltip"; 
+import { TooltipProps } from "recharts/types/component/Tooltip"; // Type for tooltip props
 
 import { cn } from "@/lib/utils"
 
@@ -115,6 +114,9 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 type ValueType = number | string | (number | string)[]; 
 type NameType = number | string;
 
+// Extract the payload type from TooltipProps more reliably
+type TooltipItemPayload = NonNullable<TooltipProps<ValueType, NameType>['payload']>[number];
+
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   TooltipProps<ValueType, NameType> & // Use TooltipProps with appropriate value/name types
@@ -129,7 +131,7 @@ const ChartTooltipContent = React.forwardRef<
   (
     {
       active,
-      payload, // This will be typed by TooltipProps as Payload<ValueType, NameType>[] | undefined
+      payload, // This will be typed by TooltipProps as TooltipItemPayload[] | undefined
       className,
       indicator = "dot",
       hideLabel = false,
@@ -151,7 +153,7 @@ const ChartTooltipContent = React.forwardRef<
         return null
       }
 
-      // payload item is now typed as Payload<ValueType, NameType>
+      // payload item is now typed as TooltipItemPayload
       const item = payload[0];
       // Use type assertion or check for properties if needed, as item structure can vary
       const key = `${labelKey || item.dataKey || item.name || "value"}`
@@ -202,12 +204,21 @@ const ChartTooltipContent = React.forwardRef<
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
           {/* item is now properly typed from payload */} 
-          {payload.map((item, index: number) => { 
-            // item type is Payload<ValueType, NameType> from recharts
+          {payload.map((item: TooltipItemPayload, index: number) => { 
+            // item type is TooltipItemPayload from recharts
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            // Access item.payload for underlying data if needed, carefully check types
-            const indicatorColor = color || (item.payload as any)?.fill || item.color
+            // Access item.payload for underlying data. Assert type if necessary but be careful.
+            const itemPayload = item.payload as Record<string, unknown> | undefined;
+            // Ensure indicatorColor is a string or undefined, default to item.color if payload.fill is not a string
+            let indicatorColor: string | undefined = color;
+            if (!indicatorColor) {
+              if (typeof itemPayload?.fill === 'string') {
+                indicatorColor = itemPayload.fill;
+              } else if (typeof item.color === 'string') { // item.color is sometimes used by recharts
+                indicatorColor = item.color;
+              } 
+            }
 
             return (
               <div
@@ -237,7 +248,7 @@ const ChartTooltipContent = React.forwardRef<
                           })}
                           style={{
                             backgroundColor: indicator !== "dashed" ? indicatorColor : undefined,
-                            borderColor: indicatorColor
+                            borderColor: indicatorColor // Already string | undefined
                           }}
                         />
                       )
@@ -341,13 +352,11 @@ ChartLegendContent.displayName = "ChartLegend"
 
 // Helper to extract item config from a payload.
 // Use a union type for the payload parameter.
-// Define the specific recharts payload type for tooltips
-type TooltipItemPayload = NonNullable<TooltipProps<ValueType, NameType>['payload']>[number];
 type PossiblePayloadItem = Payload | TooltipItemPayload;
 
 function getPayloadConfigFromPayload(
   config: ChartConfig,
-  payload: PossiblePayloadItem,
+  payload: PossiblePayloadItem, // Use the union type here
   key: string
 ) {
   // Keep the implementation logic as it needs to check for various properties
@@ -357,14 +366,10 @@ function getPayloadConfigFromPayload(
   }
 
   // For tooltip payload, the actual data might be in payload.payload
-  // Use type assertion or check if 'payload' property exists
-  const payloadPayload =
-    'payload' in payload &&
-    payload.payload &&
-    typeof payload.payload === "object" &&
-    payload.payload !== null
-      ? payload.payload
-      : undefined
+  // Check if 'payload' property exists and is an object
+  const payloadPayload = ('payload' in payload && typeof payload.payload === 'object' && payload.payload !== null) 
+                         ? payload.payload as Record<string, unknown> // Type assertion
+                         : undefined;
 
   let configLabelKey: string = key;
 
