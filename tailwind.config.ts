@@ -1,67 +1,72 @@
 // tailwind.config.ts
 import type { Config } from 'tailwindcss'
 
-// Basic Tailwind v4 config - Adapt theme/plugins as needed
+// Corrected Tailwind v4 config - Align with globals.css :root variables
 export default {
+  darkMode: "class", // Enable class-based dark mode
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}', // Include if using pages dir
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './hooks/**/*.{js,ts,jsx,tsx,mdx}',
     './lib/**/*.{js,ts,jsx,tsx,mdx}',
-    // Add other paths that use Tailwind classes
   ],
   theme: {
     extend: {
-      // Add custom theme extensions here based on your globals.css variables if desired
-      // Example: Map CSS vars to Tailwind keys
+      // Map colors to CSS variables defined in globals.css
       colors: {
-        border: 'hsl(var(--border) / <alpha-value>)',
-        input: 'hsl(var(--input) / <alpha-value>)',
-        ring: 'hsl(var(--ring) / <alpha-value>)',
-        background: 'hsl(var(--background) / <alpha-value>)',
-        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        border: 'hsl(var(--border) / <alpha-value>)',       // From :root
+        input: 'hsl(var(--input) / <alpha-value>)',        // From :root
+        ring: 'hsl(var(--ring) / <alpha-value>)',          // From :root
+        background: 'hsl(var(--background) / <alpha-value>)', // From :root
+        foreground: 'hsl(var(--foreground) / <alpha-value>)', // From :root
         primary: {
-          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
-          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
-          // Add your custom color names if needed
-          // These need corresponding CSS variable definitions in globals.css
-          red: 'var(--color-primary-red)',
-          blue: 'var(--color-primary-blue)',
+          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',       // From :root
+          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)', // From :root
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
-          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',     // From :root
+          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)', // From :root
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
-          // foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)', // Uncomment if needed
+          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',   // From :root
+          // foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)', 
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
-          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',         // From :root
+          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)', // From :root
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
-          foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
-          // Add custom accent colors
-          gold: 'var(--color-accent-gold)',
+          DEFAULT: 'hsl(var(--accent) / <alpha-value>)',         // From :root
+          foreground: 'hsl(var(--accent-foreground) / <alpha-value>)', // From :root
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
-          foreground: 'hsl(var(--popover-foreground) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--popover) / <alpha-value>)',       // From :root
+          foreground: 'hsl(var(--popover-foreground) / <alpha-value>)', // From :root
         },
         card: {
-          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
-          foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--card) / <alpha-value>)',         // From :root
+          foreground: 'hsl(var(--card-foreground) / <alpha-value>)', // From :root
         },
-        // Add other custom color names used in globals.css based on vars
-        'warm-gray': 'var(--color-warm-gray)', 
-        'warm-gray-dark': 'var(--color-warm-gray-dark)', 
-        'text-light': 'var(--color-text-light)', 
-        'text-primary': 'var(--color-text-primary)', 
-        'text-secondary': 'var(--color-text-secondary)', 
-        'content-bg-off': 'var(--color-content-bg-off)', 
+        // Colors for specific named elements (assuming vars exist in globals.css)
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar) / <alpha-value>)',       // From :root
+          foreground: 'hsl(var(--sidebar-foreground) / <alpha-value>)', // From :root
+          primary: 'hsl(var(--sidebar-primary) / <alpha-value>)',       // From :root
+          primaryForeground: 'hsl(var(--sidebar-primary-foreground) / <alpha-value>)', // From :root
+          accent: 'hsl(var(--sidebar-accent) / <alpha-value>)',         // From :root
+          accentForeground: 'hsl(var(--sidebar-accent-foreground) / <alpha-value>)', // From :root
+          border: 'hsl(var(--sidebar-border) / <alpha-value>)',       // From :root
+          ring: 'hsl(var(--sidebar-ring) / <alpha-value>)',         // From :root
+        },
+         // Chart colors
+        chart: {
+          '1': 'hsl(var(--chart-1) / <alpha-value>)', // From :root
+          '2': 'hsl(var(--chart-2) / <alpha-value>)', // From :root
+          '3': 'hsl(var(--chart-3) / <alpha-value>)', // From :root
+          '4': 'hsl(var(--chart-4) / <alpha-value>)', // From :root
+          '5': 'hsl(var(--chart-5) / <alpha-value>)', // From :root
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -82,7 +87,6 @@ export default {
             '0%': { transform: 'translateY(20px)', opacity: '0' },
             '100%': { transform: 'translateY(0)', opacity: '1' },
          },
-         // Add shadcn animations if needed
          "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -95,14 +99,13 @@ export default {
       animation: {
          fadeIn: 'fadeIn 1s ease-in-out forwards',
          slideUp: 'slideUp 0.6s ease-out forwards',
-         // Add shadcn animations if needed
          "accordion-down": "accordion-down 0.2s ease-out",
          "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   plugins: [
-    require('tailwindcss-animate') // Add animate plugin if used
-    // require('@tailwindcss/typography'), // Uncomment if using typography plugin classes
+    require('tailwindcss-animate') 
+    // require('@tailwindcss/typography'), 
   ],
 } satisfies Config;
