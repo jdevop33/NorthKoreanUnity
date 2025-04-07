@@ -5,7 +5,7 @@ const nextConfig = {
   // React 19 and Next.js 15 optimizations
   experimental: {
     // React Compiler for automatic optimizations
-    // reactCompiler: true, // Disabled AGAIN
+    reactCompiler: true, // Re-enabled
     
     // Optimized image processing
     optimizePackageImports: [
