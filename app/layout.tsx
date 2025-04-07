@@ -1,11 +1,11 @@
-// app/layout.tsx - Temporarily remove I18nProvider for build test
+// app/layout.tsx - Restore I18nProvider
 
 import { Metadata } from 'next';
 import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google'; 
 import { cn } from "@/lib/utils"; 
 import { Toaster } from "@/components/ui/toaster";
 import { baseMetadata } from './metadata';
-// import { I18nProvider } from "@/components/I18nProvider"; // Temporarily remove provider
+import { I18nProvider } from "@/components/I18nProvider"; // Restore provider import
 
 // Import global styles
 import '@/app/globals.css'; 
@@ -53,9 +53,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
     >
       <body>
-        {/* <I18nProvider> */}{/* Temporarily remove provider wrap */}
+        {/* Wrap children with the I18nProvider */}
+        <I18nProvider>
           {children}
-        {/* </I18nProvider> */}
+        </I18nProvider>
         <Toaster />
       </body>
     </html>

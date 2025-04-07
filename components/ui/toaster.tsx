@@ -1,3 +1,5 @@
+"use client"; // Toaster must be a Client Component because it uses the useToast hook
+
 import { useToast } from "@/hooks/use-toast"
 import {
   Toast,
