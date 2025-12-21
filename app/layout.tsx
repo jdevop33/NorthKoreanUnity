@@ -1,8 +1,9 @@
 // app/layout.tsx - Restore I18nProvider
 
 import { Metadata } from 'next';
-import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google'; 
-import { cn } from "@/lib/utils"; 
+import Script from 'next/script';
+import { Inter, Nanum_Gothic, Nanum_Myeongjo } from 'next/font/google';
+import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { baseMetadata } from './metadata';
 import { I18nProvider } from "@/components/I18nProvider"; // Restore provider import
@@ -58,6 +59,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           {children}
         </I18nProvider>
         <Toaster />
+        {/* Umami Analytics - Privacy-respecting, cookie-free */}
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="e42c2739-f5a9-4dbf-8325-2e5b80eeee19"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

@@ -132,12 +132,29 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-10 pt-8 text-center text-text-light">
-           {/* Use CSS variable for border color --color-gray-700 likely needs mapping in theme */}
+        {/* JPanda Network Links */}
+        <div className="border-t border-gray-700 mt-10 pt-6 text-center">
+          <p className="text-xs uppercase tracking-wider text-text-light/60 mb-3">Part of the JPanda Network</p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+            <a href="https://juche.org" target="_blank" rel="noopener noreferrer" className="text-red-400/80 hover:text-red-300 transition-colors">
+              Juche GanG
+            </a>
+            <span className="text-gray-600 hidden sm:inline">•</span>
+            <a href="https://tiger.juche.org" target="_blank" rel="noopener noreferrer" className="text-amber-400/80 hover:text-amber-300 transition-colors">
+              Tiger Unity
+            </a>
+            <span className="text-gray-600 hidden sm:inline">•</span>
+            <a href="https://1929.world" target="_blank" rel="noopener noreferrer" className="text-yellow-400/80 hover:text-yellow-300 transition-colors">
+              1929 World
+            </a>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-700 mt-6 pt-6 text-center text-text-light">
           <p>{t('footer.copyright', '© {{year}} 조선 문화유산 플랫폼', { year: currentYear })}</p>
           <p className="mt-4">
-            <a href="#" className="hover:text-accent-gold transition-colors duration-200">{t('footer.termsOfService', '이용약관')}</a> · 
-            <a href="#" className="hover:text-accent-gold transition-colors duration-200 mx-4">{t('footer.privacyPolicy', '개인정보처리방침')}</a> · 
+            <a href="#" className="hover:text-accent-gold transition-colors duration-200">{t('footer.termsOfService', '이용약관')}</a> ·
+            <a href="#" className="hover:text-accent-gold transition-colors duration-200 mx-4">{t('footer.privacyPolicy', '개인정보처리방침')}</a> ·
             <a href="#contact" onClick={(e) => {
               e.preventDefault();
               scrollToSection('contact');
