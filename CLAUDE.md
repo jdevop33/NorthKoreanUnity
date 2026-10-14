@@ -1,3 +1,5 @@
+> **Legacy repository.** Read the notice at the top of `README.md` before doing any work here. This repository is not maintained and is marked for archiving.
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

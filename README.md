@@ -1,3 +1,6 @@
+> ## Legacy repository
+> **Status (14 October 2026): not maintained, marked for archiving.** This 2025 one-page site is superseded. Korean heritage and reunification writing now lives on the author's active essay platform, [juchegang.ca](https://juchegang.ca), and the one-people thesis on [han-minjok.org](https://han-minjok.org). The stray preview deployment at `north-korean-unity.vercel.app` should be removed with it. No further changes are planned here; the code stays for the record.
+
 # North Korean Unity
 
 A modern Next.js 15 application showcasing North Korean cultural heritage, traditions, and modern achievements to promote peace and cultural understanding.
